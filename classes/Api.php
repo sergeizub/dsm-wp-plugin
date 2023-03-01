@@ -14,8 +14,8 @@ class Api
     {
         $this->url = get_option('dsm_api_url');
 		$this->api_key = get_option('dsm_api_key');
-        if (empty($this->api_key))
-            App::GetError()->Show("Incorrect Api Key");
+        //if (empty($this->api_key))
+            //App::GetError()->Show("Incorrect Api Key");
         
         $this->api_version = get_option('dsm_api_version');
 
@@ -246,8 +246,7 @@ class Api
 			return false;
 		elseif (is_array($get)) {
 			$action = $get['dsm_action'];
-			curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($get));
-            $params = "?".http_build_query($get);
+			$params = "?".http_build_query($get);
 		}
 		else
 			$action = $get;
