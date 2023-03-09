@@ -23,7 +23,7 @@ class Api
 
 	public function ValidateUrl()
 	{
-        if (filter_var( $this->url, FILTER_VALIDATE_URL, FILTER_FLAG_HOST_REQUIRED) !== false)
+        if (filter_var( $this->url, FILTER_VALIDATE_URL) !== false)
 			return true;
 		else
 			App::GetError()->Show("Sumbit Valid DSM Url");
