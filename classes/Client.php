@@ -8,7 +8,7 @@ class Client
 	
     public function __construct()
     {
-		if(!session_id()) {
+		if(empty(session_id())) {
             session_start();
         }
 	   add_action('wp_ajax_dsmclient', array($this,'AjaxClient'));
