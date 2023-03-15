@@ -9,9 +9,8 @@ function dsm_namespace_autoload( $class_name )
     $file_parts = explode( '\\', $class_name );
     $namespace = '';
     for ( $i = count( $file_parts ) - 1; $i > 0; $i-- ) {
-       
-        $current = str_ireplace( 'DanceStudioManager', '', $current );
         $current = $file_parts[ $i ] ;
+        $current = str_ireplace( 'DanceStudioManager', '', $current );
         if ( count( $file_parts ) - 1 === $i ) {
             if ( false !== strpos( $current, 'Widget' ))
                 $file_name = "classes/widgets/$current.php";

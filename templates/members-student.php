@@ -20,7 +20,7 @@ else {
 		InputDateInit();
 	});
 </script>
-<? if (is_array($student->form)) :
+<?php if (is_array($student->form)) :
 	?>
 	<div id="<?php echo ((!empty($student_id) ? 'members_edit_'.$student_id : 'tab-members-student')); ?>" class="<?php echo (!empty($student_id) ? '' : 'tab-pane'); ?>">
 	<div class="dsm-header"><h2><?php echo (!empty($student_id) ? 'Edit' : 'Create'); ?> Student</h2></div>
@@ -32,8 +32,8 @@ else {
 		<div class="alert alert-warning text-center">
             Registering students will cost <?php echo DSM_CURRENCY_SIGN; ?><?php echo DSM_REGISTRATION_FEE; ?>.
         </div>
-    <? endif; ?>
-	<form class="form-horizontal" role="form" id="student-form" action="" method="post"> <?
+    <?php endif; ?>
+	<form class="form-horizontal" role="form" id="student-form" action="" method="post"> <?php
 		foreach ($student->form as $field) {
 			echo '<div class="form-group">
 					<label class="col-sm-3 control-label">
@@ -56,7 +56,7 @@ else {
 					echo '<textarea class="form-control" rows="4" name="'.$field->name.'">'.(isset($student_data[$field->name]) ? $student_data[$field->name] : '').'</textarea>';
 				break;
 				case "date";
-					$dsm_day = new DateTime($student_data[$field->name]);
+					$dsm_day = new DateTime(date(strtotime($student_data[$field->name])));
 					echo
 						'<div class="input-group date">
 							<input type="text" class="form-control" name="'.$field->name.'"
@@ -95,6 +95,6 @@ else {
 		<button type="submit" class="btn btn-default">Save</button></div></div>';
 	?> </form>
 	</div>
-<? else:
+<?php else:
 App::GetError()->Show("Unable Send Api Reqest");
 endif; 

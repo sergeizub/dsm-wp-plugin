@@ -13,19 +13,19 @@ class Template
 		 if (file_exists(plugin_dir_path( __FILE__ ) . '../templates/'. $file )) {
 			$tab = App::GetClient()->GetTab();
 			?>
-			<? if ($_REQUEST['type'] != 'json'): ?>
+			<?php if ($_REQUEST['type'] != 'json'): ?>
 			<script>
 				jQuery(function() {
-				<? if ($tab): ?>
+				<?php if ($tab): ?>
 					jQuery('.nav-pills a[href="#<?php echo $tab; ?>"]').tab('show');
-				<? else: ?>
+				<?php else: ?>
 					jQuery('.nav-pills a:first').tab('show');
-				<? endif; ?>
+				<?php endif; ?>
 				});
 			</script>
 			<div id="dsm_loading"><i class="fa fa-refresh fa-spin fa-3x"></i></div>
-			<? endif; ?>
-			<?
+			<?php endif; ?>
+			<?php
             load_template(plugin_dir_path( __FILE__ ) . '../templates/'. $file);
 		 }
 	}

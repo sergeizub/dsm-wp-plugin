@@ -54,7 +54,7 @@ foreach ($classes_list as $list_item) {
 	foreach ($list_item->schedules as $schedules) {
 		if (is_array($schedules->data)) {
 			foreach ($schedules->data as $schedule) {
-				$schedule_start = new DateTime($schedule->START_DATE);
+				$schedule_start = new DateTime(date(strtotime($schedule->START_DATE)));
 				if ($schedule_start->format(DSM_PHPDATE) == $current_date->format(DSM_PHPDATE) && $schedule->STATUS != '2'){
 					$data['schedules'][$i] = $schedule;
 				}

@@ -30,7 +30,7 @@ $selected_account = $cart['selected_account'];
                     <?php if (DSM_ENABLE_DISCOUNT_COUPONS == '1' || DSM_MAIN_DISCOUNT == 'MULTI_CLASS' || DSM_MULTI_STUDENT_ENABLED == '1') : ?>
 		            <th class="text-right" width="90">Discount,&nbsp;<?php echo DSM_CURRENCY_SIGN;?></th>
 		            <th class="text-right" width="90">Subtotal,&nbsp;<?php echo DSM_CURRENCY_SIGN;?></th>
-		           <? endif; ?>
+		           <?php endif; ?>
 		            <th class="text-right" width="90"><?php echo ((DSM_TAX_ENABLED == '1') ? 'Tax,&nbsp;'.DSM_CURRENCY_SIGN : ''); ?></th>
 		            <th class="text-right" width="90"></th>
 		        </tr>

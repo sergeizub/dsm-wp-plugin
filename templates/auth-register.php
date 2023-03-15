@@ -60,7 +60,7 @@ if (is_array($register_fields)) :
 	});
 	</script>
 	<div class="dsm-header"><h2>Create Account</h2></div>
-	<form class="form-horizontal" role="form" id="members-form"  action="index.php" method="post" enctype="multipart/form-data"> <?
+	<form class="form-horizontal" role="form" id="members-form"  action="index.php" method="post" enctype="multipart/form-data"> <?php
 		foreach ($register_fields as $k_field => $field) {
 			if ($field->name == 'PASSWORD') { ?>
 				<div class="form-group">
@@ -73,7 +73,7 @@ if (is_array($register_fields)) :
 						</div>     
 						<div class="col-sm-3">
 							<input type="password" class="form-control" maxlength="32" name="PASSWORD2" placeholder="Repeat Password">
-		<? } else if ($field->name == 'FIRSTNAME') { ?>
+		<?php } else if ($field->name == 'FIRSTNAME') { ?>
 				<div class="form-group">
 					<label class="col-sm-3 control-label"><?php echo ((isset($field->required) && $field->required == true) ? '<span style="color: red;">*</span>' : ''); ?> <?php echo $field->label; ?></label>
 						<div class="col-sm-3 <?php echo ((in_array($field->name,$error_fields)) ? 'has-error' : ''); ?>">
@@ -85,14 +85,14 @@ if (is_array($register_fields)) :
 						</div>     
 						<div class="col-sm-3">
 							<input type="text" class="form-control" maxlength="64" name="LASTNAME"  value="<?php echo (isset($_POST['LASTNAME']) ? $_POST['LASTNAME'] : ''); ?>" placeholder="Last Name" required/>
-		<? } else if ($field->name == 'BIRTHDAY') { ?>
-				<?
+		<?php } else if ($field->name == 'BIRTHDAY') { ?>
+				<?php
 					if (isset($_POST[$field->name]) && $_POST[$field->name] != '0000-00-00')
 						$dsm_day = new DateTime($_POST[$field->name]);
 				?>
 				<div class="form-group">
 					<label class="col-sm-3 control-label"><?php echo ((isset($field->required) && $field->required == true) ? '<span style="color: red;">*</span>' : ''); ?> <?php echo $field->label; ?>
-					<? if (DSM_OC_GENDER_ENABLED == "1"):?>, &nbsp;<?php echo ((DSM_OC_REQ_GENDER == '1') ? '<span style="color: red;">*</span>' : ''); ?>Gender</label><? endif; ?>
+					<?php if (DSM_OC_GENDER_ENABLED == "1"):?>, &nbsp;<?php echo ((DSM_OC_REQ_GENDER == '1') ? '<span style="color: red;">*</span>' : ''); ?>Gender</label><?php endif; ?>
 						<div class="col-sm-3 <?php echo ((in_array($field->name,$error_fields)) ? 'has-error' : ''); ?>">
 							<div class="input-group date">
 								<input type="text" class="form-control" maxlength="64"
@@ -104,20 +104,20 @@ if (is_array($register_fields)) :
 							</div>
 						</div>
 						<div class="col-sm-3">
-							<? if (DSM_OC_GENDER_ENABLED) : ?>
+							<?php if (DSM_OC_GENDER_ENABLED) : ?>
 									<select name="GENDER" class="form-control" <?php echo ((DSM_OC_REQ_GENDER == '1') ? 'required' : ''); ?>>
-								<? if (is_array($register_fields[$k_field+1]->values)): ?>
-									<?  foreach ($register_fields[$k_field+1]->values as $v): ?>
+								<?php if (is_array($register_fields[$k_field+1]->values)): ?>
+									<?php  foreach ($register_fields[$k_field+1]->values as $v): ?>
 									<option value="<?php echo $v->value; ?>"
 										class="form-control option"
 										<?php echo ((isset($_POST['GENDER']) && $_POST['GENDER'] == $v->value) ? 'selected="selected"' : ''); ?>
 										><?php echo $v->option; ?>
 									</option>
-									<? endforeach; ?>
-								<? endif; ?>
+									<?php endforeach; ?>
+								<?php endif; ?>
 								</select>
-							<? endif; ?>
-		<? } else if ($field->name == 'PHONE1'
+							<?php endif; ?>
+		<?php } else if ($field->name == 'PHONE1'
 					  || ($field->name == 'PHONE2' && DSM_MEMBERS_PHONE2_ENABLED == '1')
 					  || ($field->name == 'PHONE3' && DSM_MEMBERS_PHONE3_ENABLED == '1')) { ?>
 				<div class="form-group">
@@ -130,7 +130,7 @@ if (is_array($register_fields)) :
 						<div class="col-sm-3">
 							<input type="text" class="form-control" maxlength="128" name="<?php echo $field->name; ?>_NOTES" value="<?php echo (isset($_POST[$field->name.'_NOTES']) ? $_POST[$field->name.'_NOTES'] : ''); ?>" placeholder="Phone Notes">
 
-		<? } else if ($field->name == 'PASSWORD2' || $field->name == 'LASTNAME' || $field->name == 'GENDER'
+		<?php } else if ($field->name == 'PASSWORD2' || $field->name == 'LASTNAME' || $field->name == 'GENDER'
 					|| $field->name == 'PHONE1_NOTES' || $field->name == 'PHONE2_NOTES' || $field->name == 'PHONE3_NOTES'
 					|| $field->name == 'PHONE1' || $field->name == 'PHONE2' || $field->name == 'PHONE3'
 					|| ($field->name == 'EMAIL2' && DSM_MEMBERS_EMAIL2_ENABLED != '1')
@@ -200,6 +200,6 @@ if (is_array($register_fields)) :
 		echo '<div class="form-group"><div class="col-sm-offset-3 col-sm-6"><button type="submit" id="oc-auth-register-button" class="btn btn-primary">Create Account</button></div></div>';
 	?> </form>
 	</div>
-<? else:
+<?php else:
 App::GetError()->Show("Unable Send Api Reqest");
 endif; 

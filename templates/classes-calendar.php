@@ -3,7 +3,7 @@
 	$class_id = App::GetApi()->GetIdParam();
 ?>
 <div id="tab-classes-calendar" class="tab-pane">
-<?
+<?php
 if (!empty($class_id)) :
 	App::GetTemplate()->Load('class-registration.php');
 else :
@@ -70,5 +70,5 @@ jQuery(function() {
 </script>
 
 <div id="dsm_calendar" ></div>
-<? endif; ?>
+<?php endif; ?>
 </div>

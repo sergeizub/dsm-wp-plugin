@@ -34,7 +34,7 @@ namespace DanceStudioManager;
 		<?php endif; ?>
 		<?php if (DSM_OC_CLASS_LIST_AVAILABLE_SLOTS == '1' && false): ?>
 			<p><?php echo ((($class['MAX_STUDENTS'] - $class['STUDENTS_QUANTITY']) > 0) ? ($class['MAX_STUDENTS'] - $class['STUDENTS_QUANTITY']) :'0'); ?> out of <?php echo $class['MAX_STUDENTS']; ?>  slots available</p>
-		<? endif ;?>
+		<?php endif ;?>
 		
 		<?php echo (($class['PAGES']) ? '<div>'.str_replace('[:pg:]','<br><br>',$class['PAGES']).'</div>' : ''); ?>
 		
@@ -224,7 +224,7 @@ namespace DanceStudioManager;
 															<?php endif; ?>
 														<?php endif; ?>
 													<?php endif; ?>
-												<? else: ?>
+												<?php else: ?>
 													<?php if ($class['INWAITLIST'] == '1') : ?>
 														<div class="label label-success">Waiting</div>
 													<?php elseif ($class['INCLASS'] == '1') : ?>

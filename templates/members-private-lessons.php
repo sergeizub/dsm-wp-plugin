@@ -42,8 +42,8 @@ $my_classes = json_decode(json_encode(App::GetClient()->GetController('members')
 			</tr>
 		</thead>
 		<tbody>
-		<? if (!empty($my_classes['schedules'])) : ?>
-			<? foreach ($my_classes['schedules'] as $schedule) : ?>
+		<?php if (!empty($my_classes['schedules'])) : ?>
+			<?php foreach ($my_classes['schedules'] as $schedule) : ?>
 			<tr>
 				<td>
 				<?php echo $schedule['data'][0]['STUDENT']; ?>
@@ -61,9 +61,9 @@ $my_classes = json_decode(json_encode(App::GetClient()->GetController('members')
 					<?php echo $schedule['data'][0]['STATUS']; ?>
 				</td>
 			</tr>
-			<? endforeach; ?>
+			<?php endforeach; ?>
 
-		<? endif; ?>
+		<?php endif; ?>
 		</tbody>
 	</table>
 	</div>

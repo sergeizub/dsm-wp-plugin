@@ -18,8 +18,8 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 			</tr>
 		</thead>
 		<tbody>
-		<? if (!empty($payment_sources)) : ?>
-			<? foreach ($payment_sources as $payment_source) : ?>
+		<?php if (!empty($payment_sources)) : ?>
+			<?php foreach ($payment_sources as $payment_source) : ?>
 			<tr>
 				<td class="text-center">
 						<input type="radio" name="default" value="<?php echo $payment_source['id']; ?>" class="dsm_ajax_tab"
@@ -41,10 +41,10 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 				</td>
 				<?php endif; ?>
 			</tr>
-			<? endforeach; ?>
-		<? else: ?>
+			<?php endforeach; ?>
+		<?php else: ?>
 			<td colspan="6">Accounts not added</td>
-		<? endif; ?>
+		<?php endif; ?>
 		</tbody>
 	</table>
 	<?php if (DSM_OC_ALLOW_CARD_PAYMENTS) : ?>

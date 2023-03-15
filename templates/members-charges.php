@@ -18,8 +18,8 @@ $result = App::GetClient()->GetController('members')->GetCharges();
 			</tr>
 		</thead>
 		<tbody>
-		<? if (!empty($result->charges)) : ?>
-			<? foreach ($result->charges as $charge) : ?>
+		<?php if (!empty($result->charges)) : ?>
+			<?php foreach ($result->charges as $charge) : ?>
 			<tr>
 				<td><?php echo $charge->DATE; ?></td>
 				<td><?php echo $charge->NAME; ?></td>
@@ -28,10 +28,10 @@ $result = App::GetClient()->GetController('members')->GetCharges();
 				<td><?php echo $charge->CHARGE_NOTES; ?></td>
 				<td><?php echo $charge->AMOUNT_CHARGED; ?></td>
 			</tr>
-			<? endforeach; ?>
-		<? else: ?>
+			<?php endforeach; ?>
+		<?php else: ?>
 			<td colspan="6">Charges not added</td>
-		<? endif; ?>
+		<?php endif; ?>
 		</tbody>
 	</table>
 	</div>

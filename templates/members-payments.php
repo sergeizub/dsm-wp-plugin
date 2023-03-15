@@ -17,8 +17,8 @@ $result = App::GetClient()->GetController('members')->GetPayments();
 			</tr>
 		</thead>
 		<tbody>
-		<? if (!empty($result->payments)) : ?>
-			<? foreach ($result->payments as $payment) : ?>
+		<?php if (!empty($result->payments)) : ?>
+			<?php foreach ($result->payments as $payment) : ?>
 			<tr>
 				<td><?php echo $payment->DATE; ?></td>
 				<td><?php echo $payment->NAME; ?></td>
@@ -27,10 +27,10 @@ $result = App::GetClient()->GetController('members')->GetPayments();
 				<td><?php echo $payment->PAYMENT_NOTES; ?></td>
 				<td><?php echo $payment->AMOUNT_PAID; ?></td>
 			</tr>
-			<? endforeach; ?>
-		<? else: ?>
+			<?php endforeach; ?>
+		<?php else: ?>
 			<td colspan="6">Payments not added</td>
-		<? endif; ?>
+		<?php endif; ?>
 		</tbody>
 	</table>
 	

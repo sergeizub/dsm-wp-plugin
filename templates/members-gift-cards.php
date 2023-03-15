@@ -27,27 +27,27 @@ $gift_card_data = $result->data;
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<? if (!empty($gift_card_data->table_header)) : ?>
-				<? foreach ($gift_card_data->table_header as $h) : ?>
+				<?php if (!empty($gift_card_data->table_header)) : ?>
+				<?php foreach ($gift_card_data->table_header as $h) : ?>
 				<th style="text-align:right;"><?php echo $h; ?></th>
-				<? endforeach; ?>
-				<? endif; ?>
+				<?php endforeach; ?>
+				<?php endif; ?>
 			</tr>
 		</thead>
 		<tbody>
-		<? if (!empty($gift_card_data->list)) : ?>
-			<? foreach ($gift_card_data->list as $row) : ?>
+		<?php if (!empty($gift_card_data->list)) : ?>
+			<?php foreach ($gift_card_data->list as $row) : ?>
 			<tr>
-				<? foreach ($row as $col): ?>
+				<?php foreach ($row as $col): ?>
 				<td  style="white-space: nowrap;text-align:right;"><?php echo $col; ?></td>
-				<? endforeach; ?>
+				<?php endforeach; ?>
 			</tr>
-			<? endforeach; ?>
-		<? else: ?>
+			<?php endforeach; ?>
+		<?php else: ?>
 			<tr>
 				<td colspan="6">No records found</td>
 			</tr>
-		<? endif; ?>
+		<?php endif; ?>
 		</tbody>
 	</table>
 	</div>

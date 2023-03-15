@@ -11,7 +11,7 @@
 		        </div>
 	        </div>
 			<input type="hidden" name="method" value="RemoveDiscount"/>
-			<? else: ?>
+			<?php else: ?>
 		    <div class="form-group">
 		        <label class="col-sm-5 control-label">Discount Coupon</label>
 		        <div class="col-sm-4">

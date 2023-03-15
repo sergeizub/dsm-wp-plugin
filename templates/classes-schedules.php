@@ -5,7 +5,7 @@ $class_id = App::GetApi()->GetIdParam();
 $schedules_list = App::GetClient()->GetController('classes')->GetClasses();	
 	?>
 	<button class="btn btn-default dsm_ajax_tab"  dsm_boot_tab="classes" >Classes</button>
-	<?
+	<?php
 foreach ($schedules_list->schedules as $k => $v) {
 	foreach ($v->data as $data)
 		if ($data->CLASS_ID == $class_id && $data->STATUS != '2') {
@@ -20,7 +20,7 @@ foreach ($schedules_list->schedules as $k => $v) {
 					<p>Age: <?php echo $data->MIN_AGE; ?> - <?php echo $data->MAX_AGE; ?></p>
 					<h4><?php echo $data->LOCATION; ?></h4>
 				</div>
-			<?
+			<?php
 				$class_header = '1';
 			endif;
 			if ($schedules_show == 'only_future' && strtotime($data->END) < time())

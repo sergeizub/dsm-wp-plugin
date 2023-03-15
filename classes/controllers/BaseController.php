@@ -11,8 +11,8 @@ abstract class BaseController
 	   $file_parts = explode( '\\', $class_name );
 	   
 	   for ( $i = count( $file_parts ) - 1; $i > 0; $i-- ) {
-			$current = str_ireplace( 'DanceStudioManager', '', $current );
 			$current = $file_parts[ $i ] ;
+			$current = str_ireplace( 'DanceStudioManager', '', $current );
 			if ( count( $file_parts ) - 1 === $i ) 
 				$this->short_class_name = str_ireplace( 'Controller', '', $current );
 	   }

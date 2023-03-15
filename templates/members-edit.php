@@ -16,15 +16,15 @@ else {
 		InputDateInit();
 	});
 </script>
-<? if (!empty($related_students->family) && $related_students->success) : ?>
+<?php if (!empty($related_students->family) && $related_students->success) : ?>
 <div class="row" style="padding-top:20px;">
   <label class="col-sm-3 control-label text-right" style="padding-top:10px;">Related Students</label>
   <div class="col-sm-6">
      <ul class="list-group">
-		<? foreach ($related_students->family as $student): ?>
+		<?php foreach ($related_students->family as $student): ?>
 		<li class="list-group-item"><i class="fa fa-user"></i> <?php echo $student->FIRSTNAME; ?> <?php echo $student->LASTNAME; ?>
 			<div class="pull-right">
-				<? if ($student->PARENT_ID > 0 && DSM_OC_RELATED_STUDENTS_ALLOW_EDIT_ARCHIVE == '1') : ?>
+				<?php if ($student->PARENT_ID > 0 && DSM_OC_RELATED_STUDENTS_ALLOW_EDIT_ARCHIVE == '1') : ?>
 				<a href="#tab-members-edit-<?php echo $student->ID; ?>" class="dsm_ajax_tab btn btn-primary btn-xs geturl">
 				  <i class="fa fa-pencil"></i> Edit
 				</a>
@@ -34,20 +34,20 @@ else {
 					class="btn btn-danger btn-xs">
 				  <i class="fa fa-remove"></i> Archive
 				</button>
-				<? endif; ?>
+				<?php endif; ?>
 			</div>
 		</li>
-		<? endforeach; ?>
+		<?php endforeach; ?>
 	</ul>
   </div>
 </div>	
-	<? endif;
+	<?php endif;
 	$user_form =  App::GetClient()->GetController('members')->GetUserForm();
 	if (is_array($user_form)) : ?>
 	<div id="tab-members-edit" class="tab-pane">
 	<div class="dsm-header"><h2>Edit Profile</h2></div>
 	<form class="form-horizontal" role="form" id="members-form" action="" method="post">
-	<?
+	<?php
 		foreach ($user_form as $field) {
 			echo '<div class="form-group">
 					<label class="col-sm-3 control-label">
@@ -114,7 +114,7 @@ else {
 	?> </form>
 	
 	</div>
-	<? else:
+	<?php else:
 App::GetError()->Show("Unable Send Api Reqest");
 	endif;
 }

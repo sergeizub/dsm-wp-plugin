@@ -30,7 +30,7 @@ else
         	dsm_activation_date="<?php echo date("M j, Y"); ?>">
         	<i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
 		</button>
-		<? endif; ?>
+		<?php endif; ?>
 		<br>
 </div>
 <?php endforeach; ?>

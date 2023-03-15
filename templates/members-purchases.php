@@ -18,8 +18,8 @@ $result = App::GetClient()->GetController('members')->GetPurchases();
 		</thead>
 		<tbody>
 		
-		<? if (!empty($result->data)) : ?>
-			<? foreach ($result->data as $p) : ?>
+		<?php if (!empty($result->data)) : ?>
+			<?php foreach ($result->data as $p) : ?>
 			<tr>
 				<td><?php echo $p->DATE_ADDEDF; ?></td>
 				<td><?php echo $p->NAME; ?></td>
@@ -28,10 +28,10 @@ $result = App::GetClient()->GetController('members')->GetPurchases();
 				<td class="text-center"><?php if($p->TYPE == 'item') { if($p->DATE_EXPIRE != DSM_NEVER_EXPIRE_DATE) { echo $p->DATE_EXPIREF; } else { echo 'never expire'; } }?></td>
 				<td class="text-right"><?php echo $p->AMOUNT_CHARGED; ?></td>
 			</tr>
-			<? endforeach; ?>
-		<? else: ?>
+			<?php endforeach; ?>
+		<?php else: ?>
 			<td colspan="6">No records found</td>
-		<? endif; ?>
+		<?php endif; ?>
 		</tbody>
 	</table>
 	</div>
