@@ -37,7 +37,7 @@ $selected_account = $cart['selected_account'];
 		    </thead>
             <tbody>
             <?php foreach ($student['items'] as $k_item => $item) :?>
-			<?php if (DSM_ENABLE_PAYMENT_ACCOUNT_2 == '1') $cart_locations[$item['location_id']] = $cart_locations[$item['location_id']]; ?>
+			<?php if (defined ('DSM_ENABLE_PAYMENT_ACCOUNT_2') && DSM_ENABLE_PAYMENT_ACCOUNT_2 == '1') $cart_locations[$item['location_id']] = $cart_locations[$item['location_id']]; ?>
                 <?php if ($item['student_id']) : ?>
                     <tr id="tr-<?php echo $k_item; ?>">
 			            <td colspan="2">
