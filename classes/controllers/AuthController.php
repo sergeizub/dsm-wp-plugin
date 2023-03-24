@@ -197,7 +197,7 @@ class AuthController extends BaseController
 		);
 
 		foreach ($date_time_formats as $k => $v)
-			if (!defined($k))
+			if (!defined('DSM_'.$k))
 				define('DSM_'.$k, $v);
 	}	
 	

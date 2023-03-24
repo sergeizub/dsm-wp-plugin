@@ -13,7 +13,7 @@ class Template
 		 if (file_exists(plugin_dir_path( __FILE__ ) . '../templates/'. $file )) {
 			$tab = App::GetClient()->GetTab();
 			?>
-			<?php if ($_REQUEST['type'] != 'json'): ?>
+			<?php if (!isset($_REQUEST['type']) || $_REQUEST['type'] != 'json'): ?>
 			<script>
 				jQuery(function() {
 				<?php if ($tab): ?>
