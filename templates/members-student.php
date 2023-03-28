@@ -56,7 +56,7 @@ else {
 					echo '<textarea class="form-control" rows="4" name="'.$field->name.'">'.(isset($student_data[$field->name]) ? $student_data[$field->name] : '').'</textarea>';
 				break;
 				case "date";
-					$dsm_day = new DateTime(date(strtotime($student_data[$field->name])));
+					$dsm_day = new DateTime(date(DSM_PHPDATE, strtotime($student_data[$field->name])));
 					echo
 						'<div class="input-group date">
 							<input type="text" class="form-control" name="'.$field->name.'"
