@@ -252,13 +252,15 @@ function dsm_ajax_click(link, dsm_form = false) {
         });
     }
     else {
-        jQuery.each(link.attributes, function() {
-            if(this.name) {
-                if (this.name.substring(0, 4) == 'dsm_') {
-                    dsm_data[this.name.replace(/^dsm_/, "")] = this.value;
+        if (link.attributes != undefined) {
+            jQuery.each(link.attributes, function() {
+                if(this.name) {
+                    if (this.name.substring(0, 4) == 'dsm_') {
+                        dsm_data[this.name.replace(/^dsm_/, "")] = this.value;
+                    }
                 }
-            }
-        });
+            });
+        }
     }
     var dsm_boot_tab = jQuery(link).attr('href');
     
