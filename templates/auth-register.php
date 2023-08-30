@@ -92,7 +92,7 @@ if (is_array($register_fields)) :
 				?>
 				<div class="form-group">
 					<label class="col-sm-3 control-label"><?php echo ((isset($field->required) && $field->required == true) ? '<span style="color: red;">*</span>' : ''); ?> <?php echo $field->label; ?>
-					<?php if (DSM_OC_GENDER_ENABLED == "1"):?>, &nbsp;<?php echo ((DSM_OC_REQ_GENDER == '1') ? '<span style="color: red;">*</span>' : ''); ?>Gender</label><?php endif; ?>
+					<?php if (DSM_OC_GENDER_ENABLED == "1"):?>, &nbsp;<?php echo ((DSM_OC_REQ_GENDER == '1') ? '<span style="color: red;">*</span>' : ''); ?>Gender<?php endif; ?></label>
 						<div class="col-sm-3 <?php echo ((in_array($field->name,$error_fields)) ? 'has-error' : ''); ?>">
 							<div class="input-group date">
 								<input type="text" class="form-control" maxlength="64"

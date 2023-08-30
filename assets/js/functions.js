@@ -202,6 +202,7 @@ function InputDateInit() {
     jQuery('.input-group.date').datetimepicker({
         showClear: true,
         ignoreReadonly: true,
+        viewMode: 'years',
         format: window.dtp_date
     });
 }
