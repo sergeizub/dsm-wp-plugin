@@ -132,7 +132,7 @@ else :
 						else
 							button = '<div class="alert alert-warning text-center">Full</div>';
 					}
-					else {
+					else if (v.STARTED == "0") {
 						button = '<a class="btn btn-success btn-lg ' + fclass + '" href="#tab-class-registration-' + v.CLASS_ID + '"  dsm_schedule_id="'+v.ID+'" title="Book Now">Book Now</a>';
 					}
 
