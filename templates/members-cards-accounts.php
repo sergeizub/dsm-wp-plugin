@@ -9,7 +9,7 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 		<thead>
 			<tr>
 				<th class="text-center">Default</th>
-				<th>Card / <?php echo ((DSM_ACH_ENABLED == 1) ? '/ ACH' : ''); ?></th>
+				<th>Card <?php echo ((DSM_OC_ALLOW_CARD_PAYMENTS == 1) ? '/ ACH' : ''); ?></th>
 				<th>Description</th>
 				<th>Auto Payment</th>
 				<?php if (DSM_OC_REMOVE_PAYMENT_SOURCE == '1') : ?>
@@ -52,7 +52,7 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 			<a href="#gateway-card" class="dsm_ajax_tab btn btn-primary dsm_ajax_tab" onclick="return false;">Add Card</a>
 		</div>
 	<?php endif; ?>
-	<?php if (DSM_ACH_ENABLED && DSM_OC_ALLOW_ACH_PAYMENTS) : ?>
+	<?php if (DSM_OC_ALLOW_ACH_PAYMENTS) : ?>
 		<div class="form-group">
 			<a href="#gateway-account" class="dsm_ajax_tab btn btn-primary dsm_ajax_tab" onclick="return false;">Add ACH</a>
 		</div>

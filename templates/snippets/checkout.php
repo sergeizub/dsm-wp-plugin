@@ -57,8 +57,8 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 	</div>
 <?php else: ?>
 <div class="row">
-		<div class="col-md-offset-2 col-md-6 pt25">
-			<form action="" method="post" id="gateway-form-checkout" class="form-horizontal" role="form">
+		<div class="col-md-10 pt25">
+			<form action="" method="post" id="gateway-form-checkout" class="form-horizontal" role="form" data-valid="validateGatewayForm()">
 			<input type="hidden" name="action" value="dsmclient"/>
 			<input type="hidden" name="obj" value="checkout"/>
 			<input type="hidden" name="boot_tab" value="tab-checkout-cart"/>
@@ -152,12 +152,14 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 				  </div>
 				</div>
 				<?php endif; ?>
-		    </div> 	
+		    </div>
+			<?php if(!empty($cart['checkout_agreements'])): ?>
+				<?php include plugin_dir_path( __FILE__ ) . 'checkout-agreements.php'; ?>
+			<?php endif; ?>
 			<div class="form-group">
 				<label class="col-sm-5 control-label"></label>
 				<div class="col-sm-7">
 					<button type="submit" class="btn btn-primary" id="gateway-form-checkout-submit">Checkout</button>
-					
 				</div>
 			</div>
 			</form>

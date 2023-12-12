@@ -192,4 +192,11 @@ class MembersController extends BaseController
 	{
 	 return parent::GetList("members/waivers");
 	}
+
+	public function SignWaiver($data)
+	{
+		$data['dsm_action'] = 'members/waivers/'.$data['id'];
+		parent::Submit($data);
+		exit(true);
+	}
 }

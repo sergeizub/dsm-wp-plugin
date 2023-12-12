@@ -61,6 +61,15 @@
                 jQuery('.submit_<?php echo $w_data->ID; ?>').hide();
             });
 
+            jQuery(document).on('change', 'input[type=checkbox]', function() {
+                var box = jQuery("input:checkbox:checked").val();
+                if (box === '1') {
+                    jQuery('.submit_<?php echo $w_data->ID; ?>').show();
+                } else {
+                    jQuery('.submit_<?php echo $w_data->ID; ?>').hide();
+                }
+            });
+
 			jQuery( "*[type='submit']" ).click(function() {
                 var box = jQuery("input:checkbox:checked").val();
 				var file = signaturePad.toDataURL();
@@ -74,8 +83,7 @@
         }
     })
 </script>
-
-    <div class="col-sm-offset-3 col-sm-6">
+    <div class="col-sm-offset-3 col-sm-9">
         <div class="signature_<?php echo $w_data->ID; ?> signature">
             <button type="button" class="btn btn-xs btn-primary open-signature-pad_<?php echo $w_data->ID; ?>">Sign</button>
             <button type="button" class="btn btn-xs btn-warning resign_<?php echo $w_data->ID; ?>" style="display: none">Resign</button>
@@ -99,6 +107,10 @@
                     <label for="subscribe-<?php echo $w_data->ID; ?>"><input type="checkbox" id="subscribe-<?php echo $w_data->ID; ?>" name="subscribe[<?php echo $w_data->ID; ?>]" value="1"><i> By
                             checking this box, I agree to the use of my signature for the purpose of showing that I
                             agree to the terms.</i></label>
+                </div>
+                <br>
+                <div class="submit_<?php echo $w_data->ID; ?> submit-button" style="display: none">
+                    <button id="save_<?php echo $w_data->ID; ?>" type="button" class="btn btn-success">Click to Sign</button>
                 </div>
 
             </div>
