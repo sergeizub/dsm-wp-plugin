@@ -110,13 +110,13 @@ namespace DanceStudioManager;
 											<?php foreach($sales_item['PAYMENT_PLANS'] as $pp) : ?>
 											<div class="row mt-3 mb-4">
 												<div class="col-xs-3 col-sm-3 col-md-2">
-													<a class="btn <?php echo ((!$sales_item['INCART']) ? 'btn-success' : 'btn-primary' ); ?> btn-sm select-class dsm_ajax_tab"
+													<a class="btn <?php echo ((!$pp['INCART']) ? 'btn-success' : 'btn-primary' ); ?> btn-sm select-class dsm_ajax_tab"
 														href = "#tab-class-registration-<?php echo $class['ID']; ?>";
 														<?php echo (($class['info']['SCHEDULE']['WAIT_LIST'] == '0' && $class['info']['SCHEDULE']['MAX_STUDENTS'] <= $class['info']['SCHEDULE']['STUDENTS_QUANTITY']) ? 'disabled="disabled"' : '' ); ?>
-														<?php if ($sales_item['INCART']) : ?>
+														<?php if ($pp['INCART']) : ?>
 															dsm_obj="checkout"
 															dsm_method="DeleteCartItem"
-															dsm_item_key = "<?php echo $sales_item['INCART']; ?>"
+															dsm_item_key = "<?php echo $pp['INCART']; ?>"
 														<?php else: ?>
 															dsm_obj="checkout"
 															dsm_method="SubmitCartItem"
@@ -129,7 +129,7 @@ namespace DanceStudioManager;
 														dsm_related_item_id="<?php echo $sales_item['RELATED_ITEM_ID']; ?>"
 														dsm_sales_item_id="<?php echo $sales_item['ID']; ?>"
 													>
-														<span><?php echo ((!$sales_item['INCART']) ? '<i class="fa fa-plus-circle"></i> Select' : '<i class="fa fa-minus-circle"></i> Remove'); ?></span>
+														<span><?php echo ((!$pp['INCART']) ? '<i class="fa fa-plus-circle"></i> Select' : '<i class="fa fa-minus-circle"></i> Remove'); ?></span>
 													</a>										
 									</div>
 									<div class="col-xs-9 col-sm-9 col-md-10 ctitle">
