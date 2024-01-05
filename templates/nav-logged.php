@@ -14,7 +14,9 @@ jQuery(function() {
 </script>
 <div>
 <ul class="nav nav-pills">
-		<?php if (DSM_OC_USE_CLASSES_LIST_VIEW == "1" || $_SESSION['dsm_client_attrs']['view'] == "List") : ?>
+		<?php if ($_SESSION['dsm_client_attrs']['view'] == "Calendar"): ?>
+			<li><a href="#tab-classes-calendar" data-toggle="tab" class="dsm_ajax_tab default_tab"><i class="fa fa-users"></i> Classes</a></li>
+		<?php elseif (DSM_OC_USE_CLASSES_LIST_VIEW == "1" || $_SESSION['dsm_client_attrs']['view'] == "List") : ?>
 			<?php if (DSM_OC_CLASS_LIST_TYPE == 'list_by_program' || DSM_OC_CLASS_LIST_TYPE == 'list_by_program_table' || $_SESSION['dsm_client_attrs']['view'] == "List" ) : ?>
 				<li><a href="#tab-classes-list" data-toggle="tab" class="dsm_ajax_tab <?php if (($_SESSION['dsm_client_attrs']['default_tab']) == 'classes' || empty($_SESSION['dsm_client_attrs']['default_tab'])) echo 'default_tab'; ?>"><i class="fa fa-users"></i> Classes</a></li>
 			<?php else : ?>
@@ -22,7 +24,7 @@ jQuery(function() {
 			<?php endif; ?>
 		<?php else : ?>
 			<li><a href="#tab-classes" data-toggle="tab" class="dsm_ajax_tab default_tab"><i class="fa fa-users"></i> Classes</a></li>
-		 <?php //echo '<li><a href="#tab-classes-calendar" data-toggle="tab" class="dsm_ajax_tab default_tab"><i class="fa fa-users"></i> Classes</a></li>'; ?>
+		
 	<?php endif; ?>
 	<?php if (DSM_OC_SHOW_SALES_ITEMS == "1" || $_SESSION['dsm_client_attrs']['default_tab'] == 'sales-items'): ?>
 		<li><a href="#tab-checkout-sales-items" class="dsm_ajax_tab <?php if (($_SESSION['dsm_client_attrs']['default_tab']) == 'sales-items') echo 'default_tab'; ?>"><i class="fa fa-cube"></i> <?php echo DSM_OC_SALES_ITEMS_SECTION_TITLE; ?></a></li>

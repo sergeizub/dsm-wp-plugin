@@ -49,7 +49,7 @@ jQuery(function() {
 		eventRender: function(event, element, calEvent) {
 			element.attr('dsm_schedule_id',event.schedule_id);
 			element.attr('dsm_class_id',event.class_id);
-			element.attr('href','#tab-classes');
+			element.attr('href','#tab-class-registration-' + event.class_id);
 			element.attr('dsm_obj','classes');
 			element.attr('dsm_method','GetInfo');
 			element.attr('dsm_classes_view','classes-calendar');

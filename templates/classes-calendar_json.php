@@ -1,14 +1,12 @@
 <?php
 namespace DanceStudioManager;
-	 
 $classes_list = App::GetClient()->GetController('classes')->GetClasses();
+
 $i = 0;
 $monthly_schedule = array();
 foreach ($classes_list->schedules as $schedules) {
     if (is_array($schedules->data)) {
         foreach ($schedules->data as $schedule) {
-            if ($schedule->STATUS != '2')
-                continue;
             $title = '';
             $title .= $schedule->CODE . ', ';
             $title .= $schedule->NAME. ', ';
@@ -39,5 +37,4 @@ foreach ($classes_list->schedules as $schedules) {
 		}
     }
 }
-
 echo json_encode($monthly_schedules);
