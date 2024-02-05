@@ -248,6 +248,7 @@ function dsm_ajax_click(link, dsm_form = false) {
     var dsm_data = { action : 'dsmclient' };
     
     if (dsm_form != false && dsm_form != undefined) {
+        dsm_form.find('[type="submit"]').attr('disabled', 'disabled');
         jQuery.each(dsm_form.serializeArray(), function() {
                 if(this.name) {
                     dsm_data[this.name] = this.value;
