@@ -128,12 +128,12 @@ else :
 					}
 					else if (parseInt(v.STUDENTS_QUANTITY) >= parseInt(v.MAX_STUDENTS)) {
 						if (OC_ALLOW_WAIT_LIST == '1' && v.WAIT_LIST == '1')
-							button = '<button class="btn btn-warning btn-lg ' + fclass + '" href="#tab-class-registration-' + v.CLASS_ID + '" dsm_schedule_id="'+v.ID+'" title="Wait List">Wait List</a>';
+							button = '<button class="btn btn-warning btn-lg ' + fclass + '" href="#tab-class-registration-' + v.CLASS_ID + '" dsm_class_id="'+v.CLASS_ID+'" dsm_schedule_id="'+v.ID+'" title="Wait List">Wait List</a>';
 						else
 							button = '<div class="alert alert-warning text-center">Full</div>';
 					}
 					else if (v.STARTED == "0") {
-						button = '<a class="btn btn-success btn-lg ' + fclass + '" href="#tab-class-registration-' + v.CLASS_ID + '"  dsm_schedule_id="'+v.ID+'" title="Book Now">Book Now</a>';
+						button = '<a class="btn btn-success btn-lg ' + fclass + '" href="#tab-class-registration-' + v.CLASS_ID + '" dsm_class_id="'+v.CLASS_ID+'" dsm_schedule_id="'+v.ID+'" title="Book Now">Book Now</a>';
 					}
 
 					s += '<div class="schedule" style="border-left: 30px solid #' + v.COLOR + ';"><h4>' + v.START_DATE + '  <small>' + v.START_TIME + ' - ' + v.END_TIME + '</small></h4>'+
