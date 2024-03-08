@@ -103,11 +103,11 @@ else :
                fclass = 'book-now btn-login-alert';
                <?php endif; ?>
 					if (OC_CLASS_LIST_CLASS_ID == '1') var listid = '<div class="label label-default">' + v.CLASS_ID + '</div>'; else var listid = '';
-					if (OC_CLASS_LIST_CLASS_CODE == '1' && v.CODE !== null) var code = v.CODE; else var code = '';
+					if (v.CODE !== null) var code = v.CODE; else var code = '';
 					if (OC_CLASS_LIST_CLASS_NAME == '1' && v.NAME !== null) var genre = v.NAME; else var genre = '';
 					if (OC_CLASS_LIST_CLASS_LEVEL == '1' && v.LEVEL !== null) var level = v.LEVEL; else var level = '';
 					if (OC_CLASS_LIST_CLASS_AGE == '1' && v.MIN_AGE !== null && v.MAX_AGE !== null ) var age = '<p>' + v.MIN_AGE + ' - ' + v.MAX_AGE + '</p>'; else var age = '';
-					if (OC_CLASS_LIST_CLASS_DESCRIPTION == '1' && v.DESCRIPTION !== null) var description = '<p>' + v.DESCRIPTION + '</p>'; else var description = '';
+					if (v.DESCRIPTION !== null) var description = '<p>' + v.DESCRIPTION + '</p>'; else var description = '';
 					var av_slots = v.MAX_STUDENTS - v.STUDENTS_QUANTITY;
 					if (av_slots < 0) av_slots = 0;
 					var slots = '<p>' + av_slots + ' out of ' + v.MAX_STUDENTS + ' slots available</p>';
