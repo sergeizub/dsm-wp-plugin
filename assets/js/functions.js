@@ -374,6 +374,10 @@ function ReadAgreement(id){
 
 function validateGatewayForm() {
     var validGatewayForm = true;
+
+    if (jQuery('#transaction_amount').val() == 0 && jQuery('#source_selector').val() == 'do_not_add_card' && !jQuery('#pay_at_studio').prop('checked')) // allow zero amount cart checkout without card adding
+        jQuery('#gateway-form-checkout').append('<input type="hidden" name="pay_at_studio" value="on">');	
+    
     jQuery( ".signed-waiver" ).each(function( index ) {
           if (jQuery(this).val() == "0" && validGatewayForm != false) {
           alert('You must agree to our terms and conditions');

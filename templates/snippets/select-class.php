@@ -171,7 +171,7 @@ namespace DanceStudioManager;
 																dsm_class_id="<?php echo $class['ID']; ?>"
 																dsm_billing_schedule="<?php echo $gcp['BILLING_SCHEDULE']; ?>"		                                	
 																dsm_student_id="<?php echo $student['STUDENT_ID']; ?>"
-																dsm_schedule_id="<?php echo $class['SCHEDULE_ID']; ?>"
+																dsm_schedule_id="<?php echo (($schedule_id) ? $schedule_id : $class['SCHEDULE_ID']);?>"
 																>
 																<span><i class="fa fa-plus-circle"></i> Register</span>
 															</a>
@@ -198,11 +198,11 @@ namespace DanceStudioManager;
 																				dsm_method="SubmitCartItem"
 																				dsm_class_id="<?php echo $class['ID']; ?>"
 																				dsm_student_id="<?php echo $student['STUDENT_ID']; ?>"
-																				dsm_schedule_id="<?php echo $class['SCHEDULE_ID']; ?>"
+																				dsm_schedule_id="<?php echo (($schedule_id) ? $schedule_id : $class['SCHEDULE_ID']);?>"
 																				<span><i class="fa fa-plus-circle"></i> Add to Wait List</span>
 																		</a>
 																	</div>
-																<?php else: ?>
+																<?php else: ?>																
 																	<a class="btn <?php echo ((!$class['INCART']) ? 'btn-success' : 'btn-primary'); ?> btn-sm select-class dsm_ajax_tab"
 																			<?php echo (($class['SCHEDULE']['MAX_STUDENTS'] <= ($class['SCHEDULE']['STUDENTS_QUANTITY'])) ? 'disabled="disabled"' : ''); ?>
 																			href = "#tab-class-registration-<?php echo $class['ID']; ?>";
@@ -217,7 +217,7 @@ namespace DanceStudioManager;
 																			dsm_class_id="<?php echo $class['ID']; ?>"
 																			dsm_student_id="<?php echo $student['STUDENT_ID']; ?>"
 																			dsm_billing_schedule="<?php echo $gcp['BILLING_SCHEDULE']; ?>"	
-																			dsm_schedule_id="<?php echo $class['SCHEDULE_ID']; ?>">
+																			dsm_schedule_id="<?php echo (($schedule_id) ? $schedule_id : $class['SCHEDULE_ID']);?>">
 																		<span><?php echo ((!$class['INCART']) ? '<i class="fa fa-plus-circle"></i> Select' : '<i class="fa fa-minus-circle"></i> Remove'); ?></span>
 																	</a>
 																<?php endif; ?>
@@ -242,7 +242,7 @@ namespace DanceStudioManager;
 																			dsm_method="SubmitCartItem"
 																			dsm_class_id="<?php echo $class['ID']; ?>"
 																			dsm_student_id="<?php echo $student['STUDENT_ID']; ?>"
-																			dsm_schedule_id="<?php echo $class['SCHEDULE_ID']; ?>">
+																			dsm_schedule_id="<?php echo (($schedule_id) ? $schedule_id : $class['SCHEDULE_ID']);?>">
 																			<span><i class="fa fa-plus-circle"></i> Add to Wait List</span>
 																		</a>
 																	</div>
@@ -256,7 +256,7 @@ namespace DanceStudioManager;
 																			dsm_class_id="<?php echo $class['ID']; ?>"
 																			dsm_billing_schedule="<?php echo $gcp['BILLING_SCHEDULE']; ?>"	
 																			dsm_student_id="<?php echo $student['STUDENT_ID']; ?>"
-																			dsm_schedule_id="<?php echo $class['SCHEDULE_ID']; ?>">
+																			dsm_schedule_id="<?php echo (($schedule_id) ? $schedule_id : $class['SCHEDULE_ID']);?>">
 																			<span><i class="fa fa-plus-circle"></i> Register</span>
 																		</a>
 																	</div>

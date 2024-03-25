@@ -10,7 +10,9 @@ class CheckoutController extends BaseController
 	
 	public function Submit($data)
 	{
-		if (empty($data['token_id']) && empty($data['use_account_credit'])) {
+		if ($data['token_id'] == 'do_not_add_card')
+			unset($data['token_id']);
+		elseif (empty($data['token_id']) && empty($data['use_account_credit'])) {
 			$result_card = App::GetClient()->GetController('gateway')->SubmitCard($data);
 			if ($result_card) {
 				if(!empty($data['selected_account']))

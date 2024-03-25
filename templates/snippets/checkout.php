@@ -17,6 +17,14 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 <script>
 	window.account_credit =  '<?php echo ($cart['balance'] * -1);?>';
 	window.cart_total = '<?php echo ($cart['total']);?>';
+	jQuery(function() {	
+		if (jQuery('#transaction_amount').val() == 0) {
+				jQuery('#card_info').hide();
+				jQuery('#card_extra_info').hide();
+				jQuery('#card_cvv_info').hide();
+				jQuery('#source_selector').prepend('<option value="do_not_add_card">Don\'t add card</option>').val('do_not_add_card');
+		}
+	});	
 </script>
 <?php if (DSM_OC_SHOPPING_CART_PAYPAL == '1') : ?>
 	<div class="row">
