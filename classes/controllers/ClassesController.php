@@ -57,16 +57,11 @@ class ClassesController extends BaseController
 		$data['dsm_action'] = 'classes/data';
 		$dsm_classes = parent::GetList($data);
         $all_filters = json_decode(json_encode($dsm_classes->filters),true);
-        $name_filters = $level_filters = $location_filters = array();
-  
-        foreach($all_filters["name"] as $v)
-            $name_filters[$v["value"]] = $v['label'];
-        
-        foreach($all_filters["level"] as $v)
-            $level_filters[$v["value"]] = $v['label'];
-            
-        foreach($all_filters["location"] as $v)
-            $location_filters[$v["value"]] = $v['label'];
+        $check_filters = array();
+
+		foreach($all_filters as $filter_name  => $filter_array)
+			foreach($filter_array as $item)
+				$check_filters[$filter_name][$item["value"]] =  $item["label"];
             
         if (!empty($filter['start_date']))
             $start_date = strtotime($filter['start_date']);
@@ -81,15 +76,15 @@ class ClassesController extends BaseController
 		if(!empty($filter)) {
 			$filter = dsm_array_map('html_entity_decode', $filter);
 			foreach ($dsm_classes->groupclasses as $k_groupclass => $groupclass) {
-               
+				
 				if ((!empty($filter['class_code']) && is_array($filter['class_code']) && !in_array($groupclass->CODE, $filter['class_code']))
                     || (!empty($filter['class_code']) && !is_array($filter['class_code']) && $filter['class_code'] != $groupclass->CODE)
 					|| (!empty($filter['class_name']) && is_array($filter['class_name']) && !in_array($groupclass->NAME, $filter['class_name']))
-                    || (!empty($filter['class_name']) && !is_array($filter['class_name']) && $filter['class_name'] != $groupclass->NAME && $name_filters[$filter['class_name']] != $groupclass->NAME)	
+                    || (!empty($filter['class_name']) && !is_array($filter['class_name']) && $filter['class_name'] != $groupclass->NAME && $check_filters['name'][$filter['class_name']] != $groupclass->NAME)	
 					|| (!empty($filter['class_level']) && is_array($filter['class_level']) && !in_array($groupclass->LEVEL, $filter['class_level']))
-                    || (!empty($filter['class_level']) && !is_array($filter['class_level']) && $filter['class_level'] != $groupclass->LEVEL && $level_filters[$filter['class_level']] != $groupclass->LEVEL)
+                    || (!empty($filter['class_level']) && !is_array($filter['class_level']) && $filter['class_level'] != $groupclass->LEVEL && $check_filters['level'][$filter['class_level']] != $groupclass->LEVEL)
 					|| (!empty($filter['class_location']) && is_array($filter['class_location']) && !in_array($groupclass->LOCATION, $filter['class_location']))
-                    || (!empty($filter['class_location']) && !is_array($filter['class_location']) && $filter['class_location'] != $groupclass->LOCATION && $location_filters[$filter['class_location']] != $groupclass->LOCATION)
+                    || (!empty($filter['class_location']) && !is_array($filter['class_location']) && $filter['class_location'] != $groupclass->LOCATION && $check_filters['location'][$filter['class_location']] != $groupclass->LOCATION)
 					|| (!empty($filter['class_program']) && is_array($filter['class_program']) && !in_array($groupclass->PROGRAM, $filter['class_program']))
                     || (!empty($filter['class_program']) && !is_array($filter['class_program']) && $filter['class_program'] != $groupclass->PROGRAM)
 					)
