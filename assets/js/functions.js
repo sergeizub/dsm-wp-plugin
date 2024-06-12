@@ -250,13 +250,13 @@ function dsm_ajax_click(link, dsm_form = false) {
     if (dsm_form != false && dsm_form != undefined) {
         dsm_form.find('[type="submit"]').attr('disabled', 'disabled');
         jQuery.each(dsm_form.serializeArray(), function() {
-            if(this.name && this.name.indexOf("[]") > 0) {
-                if (Array.isArray(tsp_data[this.name]))
-                    tsp_data[this.name].push(this.value);
+            if (this.name && this.name.indexOf("[]") > 0) {
+                if (Array.isArray(dsm_data[this.name]))
+                    dsm_data[this.name].push(this.value);
                else
-                    tsp_data[this.name] = [this.value];
+                    dsm_data[this.name] = [this.value];
             } else if (this.name)
-                tsp_data[this.name] = this.value;
+                dsm_data[this.name] = this.value;
         });
     }
     else {

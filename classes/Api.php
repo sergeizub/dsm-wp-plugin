@@ -248,9 +248,10 @@ class Api
 			$action = $get['dsm_action'];
 			$params = "?".http_build_query($get);
 		}
-		else
+		else {
 			$action = $get;
-
+			$params = '';
+		}
 		//$action = str_replace('_','/',$action);
 		$action = str_replace('schedule/id','schedule_id',$action);
 

@@ -162,8 +162,7 @@ class App
             wp_enqueue_script('dsm_datetimepicker');
             wp_enqueue_script('dsm_fullcalendar');
            
-
-            unset($_SESSION['dsm_client_attrs']);
+            $_SESSION['dsm_client_attrs'] = array('view' => '', 'default_tab' => '');
             if (!empty($atts))
                 foreach ($atts as $k_att => $att) {
                     if ($k_att == 'class_genre')

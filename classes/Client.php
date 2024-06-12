@@ -101,7 +101,8 @@ class Client
 	}
 	
 	public function NavRedirect() {
-		if ($_SESSION['dsm_redirect'] && !empty($_SESSION['dsm_redirect']['boot_tab'])) {
+		$params = "";
+		if (isset($_SESSION['dsm_redirect']) && !empty($_SESSION['dsm_redirect']['boot_tab'])) {
 			foreach ($_SESSION['dsm_redirect'] as $k=>$v) {
 				if ($k == 'boot_tab') continue;
 				$params .= " jQuery(redir_form).append( \"<input type='hidden' name='".$k."' value='".$v."' /> \");";
