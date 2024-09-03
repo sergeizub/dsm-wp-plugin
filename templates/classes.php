@@ -132,10 +132,10 @@ else :
 						else
 							button = '<div class="alert alert-warning text-center">Full</div>';
 					}
-					else if (v.STARTED == "0") {
+					else if (v.STARTED == "0" && v.BOOK_IN_ADVANCE_ALLOWED == '1') {
 						button = '<a class="btn btn-success btn-lg ' + fclass + '" href="#tab-class-registration-' + v.CLASS_ID + '" dsm_class_id="'+v.CLASS_ID+'" dsm_schedule_id="'+v.ID+'" title="Book Now">Book Now</a>';
 					}
-
+					
 					s += '<div class="schedule" style="border-left: 30px solid #' + v.COLOR + ';"><h4>' + v.START_DATE + '  <small>' + v.START_TIME + ' - ' + v.END_TIME + '</small></h4>'+
 					'<div class="row"><div class="col-md-9"><a href="#tab-classes" class="dsm_ajax_tab" dsm_obj="classes" dsm_method="GetInfo" dsm_class_id="' + v.CLASS_ID + '" ><h3>'+ listid + ' ' + code + ' ' + genre + ' ' + level + 
 					'</h3></a></div><div class="col-md-3 text-right">' + button +
