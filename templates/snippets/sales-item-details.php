@@ -16,7 +16,19 @@ else
 <div>
 		<h5><?php echo $sales_item['NAME']; ?></h5>
 		<p><?php echo $sales_item['DESCRIPTION']; ?></p>
+		<?php if (empty($sales_item['PRICE']) && $sales_item['TYPE'] == "gift_card"): ?>
+			<div class="row">
+				<div class="col-sm-3 text-right">
+					Gift Card Amount, <?php echo DSM_CURRENCY_SIGN; ?>
+				</div>
+				<div class="col-sm-3">
+					<input type="text" id="gift_card_amount" name="gift_card_amount" class="form-control" 
+						onchange="jQuery('.select-product').attr('dsm_gift_card_amount', parseFloat(jQuery(this).val()).toFixed(2));" />
+				</div>
+			</div>
+		<?php else: ?>
 		<p>Price: <b><?php echo DSM_CURRENCY_SIGN; ?><?php echo $sales_item['PRICE']; ?></b></p>
+		<?php endif; ?>
 		<br>
 		<?php if ($sales_item['TYPE'] != 'gift_card'): ?>
 		<?php foreach ($sales_item_full_info['students'] as $student): ?>
