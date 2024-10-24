@@ -26,6 +26,14 @@ jQuery(function() {
 			<li><a href="#tab-classes" data-toggle="tab" class="dsm_ajax_tab default_tab"><i class="fa fa-users"></i> Classes</a></li>
 		
 	<?php endif; ?>
+	<?php if (DSM_OC_ANNOUNCEMENTS_SECTION == '1'): ?>
+		<li>
+			<a href="#tab-news" data-toggle="tab" class="dsm_ajax_tab" >
+				<i class="fa fa-newspaper"></i> <?php echo DSM_OC_ANNOUNCEMENTS_SECTION_TITLE; ?>
+				<sup><span class="badge badge-pill badge-danger js_news_count" style="display: none;">0</span></sup>
+			</a>
+	    </li>
+	<?php endif; ?>
 	<?php if (DSM_OC_SHOW_SALES_ITEMS == "1" || $_SESSION['dsm_client_attrs']['default_tab'] == 'sales-items'): ?>
 		<li><a href="#tab-checkout-sales-items" class="dsm_ajax_tab <?php if (($_SESSION['dsm_client_attrs']['default_tab']) == 'sales-items') echo 'default_tab'; ?>"><i class="fa fa-cube"></i> <?php echo DSM_OC_SALES_ITEMS_SECTION_TITLE; ?></a></li>
 	<?php endif; ?>
