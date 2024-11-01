@@ -29,8 +29,14 @@ jQuery(function() {
 	<?php if (DSM_OC_ANNOUNCEMENTS_SECTION == '1'): ?>
 		<li>
 			<a href="#tab-news" data-toggle="tab" class="dsm_ajax_tab" >
-				<i class="fa fa-newspaper"></i> <?php echo DSM_OC_ANNOUNCEMENTS_SECTION_TITLE; ?>
-				<sup><span class="badge badge-pill badge-danger js_news_count" style="display: none;">0</span></sup>
+				<i class="fa fa-newspaper-o"></i> <?php echo DSM_OC_ANNOUNCEMENTS_SECTION_TITLE; ?>
+			</a>
+	    </li>
+	<?php endif; ?>
+	<?php if (DSM_OC_VIDEOS_SECTION == '1'): ?>
+		<li>
+			<a href="#tab-videos" data-toggle="tab" class="dsm_ajax_tab" >
+				<i class="fa fa-video-camera"></i> <?php echo DSM_OC_VIDEOS_SECTION_TITLE; ?>
 			</a>
 	    </li>
 	<?php endif; ?>

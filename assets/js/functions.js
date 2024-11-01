@@ -24,6 +24,11 @@ jQuery(function () {
 	jQuery(document).on('change', '#schedule-filter select', function() {
 		dsm_ajax_click(jQuery(this),  jQuery('#schedule-filter'));
 	});
+
+    // Videos Filter
+    jQuery(document).on('change', '#videos-filter select', function() {
+        dsm_ajax_click(jQuery(this),  jQuery('#videos-filter'));
+    });
     
     jQuery(document).on('change', "#source_selector", function() {
 		var option = jQuery('#source_selector option:selected');
