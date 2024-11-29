@@ -12,4 +12,9 @@ class NewsController extends BaseController
     {
         return  json_decode(json_encode(parent::GetList("news")),true);
     } 
+
+    public function GetCountNewAnnouncements($params = "") 
+    {
+        return  json_decode(json_encode(parent::GetList("news/count_new".$params)),true);
+    } 
 }

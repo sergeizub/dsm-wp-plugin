@@ -2,6 +2,13 @@
 namespace DanceStudioManager;
 
 $news = App::GetClient()->GetController('news')->GetNews();
+
+$last_check_announcements = "";
+foreach($news['data'] as $new) {
+    $last_check_announcements .= (!empty($last_check_announcements) ? "," : "").$new['ID'];
+}
+if (!empty($last_check_announcements))
+    setcookie("last_check_announcements", $last_check_announcements, strtotime(" +1 year"), "/"); 
 ?>
 <style>
     .description-wrapper {
@@ -21,6 +28,11 @@ $news = App::GetClient()->GetController('news')->GetNews();
         top: 100px;
     }
 </style>
+<script>
+    jQuery(function(){
+        jQuery('.js_news_count').hide();
+    });
+</script>
 <div id="tab-news" class="tab-pane">
     <h2 class="page-header"><?php echo DSM_OC_ANNOUNCEMENTS_SECTION_TITLE; ?></h2>
 <?php if (!is_array($news) || empty($news['data'])): ?>

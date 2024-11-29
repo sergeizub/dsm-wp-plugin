@@ -2,7 +2,19 @@
 namespace DanceStudioManager;
 
 $videos = App::GetClient()->GetController('videos')->GetVideos($_REQUEST['filter']);
+
+$last_check_videos = "";
+foreach($videos['data'] as $video) {
+    $last_check_videos .= (!empty($last_check_videos) ? "," : "").$video['ID'];
+}
+if (!empty($last_check_videos))
+    setcookie("last_check_videos", $last_check_videos, strtotime(" +1 year"), "/");
 ?>
+<script>
+    jQuery(function(){
+        jQuery('.js_videos_count').hide();
+    });
+</script>
 <div class="page-header">
 	<h2><?php echo DSM_OC_VIDEOS_SECTION_TITLE; ?></h2>
 </div>

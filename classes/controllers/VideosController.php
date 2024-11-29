@@ -16,5 +16,10 @@ class VideosController extends BaseController
 				  $data[$k_filter] = $v_filter;
 		  }
       return  json_decode(json_encode(parent::GetList('videos/?'.http_build_query($data))),true);
+    }
+
+    public function GetCountNewVideos($params = "") 
+    {
+        return  json_decode(json_encode(parent::GetList("videos/count_new".$params)),true);
     } 
 }

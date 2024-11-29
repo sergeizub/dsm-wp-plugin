@@ -27,16 +27,30 @@ jQuery(function() {
 		
 	<?php endif; ?>
 	<?php if (DSM_OC_ANNOUNCEMENTS_SECTION == '1'): ?>
+		<?php 
+			$param = (!empty($_COOKIE['last_check_announcements'])) ? "?last_check_announcements=".$_COOKIE['last_check_announcements'] : "";
+			$count_new_announcements = App::GetClient()->GetController('news')->GetCountNewAnnouncements($param); 
+		?>
 		<li>
 			<a href="#tab-news" data-toggle="tab" class="dsm_ajax_tab" >
 				<i class="fa fa-newspaper-o"></i> <?php echo DSM_OC_ANNOUNCEMENTS_SECTION_TITLE; ?>
+				<?php if (!empty($count_new_announcements["data"]) && $count_new_announcements["data"] > 0): ?>
+				<sup><span class="badge badge-pill badge-danger js_news_count"><?php echo $count_new_announcements["data"]; ?></span></sup>
+				<?php endif; ?>
 			</a>
 	    </li>
 	<?php endif; ?>
 	<?php if (DSM_OC_VIDEOS_SECTION == '1'): ?>
+		<?php 
+			$param = (!empty($_COOKIE['last_check'])) ? "?last_check=".$_COOKIE['last_check'] : "";
+			$count_new_videos = App::GetClient()->GetController('videos')->GetCountNewVideos($param); 
+		?>
 		<li>
 			<a href="#tab-videos" data-toggle="tab" class="dsm_ajax_tab" >
 				<i class="fa fa-video-camera"></i> <?php echo DSM_OC_VIDEOS_SECTION_TITLE; ?>
+				<?php if (!empty($count_new_videos["data"]) && $count_new_videos["data"] > 0): ?>
+				<sup><span class="badge badge-pill badge-danger js_videos_count"><?php echo $count_new_videos["data"]; ?></span></sup>
+				<?php endif; ?>
 			</a>
 	    </li>
 	<?php endif; ?>
