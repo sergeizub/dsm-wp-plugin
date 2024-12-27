@@ -4,7 +4,7 @@ namespace DanceStudioManager;
 $videos = App::GetClient()->GetController('videos')->GetVideos($_REQUEST['filter']);
 
 $last_check_videos = "";
-foreach($videos['data'] as $video) {
+foreach($videos['videos'] as $video) {
     $last_check_videos .= (!empty($last_check_videos) ? "," : "").$video['ID'];
 }
 if (!empty($last_check_videos))

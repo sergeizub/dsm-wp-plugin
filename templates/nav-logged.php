@@ -42,7 +42,7 @@ jQuery(function() {
 	<?php endif; ?>
 	<?php if (DSM_OC_VIDEOS_SECTION == '1'): ?>
 		<?php 
-			$param = (!empty($_COOKIE['last_check'])) ? "?last_check=".$_COOKIE['last_check'] : "";
+			$param = (!empty($_COOKIE['last_check_videos'])) ? "?last_check=".$_COOKIE['last_check_videos'] : "";
 			$count_new_videos = App::GetClient()->GetController('videos')->GetCountNewVideos($param); 
 		?>
 		<li>
@@ -65,23 +65,30 @@ jQuery(function() {
 	<li class="dropdown" id="m-dd">
 		<a href="#" data-toggle="dropdown"><i class="fa fa-users"></i> <?php echo App::GetClient()->GetController('members')->GetName(); ?><span class="caret"></span></a>
 			<ul class="dropdown-menu">
-				<li><a href="#tab-members-edit" class="dsm_ajax_tab"><i class="fa fa-users"></i> Profile</a></li>
-				<li><a href="#tab-members-change-password" class="dsm_ajax_tab"><i class="fa fa-lock"></i> Change Password</a></li>
-				<li><a href="#tab-members-student" class="dsm_ajax_tab"><i class="fa fa-child"></i>  Add Related Student</a></li>
-				<li><a href="#tab-members-classes" class="dsm_ajax_tab"><i class="fa fa-list"></i> Classes</a></li>
-				<?php if (get_option('dsm_private_lesson_section') == '1'): ?>
-				<li><a href="#tab-members-private-lessons" class="dsm_ajax_tab"><i class="fa fa-user-circle"></i>  Private Lessons</a></li>
+				<?php if (DSM_OC_MEMBERS_REGISTRATION  == '1') : ?>
+				<li><a href="#tab-members-edit" class="dsm_ajax_tab" title="Edit Main Account"><i class="fa fa-users"></i> Edit Account</a></li>
 				<?php endif; ?>
-				<li><a href="#tab-members-charges" class="dsm_ajax_tab"><i class="fa fa-dollar"></i> Charges</a></li>
-				<li><a href="#tab-members-purchases" class="dsm_ajax_tab"><i class="fa fa-shopping-cart"></i> Purchases</a></li>
-				<li><a href="#tab-members-gift-cards" class="dsm_ajax_tab"><i class="fa fa-gift"></i> Gift Cards</a></li>
+				<?php if (DSM_OC_RELATED_STUDENTS_ENABLED  == '1') : ?>
+				<li><a href="#tab-members-student" class="dsm_ajax_tab" title="Add Related Student"><i class="fa fa-child"></i>  Add Related Student</a></li>
+				<?php endif; ?>
+				<li><a href="#tab-members-cards-accounts" class="dsm_ajax_tab" title="Stored Cards"><i class="fa fa-credit-card"></i> Stored Cards</a></li>
+				<li><a href="#tab-members-charges" class="dsm_ajax_tab" title="Charges"><i class="fa fa-dollar"></i> Charges</a></li>
 				<?php if (DSM_OC_LEDGER_SHOW_PAYMENTS == "1"): ?>
-				<li><a href="#tab-members-payments" class="dsm_ajax_tab"><i class="fa fa-credit-card"></i> Payments</a></li>
+				<li><a href="#tab-members-payments" class="dsm_ajax_tab" title="Payments"><i class="fa fa-credit-card"></i> Payments</a></li>
 				<?php endif; ?>
-				<li><a href="#tab-members-cards-accounts" class="dsm_ajax_tab"><i class="fa fa-credit-card"></i> Stored Cards</a></li>
+				<li><a href="#tab-members-gift-cards" class="dsm_ajax_tab" title="Gift Cards"><i class="fa fa-gift"></i> Gift Cards</a></li>
+				<li><a href="#tab-members-classes" class="dsm_ajax_tab" title="Classes"><i class="fa fa-list"></i> Classes</a></li>
+				<?php if (get_option('dsm_private_lesson_section') == '1'): ?>
+				<li><a href="#tab-members-private-lessons" class="dsm_ajax_tab" title="Private Lessons"><i class="fa fa-user-circle"></i>  Private Lessons</a></li>
+				<?php endif; ?>
+				<li><a href="#tab-members-purchases" class="dsm_ajax_tab" title="Purchases"><i class="fa fa-shopping-cart"></i> Purchases</a></li>
+				{*<li><a href="#tab-members-waiver-files" class="dsm_ajax_tab" title="Waivers"><i class="fa fa-file-pdf-o"></i> Waivers</a></li>*}
+				<li><hr class="dropdown-divider" style="margin:0px;"></li>
+				<li><a href="#tab-members-change-password" class="dsm_ajax_tab" title="Change Password"><i class="fa fa-lock"></i> Change Password</a></li>
+				<li><hr class="dropdown-divider" style="margin:0px;"></li>
+				<li><a href="#" data-toggle="tab"  dsm_obj="auth" dsm_method="Logout"  dsm_reload="true" class="dsm_ajax_tab" title="Logout"><i class="fa fa-sign-out"></i> Logout</a></li>
 			</ul>
 	</li>
-	<li><a href="#" data-toggle="tab"  dsm_obj="auth" dsm_method="Logout"  dsm_reload="true" class="dsm_ajax_tab"><i class="fa fa-sign-out"></i> Logout</a></li>
 </ul>
 </div>
 <div id="dsm-tab-content" class="tab-content">

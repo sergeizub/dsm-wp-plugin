@@ -3,7 +3,7 @@ namespace DanceStudioManager;
 $result = App::GetClient()->GetController('members')->GetGiftCards();
 $gift_card_data = $result->data;
 ?>
-<div id="tab-members-purchases" class="tab-pane">
+<div id="tab-members-gift-cards" class="tab-pane">
 	<h2 class="page-header">Gift Cards</h2>
 	<div class="col-12 row">
 		<form method="post"  action="index.php" class="form-horizontal" role="form" id="redeem-gift-card-form">
