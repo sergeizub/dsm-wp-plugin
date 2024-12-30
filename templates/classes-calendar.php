@@ -7,20 +7,38 @@
 if (!empty($class_id)) :
 	App::GetTemplate()->Load('class-registration.php');
 else :
+	include plugin_dir_path( __FILE__ ) . 'snippets/class-filters.php'; 
 ?>
 <script>
 jQuery(function() {
+
+	var class_filter = new Object();
+	
+	if (jQuery("#filter_class_code").length && jQuery("#filter_class_code").val() != "0" && jQuery("#filter_class_code").val() != "") {
+       class_filter.class_code = jQuery("#filter_class_code").val();
+    }
+	if (jQuery("#filter_class_name").length && jQuery("#filter_class_name").val() != "0" && jQuery("#filter_class_name").val() != "") {
+       class_filter.class_name = jQuery("#filter_class_name").val();
+    }
+	if (jQuery("#filter_class_level").length && jQuery("#filter_class_level").val() != "0" && jQuery("#filter_class_level").val() != "") {
+       class_filter.class_level = jQuery("#filter_class_level").val();
+    }
+	if (jQuery("#filter_class_location").length && jQuery("#filter_class_location").val() != "0" && jQuery("#filter_class_location").val() != "") {
+       class_filter.class_location = jQuery("#filter_class_location").val();
+    }
+	if (jQuery("#filter_class_program").length  && jQuery("#filter_class_program").val() != "0" && jQuery("#filter_class_program").val() != "") {
+       class_filter.class_program = jQuery("#filter_class_program").val();
+    }
+
 	if (!localStorage.getItem('cal_offset'))
 		localStorage.setItem('cal_offset', moment().format('YYYY-MM-DD'));
 		
 	jQuery('#dsm_calendar').fullCalendar({
 		header: {
 			left: 'prev next', 
-			center: 'title',
-			right: 'month,agendaWeek'
+			center: 'title'
 		},
-		defaultView: '<?php echo ((defined('DSM_OC_DEFAULT_CALENDAR_VIEW')) ? DSM_OC_DEFAULT_CALENDAR_VIEW : 'agendaDay' ); ?>',
-        height: 'auto',
+		height: 'auto',
 		allDaySlot: false,
 		slotMinutes: 15,
 		timeFormat: '<?php echo DSM_CALENDARTIME; ?>',
@@ -40,6 +58,7 @@ jQuery(function() {
                     action : 'dsmclient',
                     boot_tab: 'classes-calendar',
 					type: 'json',
+					filter: JSON.stringify(class_filter),
                 },
                 error: function() {
                     alert('There was an error while fetching schedules!');

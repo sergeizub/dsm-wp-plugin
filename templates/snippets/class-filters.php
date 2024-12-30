@@ -39,7 +39,7 @@ if (is_array($_SESSION['dsm_client_attrs']))
 	});
 </script>
 <form method="post"  action="index.php" id="schedule-filter" class="form-inline">
-<?php if (DSM_OC_USE_CLASSES_LIST_VIEW == "1" ) : ?>
+<?php if (DSM_OC_USE_CLASSES_LIST_VIEW == "1" && $_SESSION['dsm_client_attrs']['view'] != "Calendar") : ?>
 		<?php if (DSM_OC_CLASS_LIST_TYPE == 'list_by_program' || DSM_OC_CLASS_LIST_TYPE == 'list_by_program_table' || $_SESSION['dsm_client_attrs']['view'] == "List" ) : ?>
 			<input type="hidden" name="boot_tab" value="tab-classes-list" />
 		<?php else : ?>
@@ -47,7 +47,6 @@ if (is_array($_SESSION['dsm_client_attrs']))
 		<?php endif; ?>
 <?php else : ?>
 	<?php echo '<input type="hidden" name="boot_tab" value="tab-classes-calendar" />';?>
-	<input type="hidden" name="boot_tab" value="tab-classes" />
 <?php endif; ?>
 	<input type="hidden" name="action" value="dsmclient"/>
 <?php if ($_SESSION['dsm_client_attrs'] && $_SESSION['dsm_client_attrs']['class_code']) : ?>
@@ -70,7 +69,7 @@ if (is_array($_SESSION['dsm_client_attrs']))
 	<?php foreach ($filters->level as $level) : ?>
 		 <?php echo (($level->label == $_SESSION['dsm_client_attrs']['class_level']) ? '<input type="hidden" id="filter_class_level" name="filter[class_level]" value="'.$level->value.'"/>' : ''); ?>
 	<?php endforeach; ?>
-<?php elseif (DSM_OC_CLASS_FILTER_LEVEL == '1' &&  !$_SESSION['dsm_client_attrs']['class_code']) : ?>
+<?php elseif ((DSM_OC_CLASS_FILTER_LOCATION == '1' || $_SESSION['dsm_client_attrs']['show_location_filter']) &&  !$_SESSION['dsm_client_attrs']['class_code']) : ?>
 <div class="form-group">
 	<select name="filter[class_level]" id="filter_class_level" class="form-control">
 		<?php foreach ($filters->level as $level) : ?>

@@ -1,6 +1,17 @@
 <?php
 namespace DanceStudioManager;
-$classes_list = App::GetClient()->GetController('classes')->GetClasses();
+
+use \DateTime;
+$classes_list = array();
+$add_data = $filter = array();
+$add_data_start = sanitize_text_field($_REQUEST['start']);
+
+if(!empty($_REQUEST['start']))
+	$add_data['from_date'] = $add_data_start;
+
+$filter = json_decode(str_replace('\"','"',$_REQUEST['filter']),true);
+
+$classes_list = App::GetClient()->GetController('classes')->GetClasses($filter + $add_data);
 
 $i = 0;
 $monthly_schedule = array();
