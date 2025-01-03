@@ -39,7 +39,7 @@ if (is_array($_SESSION['dsm_client_attrs']))
 	});
 </script>
 <form method="post"  action="index.php" id="schedule-filter" class="form-inline">
-<?php if (DSM_OC_USE_CLASSES_LIST_VIEW == "1" && $_SESSION['dsm_client_attrs']['view'] != "Calendar") : ?>
+<?php if ((DSM_OC_USE_CLASSES_LIST_VIEW == "1" || $_SESSION['dsm_client_attrs']['view'] == "List") && $_SESSION['dsm_client_attrs']['view'] != "Calendar") : ?>
 		<?php if (DSM_OC_CLASS_LIST_TYPE == 'list_by_program' || DSM_OC_CLASS_LIST_TYPE == 'list_by_program_table' || $_SESSION['dsm_client_attrs']['view'] == "List" ) : ?>
 			<input type="hidden" name="boot_tab" value="tab-classes-list" />
 		<?php else : ?>
