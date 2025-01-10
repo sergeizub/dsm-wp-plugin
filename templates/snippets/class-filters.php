@@ -88,7 +88,7 @@ if (is_array($_SESSION['dsm_client_attrs']))
 		<?php foreach ($filters->location as $location) : ?>
 			<option value="<?php echo $location->value; ?>" 
 			<?php 
-				if ($location->value === $_POST['filter']['class_location'] || (!isset($_POST['filter']['class_location']) && isset($_SESSION['dsm_client_attrs']['default_class_location']) && $location->label == $_SESSION['dsm_client_attrs']['default_class_location'])) {
+				if ((isset($_POST['filter']['class_location']) && $location->value == $_POST['filter']['class_location']) || (!isset($_POST['filter']['class_location']) && isset($_SESSION['dsm_client_attrs']['default_class_location']) && $location->label == $_SESSION['dsm_client_attrs']['default_class_location'])) {
 					echo 'selected="selected"'; 
 					$_REQUEST['filter']['class_location'] = $_POST['filter']['class_location'] = $location->value;
 				}
