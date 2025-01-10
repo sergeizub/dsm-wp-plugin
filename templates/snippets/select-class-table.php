@@ -8,12 +8,11 @@ namespace DanceStudioManager;
                         <?php if (DSM_OC_CLASS_LIST_CLASS_AGE == '1') { ?><th class="text-center">Age</th><?php } ?>
                         <?php if (DSM_OC_CLASS_LIST_CLASS_LEVEL == '1') { ?><th class="text-center">Level</th><?php } ?>
                         <?php if (DSM_OC_CLASS_LIST_CLASS_LOCATION == '1') { ?><th class="text-center">Location</th><?php } ?>
-		<?php if (DSM_OC_CLASS_LIST_CLASS_INSTRUCTOR == '1') { ?><th class="text-center">Instructor</th><?php } ?>                    
+						<?php if (DSM_OC_CLASS_LIST_CLASS_DAY_TIME == '1') { ?><th class="text-center">Day</th><?php } ?>
+						<?php if (DSM_OC_CLASS_LIST_CLASS_INSTRUCTOR == '1') { ?><th class="text-center">Instructor</th><?php } ?>                    
                         <?php if (DSM_OC_CLASS_LIST_CLASS_DATES == '1') { ?><th>Dates</th><?php } ?>
-                        <?php if (DSM_SHOW_CLASS_LIST_DAY_OF_WEEK == '1') { ?><th>Day Of Week</th><?php } ?>
-		<?php if (DSM_OC_CLASS_LIST_CLASS_PRICE == '1') { ?><th style="min-width:90px;" class="text-left">Pricing</th><?php } ?>
-		<?php if (DSM_OC_CLASS_LIST_TYPE != 'list_by_program' && DSM_OC_CLASS_LIST_TYPE != 'list_by_program_table') { ?><th>Schedules</th><?php } else { ?><th></th><?php } ?>
-                       
+                        <?php if (DSM_OC_CLASS_LIST_CLASS_PRICE == '1') { ?><th style="min-width:90px;" class="text-left">Pricing</th><?php } ?>
+						<?php if (DSM_OC_CLASS_LIST_TYPE != 'list_by_program' && DSM_OC_CLASS_LIST_TYPE != 'list_by_program_table') { ?><th>Schedules</th><?php } else { ?><th></th><?php } ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,7 +31,16 @@ namespace DanceStudioManager;
                         <?php if (DSM_OC_CLASS_LIST_CLASS_AGE == '1') { ?><td class="text-center"><?php echo $class->MIN_AGE; ?> - <?php echo $class->MAX_AGE; ?></td><?php } ?>
                         <?php if (DSM_OC_CLASS_LIST_CLASS_LEVEL == '1') { ?><td class="text-center"><?php echo $class->LEVEL; ?></td><?php } ?>
                         <?php if (DSM_OC_CLASS_LIST_CLASS_LOCATION == '1') { ?><td class="text-center"><h4><?php echo $class->LOCATION; ?></td><?php } ?></h4>  
-                        <?php if (DSM_OC_CLASS_LIST_CLASS_INSTRUCTOR == '1') { ?>
+						<?php if (DSM_OC_CLASS_LIST_CLASS_DAY_TIME == '1') { ?>
+						<td class="text-right">
+							<?php echo $class->DAY_OF_WEEK;
+							if (isset($class->SCHEDULES) && is_array($class->SCHEDULES))
+								echo ", ".$class->SCHEDULES[0]->START_TIME.' - '.$class->SCHEDULES[0]->END_TIME; 
+							?>
+                        </td>
+                        <?php } ?>
+						
+						<?php if (DSM_OC_CLASS_LIST_CLASS_INSTRUCTOR == '1') { ?>
                         <td class="text-center">
                             <?php echo $class->INSTRUCTOR; ?>
                         </td>
@@ -40,17 +48,6 @@ namespace DanceStudioManager;
                         <?php if (DSM_OC_CLASS_LIST_CLASS_DATES == '1') { ?>
                         <td>
                                     <span style="white-space: nowrap;"><?php echo $class->CLASS_START; ?></span> - <span style="white-space: nowrap;"><?php echo $class->CLASS_END; ?></span>
-                        </td>
-                        <?php } ?>
-                        <?php if (DSM_SHOW_CLASS_LIST_DAY_OF_WEEK == '1') { ?>
-                        <td>
-                                  <?php
-                                  $weekday_arr = explode(" - ", $class->DAY_OF_WEEK);
-                                  if (!empty($weekday_arr))
-                                    echo $weekday_arr[0];
-                                  else
-                                    echo $class->DAY_OF_WEEK;
-                                  ?>  
                         </td>
                         <?php } ?>
                         <?php if (DSM_OC_CLASS_LIST_CLASS_PRICE == '1') { ?>

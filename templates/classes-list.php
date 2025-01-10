@@ -2,6 +2,13 @@
 namespace DanceStudioManager;
 
 $filter = array();
+?>
+
+<div id="tab-classes-list" class="tab-pane">
+	<?php $filters = (!empty($classes_list->filters) ? $classes_list->filters : false); ?>
+	<?php include plugin_dir_path( __FILE__ ) . 'snippets/class-filters.php'; ?>
+<?php
+
 foreach($_REQUEST['filter'] as $k => $v)
 	$filter[$k] = sanitize_text_field($v);
 	
@@ -35,9 +42,6 @@ foreach ($classes_tabs as $k => $v_array) {
 	usort($classes_tabs[$k], 'dsm_location_sort');
 }
 ?>
-<div id="tab-classes-list" class="tab-pane">
-	<?php $filters = (!empty($classes_list->filters) ? $classes_list->filters : false); ?>
-	<?php include plugin_dir_path( __FILE__ ) . 'snippets/class-filters.php'; ?>
 <?php if (!empty($classes_tabs)): ?>
 <div id="tabs">
 	<ul class="nav nav-tabs" role="tablist">

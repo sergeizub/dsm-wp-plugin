@@ -69,7 +69,7 @@ if (is_array($_SESSION['dsm_client_attrs']))
 	<?php foreach ($filters->level as $level) : ?>
 		 <?php echo (($level->label == $_SESSION['dsm_client_attrs']['class_level']) ? '<input type="hidden" id="filter_class_level" name="filter[class_level]" value="'.$level->value.'"/>' : ''); ?>
 	<?php endforeach; ?>
-<?php elseif ((DSM_OC_CLASS_FILTER_LOCATION == '1' || $_SESSION['dsm_client_attrs']['show_location_filter']) &&  !$_SESSION['dsm_client_attrs']['class_code']) : ?>
+<?php elseif ((DSM_OC_CLASS_FILTER_LEVEL == '1') &&  !$_SESSION['dsm_client_attrs']['class_code']) : ?>
 <div class="form-group">
 	<select name="filter[class_level]" id="filter_class_level" class="form-control">
 		<?php foreach ($filters->level as $level) : ?>
@@ -82,11 +82,17 @@ if (is_array($_SESSION['dsm_client_attrs']))
 	<?php foreach ($filters->location as $location) : ?>
 		 <?php echo (($location->label == $_SESSION['dsm_client_attrs']['class_location']) ? '<input type="hidden" id="filter_class_location" name="filter[class_location]" value="'.$location->value.'"/>' : ''); ?>
 	<?php endforeach; ?>
-<?php elseif (DSM_OC_CLASS_FILTER_LOCATION == '1' &&  !$_SESSION['dsm_client_attrs']['class_code']) : ?>
+<?php elseif ((DSM_OC_CLASS_FILTER_LOCATION == '1' || $_SESSION['dsm_client_attrs']['show_location_filter']) &&  !$_SESSION['dsm_client_attrs']['class_code']) : ?>
 <div class="form-group">
 	<select name="filter[class_location]" class="form-control" id="filter_class_location">
 		<?php foreach ($filters->location as $location) : ?>
-			<option value="<?php echo $location->value; ?>" <?php echo (($location->value == $_POST['filter']['class_location']) ? 'selected="selected"' : ''); ?>><?php echo $location->label; ?></option>
+			<option value="<?php echo $location->value; ?>" 
+			<?php 
+			 if ($location->value == $_POST['filter']['class_location'] || (empty($_POST['filter']['class_location']) && isset($_SESSION['dsm_client_attrs']['default_class_location']) && $location->label == $_SESSION['dsm_client_attrs']['default_class_location'])) {
+					echo 'selected="selected"'; 
+					$_REQUEST['filter']['class_location'] = $_POST['filter']['class_location'] = $location->value;
+				}
+			?>><?php echo $location->label; ?></option>
 		<?php endforeach; ?>	
 	</select>
 </div>
