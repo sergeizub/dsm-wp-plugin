@@ -278,7 +278,7 @@ namespace DanceStudioManager;
 									<?php echo $class['PRICING']; ?>
 									<?php endif; ?>
 									<?php if (DSM_OC_CLASS_REG_FEE_ENABLED == '1' && $class['REG_FEE'] > 0) : ?>
-										(Registration fee <?php echo DSM_CURRENCY_SIGN; ?><?php echo $class['REG_FEE']; ?>)
+										(<?php echo DSM_OC_CLASS_REG_FEE_LABEL; ?> <?php echo DSM_CURRENCY_SIGN; ?><?php echo $class['REG_FEE']; ?>)
 									<?php endif; ?>
 									</div>
 								</div>								
