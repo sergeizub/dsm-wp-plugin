@@ -14,5 +14,5 @@ jQuery(function() {
     </div>
 <?php include plugin_dir_path( __FILE__ ) . 'snippets/class-details.php'; ?>
 <br/><br/>
-<a type="button" class="btn btn-primary geturl checkout dsm_ajax_tab" href="#tab-checkout-cart"><i class="fa fa-shopping-cart"></i> Checkout</a>
+<a type="button" class="btn btn-primary geturl checkout dsm_ajax_tab" onclick="jQuery('.cart-checkout-tab').tab('show');" href="#tab-checkout-cart"><i class="fa fa-shopping-cart"></i> Checkout</a>
 </div>

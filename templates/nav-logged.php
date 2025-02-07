@@ -59,7 +59,7 @@ jQuery(function() {
 	<?php endif; ?>
 	<?php if (DSM_OC_SHOPPING_CART_ENABLED  == '1') : ?>	
 			<li>
-				<a href="#tab-checkout-cart" data-toggle="tab" class="dsm_ajax_tab" ><i class="fa fa-shopping-cart"></i> Cart</a>
+				<a href="#tab-checkout-cart" data-toggle="tab" class="dsm_ajax_tab cart-checkout-tab" ><i class="fa fa-shopping-cart"></i> Cart</a>
 			</li>
 	<?php endif; ?>
 	<li class="dropdown" id="m-dd">

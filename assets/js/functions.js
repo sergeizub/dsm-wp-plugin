@@ -236,7 +236,7 @@ function dsm_connect_ajax(link) {
     jQuery('#dsm-tab-content form').on('submit', function(e) {
         e.preventDefault();
         if (jQuery(this).data('valid') && eval(jQuery(this).data('valid')) == false)
-                return false
+                return false;
         dsm_ajax_click(link, jQuery(this));
 	});
     
