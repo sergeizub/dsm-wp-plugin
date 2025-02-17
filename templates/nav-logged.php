@@ -82,6 +82,7 @@ jQuery(function() {
 				<li><a href="#tab-members-private-lessons" class="dsm_ajax_tab" title="Private Lessons"><i class="fa fa-user-circle"></i>  Private Lessons</a></li>
 				<?php endif; ?>
 				<li><a href="#tab-members-purchases" class="dsm_ajax_tab" title="Purchases"><i class="fa fa-shopping-cart"></i> Purchases</a></li>
+				<li><a href="#tab-waiver-files" class="dsm_ajax_tab" title="Waivers"><i class="fa fa-pencil-square-o"></i> Waivers</a></li>
 				<li><hr class="dropdown-divider" style="margin:0px;"></li>
 				<li><a href="#tab-members-change-password" class="dsm_ajax_tab" title="Change Password"><i class="fa fa-lock"></i> Change Password</a></li>
 				<li><hr class="dropdown-divider" style="margin:0px;"></li>

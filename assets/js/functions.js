@@ -320,8 +320,6 @@ function dsm_ajax_click(link, dsm_form = false) {
 }
 
 //OC Signature
-
-
 var signPads = [];
 
 function initPads() {

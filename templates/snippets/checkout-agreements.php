@@ -64,9 +64,9 @@
 							</label>
 						</div>
 							<input hidden type="checkbox" id="box_<?php echo $data['ID']; ?>" class="if-sinned-checkbox_<?php echo $data['ID']; ?>" name="signed-checkbox" value="<?php echo $data['TITLE']; ?>">
-						<br>
 						<div class="pad-submit-<?php echo $data['ID']; ?> submit-button" style="display: none">
 							<button id="pad-sign-<?php echo $data['ID']; ?>" data-id="<?php echo $data['ID']; ?>" type="button" class="btn btn-success pad-sign">Click to Sign</button>
+						<br><br><br>
 						</div>
 					</div>
 				</div>
@@ -96,5 +96,4 @@
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 <?php endforeach; ?>
-<br><br><br>
 

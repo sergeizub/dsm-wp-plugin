@@ -193,6 +193,18 @@ class MembersController extends BaseController
 	 return parent::GetList("members/waivers");
 	}
 
+	public function GetWaiver($id)
+	{
+		$waivers =  $this->GetWaivers();
+
+		if (!empty($waivers->data))
+    		foreach($waivers->data as $waiver) {
+        		if (!empty($waiver->ID) && $waiver->ID == $id)
+            		return $waiver;
+    		}
+	 	return false;
+	}
+
 	public function SignWaiver($data)
 	{
 		$data['dsm_action'] = 'members/waivers/'.$data['id'];
