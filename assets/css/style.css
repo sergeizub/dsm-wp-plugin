@@ -183,12 +183,18 @@ html {
 /* Class list */
 /* bootstrap: fix content width inside hidden tabs */
 .dsm_body .classes-list > .tab-pane:not(.active),
-.dsm_body .classes-list > .pill-pane:not(.active) {
+.dsm_body .classes-list > .pill-pane:not(.active),
+.dsm_body .finance-tabs > .tab-pane:not(.active),
+.dsm_body .finance-tabs > .pill-pane:not(.active) {
     display: none !important;
     overflow-y: hidden;
-     overflow-x: hidden;
+    overflow-x: hidden;
     padding:0px;
-} 
+}
+.finance-tabs .table {
+    margin-top: 20px;
+}
+
 /* bootstrap hack end */
 .dsm_body #current-date {
 	display: inline-block; 

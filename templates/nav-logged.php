@@ -71,11 +71,7 @@ jQuery(function() {
 				<?php if (DSM_OC_RELATED_STUDENTS_ENABLED  == '1') : ?>
 				<li><a href="#tab-members-student" class="dsm_ajax_tab" title="Add Related Student"><i class="fa fa-child"></i>  Add Related Student</a></li>
 				<?php endif; ?>
-				<li><a href="#tab-members-cards-accounts" class="dsm_ajax_tab" title="Stored Cards"><i class="fa fa-credit-card"></i> Stored Cards</a></li>
-				<li><a href="#tab-members-charges" class="dsm_ajax_tab" title="Charges"><i class="fa fa-dollar"></i> Charges</a></li>
-				<?php if (DSM_OC_LEDGER_SHOW_PAYMENTS == "1"): ?>
-				<li><a href="#tab-members-payments" class="dsm_ajax_tab" title="Payments"><i class="fa fa-credit-card"></i> Payments</a></li>
-				<?php endif; ?>
+				<li><a href="#tab-gateway-finance" class="dsm_ajax_tab"><i class="fa fa-dollar"></i> Finance</a></li>
 				<li><a href="#tab-members-gift-cards" class="dsm_ajax_tab" title="Gift Cards"><i class="fa fa-gift"></i> Gift Cards</a></li>
 				<li><a href="#tab-members-classes" class="dsm_ajax_tab" title="Classes"><i class="fa fa-list"></i> Classes</a></li>
 				<?php if (get_option('dsm_private_lesson_section') == '1'): ?>
