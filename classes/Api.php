@@ -9,6 +9,7 @@ class Api
     protected $api_version = null;
 	protected $api_version_list = array('v1' => 'v1');
 	protected $id_param = null;
+	const SOURCE_ID = "4";
 
     public function __construct()
     {
@@ -135,15 +136,15 @@ class Api
 		if($post_action == 'members/edit' && !empty($this->GetIdParam()))
 			$post_action .= '/'.$this->GetIdParam();
         
-        $httpheader = array('Content-Type' => 'application/json');
+        $httpheader = array('Content-Type' => 'application/json', 'Source-Id' => self::SOURCE_ID);
         
         if (!empty($this->api_key))
                 $httpheader += ['x-api-key' => $this->api_key];
 			
 		if (!empty($authorization_token))
                 $httpheader += ['Authorization' => $authorization_token];
-            
-        $result = wp_remote_post( $this->url."api/".$this->api_version.'/'.$post_action , array( 'body' => json_encode($post), 'headers' => $httpheader ));
+        
+		$result = wp_remote_post( $this->url."api/".$this->api_version.'/'.$post_action , array( 'body' => json_encode($post), 'headers' => $httpheader ));
         $response = json_decode(wp_remote_retrieve_body($result));
         
 		if (!empty($response->error)) {
@@ -199,7 +200,7 @@ class Api
 
 		$authorization_token = App::GetApi()->GetAuthorizationToken();
         
-        $httpheader = array('Content-Type' => 'application/json');
+        $httpheader = array('Content-Type' => 'application/json', 'Source-Id' => self::SOURCE_ID);
         
         if (!empty($this->api_key))
                 $httpheader += ['x-api-key' => $this->api_key];
@@ -263,7 +264,7 @@ class Api
 		if($action == 'members/edit' && !empty($this->GetIdParam()))
 			$action .= '/'.$this->GetIdParam();
         
-        $httpheader = array('Content-Type' => 'application/json');
+        $httpheader = array('Content-Type' => 'application/json', 'Source-Id' => self::SOURCE_ID);
         
         if (!empty($this->api_key))
                 $httpheader += ['x-api-key' => $this->api_key];
