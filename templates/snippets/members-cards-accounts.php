@@ -56,5 +56,4 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 			<a href="#tab-gateway-finance" dsm_sub_tab="#tab-gateway-account" class="dsm_ajax_tab btn btn-primary dsm_ajax_tab" onclick="return false;">Add ACH</a>
 		</div>
 	<?php endif; ?>
-	</div>
 </div>

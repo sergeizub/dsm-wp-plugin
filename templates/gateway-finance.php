@@ -36,6 +36,16 @@ namespace DanceStudioManager;
 				</a>
 			</li>
 			<?php endif; ?>
+			<?php if (defined('DSM_OC_DISPLAY_SCHEDULED_PAYMENTS') && DSM_OC_DISPLAY_SCHEDULED_PAYMENTS == "1") : ?>
+				<li role="presentation">
+					<a href="#tab-scheduled-payments" aria-controls="Scheduled Payments" role="tab" data-toggle="tab">Scheduled Payments</a>
+				</li>
+			<?php endif; ?>
+			<?php if ((defined('DSM_OC_ALLOW_ACH_PAYMENTS') && DSM_OC_ALLOW_ACH_PAYMENTS == "1") || (defined('DSM_OC_ALLOW_ACH_PAYMENTS') && DSM_OC_ALLOW_ACH_PAYMENTS == "1")) : ?>
+				<li class="nav-item" role="presentation">
+					<a href="#tab-pay" aria-controls="Make Payment" role="tab" data-toggle="tab" class="nav-link">Make Payment</a>
+				</li>
+			<?php endif; ?>
 		</ul>
 	</div>
 	<div class="tab-content finance-tabs">
@@ -59,6 +69,18 @@ namespace DanceStudioManager;
 		<div role="tabpanel" class="tab-pane" id="tab-members-cards-accounts">
 			<br/><br/>
 			<?php include plugin_dir_path( __FILE__ ) . 'snippets/members-cards-accounts.php'; ?>
+		</div>
+		<?php endif; ?>
+		<?php if (defined('DSM_OC_DISPLAY_SCHEDULED_PAYMENTS') && DSM_OC_DISPLAY_SCHEDULED_PAYMENTS == "1") : ?>
+		<div role="tabpanel" class="tab-pane" id="tab-scheduled-payments">
+			<br/><br/>
+			<?php include plugin_dir_path( __FILE__ ) . 'snippets/members-scheduled-payments.php'; ?>
+		</div>
+		<?php endif; ?>
+		<?php if ((defined('DSM_OC_ALLOW_ACH_PAYMENTS') && DSM_OC_ALLOW_ACH_PAYMENTS == "1") || (defined('DSM_OC_ALLOW_ACH_PAYMENTS') && DSM_OC_ALLOW_ACH_PAYMENTS == "1")) : ?>	
+		<div role="tabpanel" class="tab-pane" id="tab-pay">
+			<br/><br/>		
+			<?php include plugin_dir_path( __FILE__ ) . 'snippets/gateway-pay.php'; ?>
 		</div>
 		<?php endif; ?>
 	</div>

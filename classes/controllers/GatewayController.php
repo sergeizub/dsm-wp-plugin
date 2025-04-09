@@ -7,6 +7,12 @@ class GatewayController extends BaseController
     {
       parent::__construct();
     }
+
+	public function PaymentForm($data = array())
+	{
+		$data['dsm_action'] = 'gateway/payment';
+		return parent::GetList($data);
+	}
 	
 	public function SubmitCard($data)
 	{
@@ -46,5 +52,25 @@ class GatewayController extends BaseController
 	{
 		$data['dsm_action'] = 'gateway/delete';
 		return parent::Delete($data);
+	}
+
+	public function GetConvenienceFeeJson($data)
+	{
+        if (DSM_OC_ALLOW_CONVENIENCE_FEE == 1 && $data['amount'] > 0)
+			$amount = number_format(DSM_CONVENIENCE_FEE_AMOUNT + ($data['amount'] * DSM_CONVENIENCE_FEE_PERCENT * 0.01),2);
+		else
+			$amount = 0.00;
+             
+		echo json_encode(array('amount' => $amount));
+	}
+
+	public function MakePayment($data)
+	{
+		if (empty($data['charges'])) {
+			App::GetError()->Show("Select at Least One Charge");
+			return false;
+		}
+		$data['dsm_action'] = 'gateway/payment';
+		return parent::Submit($data);
 	}
 }

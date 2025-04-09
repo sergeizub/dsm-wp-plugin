@@ -30,11 +30,16 @@ class App
                 wp_register_style( 'dsm_style', plugins_url('../assets/css/style.css',__FILE__ ) );
                 wp_register_style( 'dsm_style_united', plugins_url('../assets/css/style-united.css',__FILE__ ) );
                 wp_register_style( 'dsm_fullcalendar', plugins_url('../assets/fullcalendar-3.9.0/fullcalendar.min.css',__FILE__) );
+                wp_register_style( 'dataTables-css', 'https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css', '', '', true );
+                wp_register_style( 'dataTables-css-bootstrap', 'https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap.min.css', '', '', true );
 
                 wp_register_script( 'dsm_js_bootstrap', plugins_url('../assets/bootstrap-3.3.7/js/bootstrap.min.js',__FILE__) , array('jquery'));
                 wp_register_script( 'dsm_momentjs', plugins_url('../assets/js/moment.js/2.20.1/moment.min.js',__FILE__) , array('jquery'));
                 wp_register_script( 'dsm_signature_pad', plugins_url('../assets/js/signature_pad/index.js',__FILE__ ) , array('jquery'), time());
                 wp_register_script( 'dsmfunctionjs', plugins_url('../assets/js/functions.js',__FILE__ ) , array('jquery') , time());
+                wp_register_script( 'dataTables-js', 'https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js' , '', '', true );
+                wp_register_script( 'dataTables-js-bootstrap', 'https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap.min.js' , '', '', true );
+        
 
                 wp_localize_script( 'dsmfunctionjs', 'dsmajax',
                     array(
@@ -59,6 +64,8 @@ class App
             wp_enqueue_style('dsm_style');
             wp_enqueue_style('dsm_style_united');
             wp_enqueue_style('dsm_fullcalendar');
+            wp_enqueue_style('dataTables-css');
+            wp_enqueue_style('dataTables-css-bootstrap');
             
             wp_dequeue_script( 'bootstrap' );
             
@@ -68,6 +75,8 @@ class App
             wp_enqueue_script('dsmfunctionjs');
             wp_enqueue_script('dsm_datetimepicker');
             wp_enqueue_script('dsm_fullcalendar');
+            wp_enqueue_script('dataTables-js');
+            wp_enqueue_script('dataTables-js-bootstrap');
 
             $args = array(
                 'before_widget' => '<div class="box widget">',
@@ -99,6 +108,8 @@ class App
             wp_enqueue_script('dsmfunctionjs');
             wp_enqueue_script('dsm_datetimepicker');
             wp_enqueue_script('dsm_fullcalendar');
+            wp_enqueue_script('dataTables-js');
+            wp_enqueue_script('dataTables-js-bootstrap');
 
             $args = array(
                 'before_widget' => '<div class="box widget">',
@@ -121,6 +132,8 @@ class App
             wp_enqueue_style('dsm_style');
             wp_enqueue_style('dsm_style_united');
             wp_enqueue_style('dsm_fullcalendar');
+            wp_enqueue_style('dataTables-css');
+            wp_enqueue_style('dataTables-css-bootstrap');
             
             wp_dequeue_script( 'bootstrap' );
 
@@ -130,6 +143,8 @@ class App
             wp_enqueue_script('dsmfunctionjs');
             wp_enqueue_script('dsm_datetimepicker');
             wp_enqueue_script('dsm_fullcalendar');
+            wp_enqueue_script('dataTables-js');
+            wp_enqueue_script('dataTables-js-bootstrap');
 
             $args = array(
                 'before_widget' => '<div class="box widget">',
@@ -152,6 +167,8 @@ class App
             wp_enqueue_style('dsm_style');
             wp_enqueue_style('dsm_style_united');
             wp_enqueue_style('dsm_fullcalendar');
+            wp_enqueue_style('dataTables-css');
+            wp_enqueue_style('dataTables-css-bootstrap');
             
             wp_dequeue_script( 'bootstrap' );
 
@@ -161,6 +178,8 @@ class App
             wp_enqueue_script('dsmfunctionjs');
             wp_enqueue_script('dsm_datetimepicker');
             wp_enqueue_script('dsm_fullcalendar');
+            wp_enqueue_script('dataTables-js');
+            wp_enqueue_script('dataTables-js-bootstrap');
            
             $_SESSION['dsm_client_attrs'] = array('view' => '', 'default_tab' => '');
             if (!empty($atts))

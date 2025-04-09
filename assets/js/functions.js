@@ -200,7 +200,22 @@ jQuery(function () {
 			e.preventDefault();
 		}
 	});
-    
+
+    jQuery(document).on('change', "#gateway-form-pay select[name=token_id]", function () {
+		jQuery("#gateway-form-pay input[name=tender_type]").val(jQuery('option:selected', this).data('tender_type'));
+	});
+
+    jQuery(document).on('click', "input[name='charges[]']", function() {
+		RecalculateTotalForMakePayment();
+	});
+
+    jQuery(document).on('change', "#gateway-form-pay select[name=token_id]", function () {
+		RecalculateTotalForMakePayment();
+	});
+	
+    jQuery(document).on('change', "#gateway-form-checkout select[name=token_id]", function () {
+		RecalculateTotalForMakePayment();
+	});
 });
 
 function InputDateInit() {
@@ -317,6 +332,54 @@ function dsm_ajax_click(link, dsm_form = false) {
         }
     });
     return false;
+}
+
+function UpdateTotalTransactionAmount()
+{
+    var convenience_fee = 0,
+    	amount = 0;
+    	
+    jQuery("input[name='charges[]']:checked").each(function() {
+        amount = amount + parseFloat(jQuery(this).attr('data-amount'));
+    });
+	
+	jQuery.post(dsmajax.url, { action : 'dsmclient', obj: "gateway", method: 'GetConvenienceFeeJson', amount: amount}, function(data) {
+		convenience_fee = parseFloat(data.amount);
+		if (convenience_fee > 0) {
+			amount = amount + convenience_fee;
+		}	        
+		jQuery("input[name='transaction_amount']").val(amount.toFixed(2));
+	}, 'json');					
+}
+
+function RecalculateTotalForMakePayment()
+{
+	var convenience_fee_for_check = parseFloat(jQuery("input[name='convenience_fee_for_check']").val()); 
+	if (jQuery("select[name=token_id]").find(':selected').data('tender_type') == 'CARD' || (jQuery("select[name=token_id]").find(':selected').data('tender_type') == 'ACH' && convenience_fee_for_check==1))
+		jQuery("input[value='convenience_fee']").prop('checked', true);
+	else 
+		jQuery("input[value='convenience_fee']").prop('checked', false);			
+	
+	var amount = 0;
+	var convenience_fee_percent = parseFloat(jQuery("input[name='convenience_fee_percent']").val());
+	var convenience_fee_amount = parseFloat(jQuery("input[name='convenience_fee_amount']").val());
+	    
+	jQuery("input[name='charges[]']:checked").each(function() {
+	    amount += parseFloat(jQuery(this).attr('data-amount'));
+	});
+	jQuery("input[value='convenience_fee']:checked").each(function() {
+        if (convenience_fee_percent) {
+            let convenience_fee  = (amount * (convenience_fee_percent / 100));
+            amount += convenience_fee;
+            jQuery("#convenience_fee_amount").html(convenience_fee.toFixed(2));
+        }
+        if (convenience_fee_amount) {
+            let convenience_fee  = convenience_fee_amount;
+            amount += convenience_fee;
+            jQuery("#convenience_fee_amount").html(convenience_fee.toFixed(2));
+        }
+	});
+    jQuery("input[name='transaction_amount']").val(amount.toFixed(2));
 }
 
 //OC Signature

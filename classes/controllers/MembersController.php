@@ -3,6 +3,8 @@ namespace DanceStudioManager;
 
 class MembersController extends BaseController
 {
+	protected $scheduled_payment_statuses = ['1'=>'Scheduled', '2'=>'Complete', '3'=>'Processing Error', '4'=>'On Hold', '5'=>'Terminated', '6'=>'Processing'];
+    
     public function __construct()
     {
       parent::__construct();
@@ -163,6 +165,25 @@ class MembersController extends BaseController
 	public function GetPayments()
 	{
 	 return parent::GetList("members/payments");
+	}
+
+	public function GetScheduledPayments($data = array())
+	{
+        $data['dsm_action'] = "members/scheduled-payments";
+        return parent::GetList($data);
+	}
+    
+    public function GetScheduledPaymentsStatuses()
+	{
+        return $this->scheduled_payment_statuses;
+	}
+    
+    public function GetScheduledPaymentsStatusLabel($id)
+	{
+        if (!empty($this->scheduled_payment_statuses[$id]))
+            return $this->scheduled_payment_statuses[$id];
+        else
+            return '';
 	}
 	
 	public function GetCardsAccounts($params = array())
