@@ -28,12 +28,12 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 </script>
 <?php if (DSM_OC_SHOPPING_CART_PAYPAL == '1') : ?>
 	<div class="row">
-		<div class="col-md-offset-6 col-sm-offset-5 col-md-5 col-sm-6 pt25">
+		<div class="col-md-offset-6 col-sm-offset-5 col-md-5 col-sm-6">
 			<?php include plugin_dir_path( __FILE__ ) . 'discount-coupon.php'; ?>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-offset-6 col-sm-offset-5 col-md-5 col-sm-6 pt25">
+		<div class="col-md-offset-6 col-sm-offset-5 col-md-5 col-sm-6">
 			<?php if (DSM_PAYPAL_URL != '' &&  DSM_PAYPAL_EMAIL != '') : ?>
 		    <form action="<?php echo DSM_PAYPAL_URL; ?>" method="post" id="gateway-form-checkout">
 		        <input type="hidden" name="cmd" value="_xclick" />
@@ -65,7 +65,7 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 	</div>
 <?php else: ?>
 <div class="row">
-		<div class="col-md-10 pt25">
+		<div class="col-md-10">
 			<form action="" method="post" id="gateway-form-checkout" class="form-horizontal" role="form" data-valid="validateGatewayForm()">
 			<input type="hidden" name="action" value="dsmclient"/>
 			<input type="hidden" name="obj" value="checkout"/>

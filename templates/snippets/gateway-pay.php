@@ -4,8 +4,8 @@ $result = App::GetClient()->GetController('gateway')->PaymentForm();
 if (!empty($result->form))
 	$form = $result->form;
 ?>
-<div class="col-md-10 pt25">
-<div class="dsm-header"><h2>Make Payment</h2></div>
+<h2 class="page-header">Make Payment</h2>
+<div class="col-md-10">
 <?php if (!empty($form->payment_sources)): ?>
 <form action="" method="post" id="gateway-form-pay" class="form-horizontal" role="form">
 	<input type="hidden" name="action" value="dsmclient"/>

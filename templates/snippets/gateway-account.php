@@ -14,8 +14,8 @@ else if (!empty($user_data) && isset($user_data->LASTNAME))
 
 ?>
 <div class="row">
-	<div class="col-md-10 pt25">
-		<div class="dsm-header"><h2>Add ACH</h2></div>
+	<h2 class="page-header">Add ACH</h2>
+	<div class="col-md-10">
 			<form action="index.php" method="post" id="gateway-form-ach" class="form-horizontal" role="form">
 				<div class="form-group">
 					<label class="col-sm-5 control-label"><span class="text-warning">*</span> First Name</label>
