@@ -42,6 +42,8 @@ foreach ($classes_tabs as $k => $v_array) {
 	usort($classes_tabs[$k], 'dsm_location_sort');
 }
 ?>
+<?php include plugin_dir_path( __FILE__ ) . 'snippets/unsigned-waivers.php';?>
+<div class="class-container" data-unsigned-waivers-allow="<?php echo DSM_OC_UNSIGNED_WAIVERS_CLASS_REG; ?>"	>
 <?php if (!empty($classes_tabs)): ?>
 <div id="tabs">
 	<ul class="nav nav-tabs" role="tablist">
@@ -71,3 +73,4 @@ foreach ($classes_tabs as $k => $v_array) {
 <?php else: ?>
 	<h4>No classes scheduled at this time</h4>
 <?php endif; ?>
+</div>

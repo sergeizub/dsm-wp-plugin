@@ -108,10 +108,10 @@ namespace DanceStudioManager;
 							<?php else: ?>
 								<?php if (App::GetClient()->GetController('auth')->isLogged()): ?>
 									<?php if ($class->MAX_STUDENTS <= ($class->STUDENTS_QUANTITY) && DSM_OC_ALLOW_WAIT_LIST == "1"): ?>
-										<a href="#tab-class-registration-<?php echo $class->ID; ?>" title="Add to Wait List" class="btn btn-success dsm_ajax_tab">
+										<a href="#tab-class-registration-<?php echo $class->ID; ?>" title="Add to Wait List" class="btn btn-success dsm_ajax_tab" dsm_schedule_id="<?php echo $class->SCHEDULES[0]->ID; ?>">
 																<i class="fa fa-plus-circle"></i> Add to Wait List</a>
 									<?php else: ?>
-										<a href="#tab-class-registration-<?php echo $class->ID; ?>" title="Register" class="btn btn-success dsm_ajax_tab">
+										<a href="#tab-class-registration-<?php echo $class->ID; ?>" title="Register" class="btn btn-success dsm_ajax_tab" dsm_schedule_id="<?php echo $class->SCHEDULES[0]->ID; ?>">
 																<i class="fa fa-plus-circle"></i> Register</a>
 									<?php endif; ?>
 								<?php else: ?>

@@ -7,8 +7,10 @@
 if (!empty($class_id)) :
 	App::GetTemplate()->Load('class-registration.php');
 else :
+	include plugin_dir_path( __FILE__ ) . 'snippets/unsigned-waivers.php';
 	include plugin_dir_path( __FILE__ ) . 'snippets/class-filters.php'; 
 ?>
+<div class="class-container" data-unsigned-waivers-allow="<?php echo DSM_OC_UNSIGNED_WAIVERS_CLASS_REG; ?>">
 <script>
 jQuery(function() {
 
@@ -87,7 +89,7 @@ jQuery(function() {
 	});
 });
 </script>
-
-<div id="dsm_calendar" ></div>
+	<div id="dsm_calendar" ></div>
+</div>
 <?php endif; ?>
 </div>

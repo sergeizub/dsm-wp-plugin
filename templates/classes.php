@@ -8,6 +8,7 @@ namespace DanceStudioManager;
 if (!empty($class_id)) :
    App::GetTemplate()->Load('class-registration.php');
 else :
+	include plugin_dir_path( __FILE__ ) . 'snippets/unsigned-waivers.php';
 	include plugin_dir_path( __FILE__ ) . 'snippets/class-filters.php'; 
    if ($_SESSION['dsm_client_attrs']["start_date"] && strtotime($_SESSION['dsm_client_attrs']["start_date"]) > strtotime(DSM_PHPDATE))
 	  $date_now = date(DSM_PHPDATE, strtotime(sanitize_text_field($_SESSION['dsm_client_attrs']["start_date"])));
@@ -187,7 +188,9 @@ else :
 				<a href="#" id="next-date" class="btn btn-default" data-start=""><i class="fa fa-caret-right"></i></a>
 			</h3>
 		</div>
-		<div class="panel-body" id="schedules-container"></div>
+		<div class="class-container" data-unsigned-waivers-allow="<?php echo DSM_OC_UNSIGNED_WAIVERS_CLASS_REG; ?>">
+			<div class="panel-body" id="schedules-container"></div>
+		</div>
 	</div>
 	<?php endif; ?>
 </div>

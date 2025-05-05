@@ -11,6 +11,11 @@ if (!empty($waivers->data))
     }
 if (!empty($unsigned_waivers)):
 ?>
+<script>
+    jQuery(function() {
+        ValidateWaivers()
+    });
+</script>
 <div class="row">
     <div class="text-right" id="action-required-button">
 		<a class="btn btn-warning btn-lg" data-toggle="collapse" href="#unsigned-waivers-container" role="button" aria-expanded="false" aria-controls="unsigned-waivers-container"><i class="fa fa-exclamation-triangle"></i> Action Required</a>

@@ -442,6 +442,19 @@ function ReadAgreement(id){
     jQuery('#agreement_' + id).modal('show');
 }
 
+function ValidateWaivers()
+{
+	var unsigned_waivers_class_reg = jQuery(".class-container").data("unsigned-waivers-allow");
+	if (jQuery('#unsigned-waivers-container').html() != '') {
+       if (unsigned_waivers_class_reg != '1') {
+			jQuery(".class-container").html('<div class="alert alert-danger">In order to continue class registration all agreements must be signed!</div>');
+			jQuery(".class-container").parent().find('div.card-header').hide();
+			return false;
+		}
+	}
+	return true;
+}
+
 function validateGatewayForm() {
     var validGatewayForm = true;
 
