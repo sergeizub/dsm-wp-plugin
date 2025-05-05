@@ -1,4 +1,4 @@
-#tab-classes<?php
+<?php
 namespace DanceStudioManager;
 
 $class_id = App::GetApi()->GetIdParam();
@@ -17,7 +17,9 @@ foreach ($schedules_list->schedules as $k => $v) {
 						<?php echo $data->NAME; ?>
 						<?php echo $data->LEVEL; ?>
 					</h3>
+					<?php if (DSM_OC_CLASS_DETAILS_AGE == 1) : ?>
 					<p>Age: <?php echo $data->MIN_AGE; ?> - <?php echo $data->MAX_AGE; ?></p>
+					<?php endif; ?>
 					<h4><?php echo $data->LOCATION; ?></h4>
 				</div>
 			<?php
