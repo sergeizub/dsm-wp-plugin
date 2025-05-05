@@ -14,5 +14,7 @@ jQuery(function() {
     </div>
 <?php include plugin_dir_path( __FILE__ ) . 'snippets/class-details.php'; ?>
 <br/><br/>
+<?php if (App::GetClient()->GetController('auth')->isLogged()): ?>
 <a type="button" class="btn btn-primary geturl checkout dsm_ajax_tab" onclick="jQuery('.cart-checkout-tab').tab('show');" href="#tab-checkout-cart"><i class="fa fa-shopping-cart"></i> Checkout</a>
+<?php endif; ?>
 </div>

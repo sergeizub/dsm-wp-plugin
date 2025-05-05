@@ -17,6 +17,12 @@ namespace DanceStudioManager;
 	</h3>
 	<?php endif; ?>
 	<?php foreach ($groupclasses as $class) : ?>
+		<?php 
+		if ($class['OC_REGISTRATION'] == 'closed') {
+			echo '<span class="badge badge-warning m-3">Registration closed</span>';
+			continue;
+		}
+		?>
 		<h4>
 			<?php echo ((DSM_OC_CLASS_LIST_CLASS_ID == "1") ? '<div class="label label-default">'.$class['ID'].'</div>' : ''); ?>
 			<?php echo ((DSM_OC_CLASS_LIST_CLASS_CODE == "1") ? ''.$class['CODE'].' ' : ''); ?>
