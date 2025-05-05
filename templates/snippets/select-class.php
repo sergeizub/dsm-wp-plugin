@@ -82,7 +82,7 @@ namespace DanceStudioManager;
 											
 												<a class="btn <?php echo ((!$sales_item['INCART']) ? 'btn-success' : 'btn-primary'); ?> btn-sm select-class dsm_ajax_tab"
 													<?php echo (($class['SCHEDULE']['WAIT_LIST'] == '0' && $class['SCHEDULE']['MAX_STUDENTS'] <= ($class['SCHEDULE']['STUDENTS_QUANTITY'])) ? 'disabled="disabled"' : ''); ?>
-													href = "#tab-class-registration-<?php echo $class['ID']; ?>";
+													href = "#tab-class-registration-<?php echo $class['ID']; ?>"
 													<?php if ($sales_item['INCART']) : ?>
 														dsm_obj="checkout"
 														dsm_method="DeleteCartItem"
@@ -117,7 +117,7 @@ namespace DanceStudioManager;
 											<div class="row mt-3 mb-4">
 												<div class="col-xs-3 col-sm-3 col-md-2">
 													<a class="btn <?php echo ((!$pp['INCART']) ? 'btn-success' : 'btn-primary' ); ?> btn-sm select-class dsm_ajax_tab"
-														href = "#tab-class-registration-<?php echo $class['ID']; ?>";
+														href = "#tab-class-registration-<?php echo $class['ID']; ?>"
 														<?php echo (($class['info']['SCHEDULE']['WAIT_LIST'] == '0' && $class['info']['SCHEDULE']['MAX_STUDENTS'] <= $class['info']['SCHEDULE']['STUDENTS_QUANTITY']) ? 'disabled="disabled"' : '' ); ?>
 														<?php if ($pp['INCART']) : ?>
 															dsm_obj="checkout"
@@ -170,7 +170,7 @@ namespace DanceStudioManager;
 													<?php else: ?>
 														<?php if (DSM_OC_SHOW_REGISTER_AND_SELECT_BUTTONS) : ?>
 															<a class="btn btn-primary btn-sm register-for-class dsm_ajax_tab"
-																href = "#tab-class-registration-<?php echo $class['ID']; ?>";
+																href = "#tab-class-registration-<?php echo $class['ID']; ?>"
 																dsm_obj="checkout"
 																dsm_method="SubmitCartItem"
 																<?php echo (($class['MAX_STUDENTS'] <= $class['STUDENTS_QUANTITY']) ? 'disabled="disabled"' : ''); ?>
@@ -199,7 +199,7 @@ namespace DanceStudioManager;
 																<?php if ($class['SCHEDULE']['MAX_STUDENTS'] <= ($class['SCHEDULE']['STUDENTS_QUANTITY']) && DSM_OC_ALLOW_WAIT_LIST == "1") : ?>
 																	<div id="atwl_<?php echo $class['ID']; ?>_<?php echo $student['STUDENT_ID']; ?>">
 																		<a class="btn btn-primary btn-sm add-to-wait-list dsm_ajax_tab"
-																				href = "#tab-class-registration-<?php echo $class['ID']; ?>";
+																				href = "#tab-class-registration-<?php echo $class['ID']; ?>"
 																				dsm_obj="checkout"
 																				dsm_method="SubmitCartItem"
 																				dsm_class_id="<?php echo $class['ID']; ?>"
@@ -211,7 +211,7 @@ namespace DanceStudioManager;
 																<?php else: ?>																
 																	<a class="btn <?php echo ((!$class['INCART']) ? 'btn-success' : 'btn-primary'); ?> btn-sm select-class dsm_ajax_tab"
 																			<?php echo (($class['SCHEDULE']['MAX_STUDENTS'] <= ($class['SCHEDULE']['STUDENTS_QUANTITY'])) ? 'disabled="disabled"' : ''); ?>
-																			href = "#tab-class-registration-<?php echo $class['ID']; ?>";
+																			href = "#tab-class-registration-<?php echo $class['ID']; ?>"
 																			<?php if ($class['INCART']) : ?>
 																				dsm_obj="checkout"
 																				dsm_method="DeleteCartItem"
@@ -243,7 +243,7 @@ namespace DanceStudioManager;
 																<?php if ($class['SCHEDULE']['MAX_STUDENTS'] <= ($class['SCHEDULE']['STUDENTS_QUANTITY']) && DSM_OC_ALLOW_WAIT_LIST == '1') : ?>
 																	<div id="atwl_<?php echo $class['ID']; ?>_<?php echo $student['STUDENT_ID']; ?>">
 																		<a class="btn btn-primary btn-sm add-to-wait-list dsm_ajax_tab"
-																		    href = "#tab-class-registration-<?php echo $class['ID']; ?>";
+																		    href = "#tab-class-registration-<?php echo $class['ID']; ?>"
 																			dsm_obj="checkout"
 																			dsm_method="SubmitCartItem"
 																			dsm_class_id="<?php echo $class['ID']; ?>"
@@ -256,7 +256,7 @@ namespace DanceStudioManager;
 																	<div id="rcl_<?php echo $class['ID']; ?>_<?php echo $student['STUDENT_ID']; ?>">
 																		<a class="btn btn-primary btn-sm register-for-class dsm_ajax_tab"
 																			<?php echo (($class['SCHEDULE']['MAX_STUDENTS'] <= ($class['SCHEDULE']['STUDENTS_QUANTITY'])) ? 'disabled="disabled"' : ''); ?>
-																		    href = "#tab-class-registration-<?php echo $class['ID']; ?>";
+																		    href = "#tab-class-registration-<?php echo $class['ID']; ?>"
 																			dsm_obj="checkout"
 																			dsm_method="SubmitCartItem"
 																			dsm_class_id="<?php echo $class['ID']; ?>"
