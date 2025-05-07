@@ -1,8 +1,9 @@
 <?php
 namespace DanceStudioManager;
 ?>
+<div class="class-container" data-unsigned-waivers-allow="<?php echo DSM_OC_UNSIGNED_WAIVERS_CLASS_REG; ?>">
 <?php if (trim($student['name']) || !App::GetClient()->GetController('auth')->isLogged()) : ?>
-
+	
 	<?php if ($student['STUDENT_ID']): ?>
 	<h3>
 		<span>Select classes for</span>&nbsp;
@@ -298,3 +299,4 @@ namespace DanceStudioManager;
 		<?php endif; ?>
 	<?php endforeach; ?>
 <?php endif; ?>
+</div>

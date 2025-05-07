@@ -21,7 +21,7 @@ if (!empty($class_full_info->active_purchases)) {
 if (!empty($class_full_info->items)) {
 	$items = json_decode(json_encode($class_full_info->items),true);
 }
-
+include plugin_dir_path( __FILE__ ) . 'unsigned-waivers.php';
 ?>
 <?php foreach($groupclasses as $groupclass): ?>
 	Code: <?php echo $groupclass['CODE']; ?><br>

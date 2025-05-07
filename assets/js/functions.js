@@ -213,9 +213,6 @@ jQuery(function () {
 		RecalculateTotalForMakePayment();
 	});
 	
-    jQuery(document).on('change', "#gateway-form-checkout select[name=token_id]", function () {
-		RecalculateTotalForMakePayment();
-	});
 });
 
 function InputDateInit() {
