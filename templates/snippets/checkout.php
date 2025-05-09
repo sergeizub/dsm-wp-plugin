@@ -153,12 +153,14 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 					</div>      
 				</div>
 				<?php else: ?>
+				<?php if (!defined('DSM_OC_HIDE_AUTO_PAYMENT') || empty(DSM_OC_HIDE_AUTO_PAYMENT)): ?>
 				<div class="form-group">
 				  <label class="col-sm-5 control-label"></label>
 				  <div class="col-sm-7">
 					 <input type="checkbox" name="auto_payment" <?php echo (($_POST['auto_payment'] == 'on') ? 'checked="checked"' : ''); ?>> agree to enroll in automatic regular payment
 				  </div>
 				</div>
+				<?php endif; ?>
 				<?php endif; ?>
 		    </div>
 			<?php if(!empty($cart['checkout_agreements'])): ?>

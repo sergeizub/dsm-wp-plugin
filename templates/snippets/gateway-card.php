@@ -48,12 +48,14 @@ else if (!empty($user_data) && isset($user_data->LASTNAME))
 				</div>
 			</div>
 			<br>
+			<?php if (!defined('DSM_OC_HIDE_AUTO_PAYMENT') || empty(DSM_OC_HIDE_AUTO_PAYMENT)): ?>
 			<div class="form-group">
 				<label class="col-sm-5 control-label"></label>
 				<div class="col-sm-7">
 					<input type="checkbox" name="auto_payment" <?php echo (($_POST['auto_payment'] == 'on') ? 'checked="checked"' : ''); ?>> agree to enroll in automatic regular payment
 				</div>
 			</div>
+			<?php endif; ?>
 			<div class="form-group">
 				<label class="col-sm-5 control-label">Description</label>
 				<div class="col-sm-7">

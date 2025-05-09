@@ -115,9 +115,12 @@ namespace DanceStudioManager;
 																<i class="fa fa-plus-circle"></i> Register</a>
 									<?php endif; ?>
 								<?php else: ?>
+									<a href="#tab-class-registration-<?php echo $class->ID; ?>" title="Register" class="btn btn-info dsm_ajax_tab" dsm_schedule_id="<?php echo $class->SCHEDULES[0]->ID; ?>">
+										<span><i class="fa fa-info-circle"></i> Info</span>
+									</a>&nbsp;
 									<button class="btn btn-success btn-login-alert" type="button">
 										<span><i class="fa fa-plus-circle"></i> Register</span>
-									</button>							
+									</button>						
 								<?php endif; ?>
 							<?php endif; ?>
 						</td>
