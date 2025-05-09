@@ -453,17 +453,28 @@ function ValidateWaivers()
 }
 
 function validateGatewayForm() {
-    var validGatewayForm = true;
+    var msg = '', agree = 1;
 
     if (jQuery('#transaction_amount').val() == 0 && jQuery('#source_selector').val() == 'do_not_add_card' && !jQuery('#pay_at_studio').prop('checked')) // allow zero amount cart checkout without card adding
         jQuery('#gateway-form-checkout').append('<input type="hidden" name="pay_at_studio" value="on">');	
     
     jQuery( ".signed-waiver" ).each(function( index ) {
-          if (jQuery(this).val() == "0" && validGatewayForm != false) {
-          alert('You must agree to our terms and conditions');
-          validGatewayForm = false;
+          if (jQuery(this).val() == "0") {
+          agree = 0;
         }
     });
-    return validGatewayForm;
+
+    jQuery('input[name="checkoutagreement[]"]').each(function() {
+		if (!jQuery(this).prop('checked')) agree = 0;
+	});
+
+    if (agree == 0) msg += 'You must agree to our terms and conditions';
+
+    if (msg == '') 
+        return true;
+    else {
+        alert(msg);
+        return false;
+    }
 }
 
