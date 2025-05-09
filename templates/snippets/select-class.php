@@ -170,16 +170,16 @@ namespace DanceStudioManager;
 														<div class="label label-warning">Invitation Only</div>
 													<?php else: ?>
 														<?php if (DSM_OC_SHOW_REGISTER_AND_SELECT_BUTTONS) : ?>
-															<a class="btn btn-primary btn-sm register-for-class dsm_ajax_tab"
+															<a class="btn btn-primary btn-sm register-for-class"
 																href = "#tab-class-registration-<?php echo $class['ID']; ?>"
-																dsm_obj="checkout"
-																dsm_method="SubmitCartItem"
+																dsm_obj="classes"
+																dsm_method="RegisterRegular"
 																<?php echo (($class['MAX_STUDENTS'] <= $class['STUDENTS_QUANTITY']) ? 'disabled="disabled"' : ''); ?>
 																dsm_class_id="<?php echo $class['ID']; ?>"
 																dsm_billing_schedule="<?php echo $gcp['BILLING_SCHEDULE']; ?>"		                                	
 																dsm_student_id="<?php echo $student['STUDENT_ID']; ?>"
 																dsm_schedule_id="<?php echo (($schedule_id) ? $schedule_id : $class['SCHEDULE_ID']);?>"
-																>
+																dsm_verbose="1">
 																<span><i class="fa fa-plus-circle"></i> Register</span>
 															</a>
 														<?php endif; ?>
@@ -199,13 +199,14 @@ namespace DanceStudioManager;
 															<?php if (DSM_OC_SHOW_REGISTER_AND_SELECT_BUTTONS == "1") : ?>
 																<?php if ($class['SCHEDULE']['MAX_STUDENTS'] <= ($class['SCHEDULE']['STUDENTS_QUANTITY']) && DSM_OC_ALLOW_WAIT_LIST == "1") : ?>
 																	<div id="atwl_<?php echo $class['ID']; ?>_<?php echo $student['STUDENT_ID']; ?>">
-																		<a class="btn btn-primary btn-sm add-to-wait-list dsm_ajax_tab"
+																		<a class="btn btn-primary btn-sm add-to-wait-list"
 																				href = "#tab-class-registration-<?php echo $class['ID']; ?>"
-																				dsm_obj="checkout"
-																				dsm_method="SubmitCartItem"
+																				dsm_obj="classes"
+																				dsm_method="AddMemberToWaitList"
 																				dsm_class_id="<?php echo $class['ID']; ?>"
 																				dsm_student_id="<?php echo $student['STUDENT_ID']; ?>"
 																				dsm_schedule_id="<?php echo (($schedule_id) ? $schedule_id : $class['SCHEDULE_ID']);?>"
+																				dsm_verbose="1">
 																				<span><i class="fa fa-plus-circle"></i> Add to Wait List</span>
 																		</a>
 																	</div>
@@ -243,27 +244,29 @@ namespace DanceStudioManager;
 															<?php if (DSM_OC_SHOW_REGISTER_AND_SELECT_BUTTONS == "1") : ?>
 																<?php if ($class['SCHEDULE']['MAX_STUDENTS'] <= ($class['SCHEDULE']['STUDENTS_QUANTITY']) && DSM_OC_ALLOW_WAIT_LIST == '1') : ?>
 																	<div id="atwl_<?php echo $class['ID']; ?>_<?php echo $student['STUDENT_ID']; ?>">
-																		<a class="btn btn-primary btn-sm add-to-wait-list dsm_ajax_tab"
+																		<a class="btn btn-primary btn-sm add-to-wait-list"
 																		    href = "#tab-class-registration-<?php echo $class['ID']; ?>"
-																			dsm_obj="checkout"
-																			dsm_method="SubmitCartItem"
+																			dsm_obj="classes"
+																			dsm_method="AddMemberToWaitList"
 																			dsm_class_id="<?php echo $class['ID']; ?>"
 																			dsm_student_id="<?php echo $student['STUDENT_ID']; ?>"
-																			dsm_schedule_id="<?php echo (($schedule_id) ? $schedule_id : $class['SCHEDULE_ID']);?>">
+																			dsm_schedule_id="<?php echo (($schedule_id) ? $schedule_id : $class['SCHEDULE_ID']);?>"
+																			dsm_verbose="1">
 																			<span><i class="fa fa-plus-circle"></i> Add to Wait List</span>
 																		</a>
 																	</div>
 																<?php else: ?>
 																	<div id="rcl_<?php echo $class['ID']; ?>_<?php echo $student['STUDENT_ID']; ?>">
-																		<a class="btn btn-primary btn-sm register-for-class dsm_ajax_tab"
+																		<a class="btn btn-primary btn-sm register-for-class"
 																			<?php echo (($class['SCHEDULE']['MAX_STUDENTS'] <= ($class['SCHEDULE']['STUDENTS_QUANTITY'])) ? 'disabled="disabled"' : ''); ?>
 																		    href = "#tab-class-registration-<?php echo $class['ID']; ?>"
-																			dsm_obj="checkout"
-																			dsm_method="SubmitCartItem"
+																			dsm_obj="classes"
+																			dsm_method="RegisterRegular"
 																			dsm_class_id="<?php echo $class['ID']; ?>"
 																			dsm_billing_schedule="<?php echo $gcp['BILLING_SCHEDULE']; ?>"	
 																			dsm_student_id="<?php echo $student['STUDENT_ID']; ?>"
-																			dsm_schedule_id="<?php echo (($schedule_id) ? $schedule_id : $class['SCHEDULE_ID']);?>">
+																			dsm_schedule_id="<?php echo (($schedule_id) ? $schedule_id : $class['SCHEDULE_ID']);?>"
+																			dsm_verbose="1">
 																			<span><i class="fa fa-plus-circle"></i> Register</span>
 																		</a>
 																	</div>

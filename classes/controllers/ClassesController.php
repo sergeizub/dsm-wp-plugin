@@ -164,4 +164,16 @@ class ClassesController extends BaseController
 		$data['dsm_action'] = 'classes/register-purchased';
 		return parent::Submit($data);
 	}
+
+	public function RegisterRegular($data) 
+	{
+		$data['dsm_action'] = 'classes/register-regular';
+		return parent::Submit($data);;
+	}
+
+	public function AddMemberToWaitList($data) 
+	{
+		$data['dsm_action'] = 'classes/add-to-wait-list';
+		return parent::Submit($data);
+	}
 }

@@ -212,6 +212,20 @@ jQuery(function () {
     jQuery(document).on('change', "#gateway-form-pay select[name=token_id]", function () {
 		RecalculateTotalForMakePayment();
 	});
+
+    jQuery(document).on('click', '.register-for-class', function(e) {
+        e.preventDefault();
+		if (confirm("Are you sure you want to register student for selected class?")) {
+            dsm_ajax_click(this);
+		}
+	});
+
+    jQuery(document).on('click', '.add-to-wait-list', function(e) {
+        e.preventDefault();
+		if (confirm("Are you sure you want to add student to wait list for selected class?")) {
+            dsm_ajax_click(this);
+		}
+	});
 	
 });
 
