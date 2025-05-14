@@ -1,12 +1,11 @@
 <?php
 namespace DanceStudioManager;
-
    $class_id = App::GetApi()->GetIdParam();
 ?>
 <div id="tab-classes-calendar" class="tab-pane">
 <?php
 if (!empty($class_id)) :
-   App::GetTemplate()->Load('class-registration.php');
+   	App::GetTemplate()->Load('class-registration.php');
 else :
 	include plugin_dir_path( __FILE__ ) . 'snippets/unsigned-waivers.php';
 	include plugin_dir_path( __FILE__ ) . 'snippets/class-filters.php'; 
@@ -14,12 +13,9 @@ else :
 	  $date_now = date(DSM_PHPDATE, strtotime(sanitize_text_field($_SESSION['dsm_client_attrs']["start_date"])));
    else
 	  $date_now = date(DSM_PHPDATE);
-
 	?>
 	<script>
-	
 	var class_filter = new Object();
-	
 	if (jQuery("#filter_class_code").length && jQuery("#filter_class_code").val() != "0" && jQuery("#filter_class_code").val() != "") {
        class_filter.class_code = jQuery("#filter_class_code").val();
     }
@@ -173,7 +169,6 @@ else :
 }
 <?php endif; ?>
 </style>
-
 	<div class="panel panel-default ">
 		<div class="panel-heading">
 			<h3 class="panel-title text-center">

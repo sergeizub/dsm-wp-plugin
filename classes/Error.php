@@ -4,9 +4,7 @@ namespace DanceStudioManager;
 class Error
 {
     public function __construct()
-    {
-        
-    }
+    {}
     
     public function Show($msg)
 	{

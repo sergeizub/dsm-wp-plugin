@@ -1,9 +1,9 @@
 <?php
 namespace DanceStudioManager;
 
+$last_check_announcements = "";
 $news = App::GetClient()->GetController('news')->GetNews();
 
-$last_check_announcements = "";
 foreach($news['data'] as $new) {
     $last_check_announcements .= (!empty($last_check_announcements) ? "," : "").$new['ID'];
 }
@@ -17,7 +17,6 @@ if (!empty($last_check_announcements))
         overflow: hidden;
         margin-bottom: 50px;
     }
-
     .description-wrapper::after {
         display: block;
         content: ' ';

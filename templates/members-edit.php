@@ -18,33 +18,33 @@ else {
 </script>
 <?php if (!empty($related_students->family) && $related_students->success) : ?>
 <div class="row" style="padding-top:20px;">
-  <label class="col-sm-3 control-label text-right" style="padding-top:10px;">Related Students</label>
-  <div class="col-sm-6">
-     <ul class="list-group">
-		<?php foreach ($related_students->family as $student): ?>
-		<li class="list-group-item"><i class="fa fa-user"></i> <?php echo $student->FIRSTNAME; ?> <?php echo $student->LASTNAME; ?>
-			<div class="pull-right">
+  	<label class="col-sm-3 control-label text-right" style="padding-top:10px;">Related Students</label>
+  	<div class="col-sm-6">
+     	<ul class="list-group">
+			<?php foreach ($related_students->family as $student): ?>
+			<li class="list-group-item"><i class="fa fa-user"></i> <?php echo $student->FIRSTNAME; ?> <?php echo $student->LASTNAME; ?>
+				<div class="pull-right">
 				<?php if ($student->PARENT_ID > 0 && DSM_OC_RELATED_STUDENTS_ALLOW_EDIT_ARCHIVE == '1') : ?>
-				<a href="#tab-members-edit-<?php echo $student->ID; ?>" class="dsm_ajax_tab btn btn-primary btn-xs geturl">
-				  <i class="fa fa-pencil"></i> Edit
-				</a>
-				<button type="button" dsm_obj="members" dsm_method="DeleteStudent" dsm_student_id="<?php echo $student->ID; ?>"
-				    href="#tab-members-edit"
-					onclick="if (confirm('Are you sure you want to archive student?')) { dsm_ajax_click(this) };return false;"
-					class="btn btn-danger btn-xs">
-				  <i class="fa fa-remove"></i> Archive
-				</button>
+					<a href="#tab-members-edit-<?php echo $student->ID; ?>" class="dsm_ajax_tab btn btn-primary btn-xs geturl">
+				  		<i class="fa fa-pencil"></i> Edit
+					</a>
+					<button type="button" dsm_obj="members" dsm_method="DeleteStudent" dsm_student_id="<?php echo $student->ID; ?>"
+				    	href="#tab-members-edit"
+						onclick="if (confirm('Are you sure you want to archive student?')) { dsm_ajax_click(this) };return false;"
+						class="btn btn-danger btn-xs">
+				  	<i class="fa fa-remove"></i> Archive
+					</button>
 				<?php endif; ?>
-			</div>
-		</li>
-		<?php endforeach; ?>
-	</ul>
-  </div>
+				</div>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+  	</div>
 </div>	
-	<?php endif;
-	$user_form =  App::GetClient()->GetController('members')->GetUserForm();
-	if (is_array($user_form)) : ?>
-	<div id="tab-members-edit" class="tab-pane">
+<?php endif;
+$user_form =  App::GetClient()->GetController('members')->GetUserForm();
+if (is_array($user_form)) : ?>
+<div id="tab-members-edit" class="tab-pane">
 	<div class="dsm-header"><h2>Edit Profile</h2></div>
 	<form class="form-horizontal" role="form" id="members-form" action="" method="post">
 	<?php
@@ -111,10 +111,10 @@ else {
 		echo '<input type="hidden" name="method" value="Submit"/>';
 		echo '<input type="hidden" name="boot_tab" value="tab-members-edit"/>';
 		echo '<div class="form-group"><div class="col-sm-offset-3 col-sm-6"><button type="submit" id="oc-members-edit-button" class="btn btn-primary">Submit Profile</button></div></div>';
-	?> </form>
-	
-	</div>
-	<?php else:
+	?>
+	</form>
+</div>
+<?php else:
 App::GetError()->Show("Unable Send Api Reqest");
 	endif;
 }

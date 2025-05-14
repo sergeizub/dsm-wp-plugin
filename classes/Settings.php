@@ -33,15 +33,14 @@ class Settings
     public function SetPage()
     {
 
-    if (!empty($_POST['clear_cache'])) {
-        delete_expired_transients( true );
-        $dsm_classes_list = App::GetApi()->GetList("classes/list");
-        set_transient( 'dsm_classes_list', $dsm_classes_list, 6 * HOUR_IN_SECONDS );
-    }
+        if (!empty($_POST['clear_cache'])) {
+            delete_expired_transients( true );
+            $dsm_classes_list = App::GetApi()->GetList("classes/list");
+            set_transient( 'dsm_classes_list', $dsm_classes_list, 6 * HOUR_IN_SECONDS );
+        }
 ?>
-    <div class="wrap">
+<div class="wrap">
 <h1>DSM Plugin</h1>
-
 <form method="post" action="options.php">
     <?php settings_fields( 'dsm_api_settings' ); ?>
     <?php do_settings_sections( 'dsm_api_settings' ); ?>

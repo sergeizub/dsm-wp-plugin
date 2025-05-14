@@ -1,7 +1,6 @@
 <?php
 namespace DanceStudioManager;
 
-use \DateTime;
 $classes_list = array();
 $add_data = $filter = array();
 $add_data_start = sanitize_text_field($_REQUEST['start']);

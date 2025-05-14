@@ -13,7 +13,6 @@ else :
 <div class="class-container" data-unsigned-waivers-allow="<?php echo DSM_OC_UNSIGNED_WAIVERS_CLASS_REG; ?>">
 <script>
 jQuery(function() {
-
 	var class_filter = new Object();
 	
 	if (jQuery("#filter_class_code").length && jQuery("#filter_class_code").val() != "0" && jQuery("#filter_class_code").val() != "") {

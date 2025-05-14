@@ -1,15 +1,14 @@
 <?php
 namespace DanceStudioManager;
 use \DateTime;
-$student = array();
 
+$student = array();
 $student_id = App::GetApi()->GetIdParam();
 
 if (!empty($student_id)) {
 	$student = App::GetClient()->GetController('members')->GetUser($student_id);
-	if(!empty($student))
-			$student_data = json_decode(json_encode($student->data),true);
-			
+	if (!empty($student))
+		$student_data = json_decode(json_encode($student->data),true);
 }
 else {
 	$student =  App::GetClient()->GetController('members')->GetStudentForm();

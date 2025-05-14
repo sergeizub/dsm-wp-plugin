@@ -62,6 +62,6 @@ include plugin_dir_path( __FILE__ ) . 'unsigned-waivers.php';
 	<?php echo (($groupclass['SCHEDULE_ID'] && empty($schedule_id)) ? '<input type="hidden" id="selected_schedule_id" value="'.$class['SCHEDULE_ID'].'">' : ''); ?>
 	
 	<?php foreach ($items as $student): ?>
-		<?php include plugin_dir_path( __FILE__ ) . 'select-class.php'; ?>
+	<?php include plugin_dir_path( __FILE__ ) . 'select-class.php'; ?>
 	<?php endforeach; ?>
 <?php endforeach; ?>

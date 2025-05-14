@@ -155,23 +155,22 @@ $selected_account = $cart['selected_account'];
 			    <label class="col-sm-5 control-label text-right"><?php echo $cart['convenience_fee_category']; ?>, <?php echo DSM_CURRENCY_SIGN; ?></label>
 			    <label class="col-sm-2 control-label text-right">
  			        	<?php echo number_format($cart['convenience_fee'],2); ?> <i>(<?php echo $cart['convenience_fee_description']; ?>)</i>
-			        </label>
-		        </div>	
-			</div>
+			    </label>
+		    </div>	
 		</div>
-		<?php endif; ?>
-
-		<div class="row">
-			<div class="col-md-offset-7 col-md-6 pt10">		
-		        <div class="form-group">
-			        <label class="col-sm-5 control-label text-right">Grand Total, <?php echo DSM_CURRENCY_SIGN; ?></label>
-			        <label class="col-sm-2 control-label text-right">
- 			        	<?php echo number_format($cart['total'],2); ?>
-			        </label>
-		        </div>	
-			</div>
+	</div>
+<?php endif; ?>
+	<div class="row">
+		<div class="col-md-offset-7 col-md-6 pt10">		
+		    <div class="form-group">
+			    <label class="col-sm-5 control-label text-right">Grand Total, <?php echo DSM_CURRENCY_SIGN; ?></label>
+			    <label class="col-sm-2 control-label text-right">
+ 			        <?php echo number_format($cart['total'],2); ?>
+			    </label>
+		    </div>	
 		</div>
-		 <?php include plugin_dir_path( __FILE__ ) . 'snippets/checkout.php'; ?>
+	</div>
+<?php include plugin_dir_path( __FILE__ ) . 'snippets/checkout.php'; ?>
 <?php else: ?>
 	<div class="alert alert-info">
 		No items in cart

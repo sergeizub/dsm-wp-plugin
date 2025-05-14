@@ -11,7 +11,6 @@ if (!empty($_POST['last_name']))
 	$last_name = sanitize_text_field($_POST['last_name']);
 else if (!empty($user_data) && isset($user_data->LASTNAME))
 	$last_name = $user_data->LASTNAME;
-
 ?>
 <div class="row">
 	<h2 class="page-header">Add Card</h2>

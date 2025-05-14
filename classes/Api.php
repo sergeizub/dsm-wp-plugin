@@ -17,7 +17,6 @@ class Api
 		$this->api_key = get_option('dsm_api_key');
         //if (empty($this->api_key))
             //App::GetError()->Show("Incorrect Api Key");
-        
         $this->api_version = get_option('dsm_api_version');
 
     }
@@ -76,7 +75,8 @@ class Api
 			return false;
     }
     
-    public function AuthorizationSettings() {
+    public function AuthorizationSettings() 
+	{
         if (!empty($this->api_key))
             App::GetClient()->GetController('auth')->SetAuthSettings($this->GetList(array('dsm_action' => 'settings/')));
     }
@@ -100,9 +100,7 @@ class Api
 
 	public function ClassesListCollection()
 	{
-
 		$schedules_list = $this->GetList('classes/');
-
 		if (!$this->ValidateDSMUrl() || $schedules_list == false)
 			return false;
 		$calsses_list = array();

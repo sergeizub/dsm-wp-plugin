@@ -3,12 +3,10 @@ namespace DanceStudioManager;
 
 $filter = array();
 ?>
-
 <div id="tab-classes-list" class="tab-pane">
-	<?php $filters = (!empty($classes_list->filters) ? $classes_list->filters : false); ?>
-	<?php include plugin_dir_path( __FILE__ ) . 'snippets/class-filters.php'; ?>
+<?php $filters = (!empty($classes_list->filters) ? $classes_list->filters : false); ?>
+<?php include plugin_dir_path( __FILE__ ) . 'snippets/class-filters.php'; ?>
 <?php
-
 foreach($_REQUEST['filter'] as $k => $v)
 	$filter[$k] = sanitize_text_field($v);
 	
@@ -45,30 +43,28 @@ foreach ($classes_tabs as $k => $v_array) {
 <?php include plugin_dir_path( __FILE__ ) . 'snippets/unsigned-waivers.php';?>
 <div class="class-container" data-unsigned-waivers-allow="<?php echo DSM_OC_UNSIGNED_WAIVERS_CLASS_REG; ?>"	>
 <?php if (!empty($classes_tabs)): ?>
-<div id="tabs">
-	<ul class="nav nav-tabs" role="tablist">
-        <?php foreach ($classes_tabs as $key => $item): ?>
-		<?php reset($classes_tabs);?>
-		<li role="presentation" class="<?php echo ($key === key($classes_tabs) ? 'active' : ''); ?>">
-			<a href="#tab<?php echo $key; ?>" aria-controls="<?php echo $programs[$key]; ?>"
-				role="tab" data-toggle="tab" data-program_id="<?php echo $key; ?>"><?php echo $programs[$key]; ?></a>
-		</li>
-		<?php endforeach; ?>
-	</ul>
-</div>
-<div class="tab-content classes-list">
-		<?php foreach ($classes_tabs as $key => $item): ?>
+	<div id="tabs">
+		<ul class="nav nav-tabs" role="tablist">
+        	<?php foreach ($classes_tabs as $key => $item): ?>
 			<?php reset($classes_tabs);?>
-			<div role="tabpanel" class="tab-pane <?php echo ($key === key($classes_tabs) ? 'active' : ''); ?>" id="tab<?php echo $key; ?>">
+			<li role="presentation" class="<?php echo ($key === key($classes_tabs) ? 'active' : ''); ?>">
+				<a href="#tab<?php echo $key; ?>" aria-controls="<?php echo $programs[$key]; ?>"
+				role="tab" data-toggle="tab" data-program_id="<?php echo $key; ?>"><?php echo $programs[$key]; ?></a>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+	<div class="tab-content classes-list">
+	<?php foreach ($classes_tabs as $key => $item): ?>
+	<?php reset($classes_tabs);?>
+		<div role="tabpanel" class="tab-pane <?php echo ($key === key($classes_tabs) ? 'active' : ''); ?>" id="tab<?php echo $key; ?>">
 			<div class="tab-content">
-			<div class="get-page" data-relation="categories" data-relation_id="<?php echo $key; ?>"></div>
-			<?php
-				include plugin_dir_path( __FILE__ ) . 'snippets/select-class-table.php';
-			?>
+				<div class="get-page" data-relation="categories" data-relation_id="<?php echo $key; ?>"></div>
+				<?php include plugin_dir_path( __FILE__ ) . 'snippets/select-class-table.php'; ?>
 			</div>
-			</div>
-		<?php endforeach; ?>
-</div>
+		</div>
+	<?php endforeach; ?>
+	</div>
 </div>
 <?php else: ?>
 	<h4>No classes scheduled at this time</h4>

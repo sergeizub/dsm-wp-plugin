@@ -10,7 +10,7 @@ if (!empty($waivers->data))
         if (empty($waiver->SIGNED))
             array_push($unsigned_waivers, $waiver);
     }
-if (!empty($unsigned_waivers)):
+    if (!empty($unsigned_waivers)):
 ?>
 <script>
     jQuery(function() {
@@ -36,5 +36,5 @@ if (!empty($unsigned_waivers)):
     </div>
     <br/><br/>
 </div>
-<?php endif; ?>
+    <?php endif; ?>
 <?php endif; ?>

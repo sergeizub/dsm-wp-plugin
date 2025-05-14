@@ -7,7 +7,7 @@ class MembersController extends BaseController
     
     public function __construct()
     {
-      parent::__construct();
+		parent::__construct();
     }
 	
 	public function Submit($data)
@@ -164,7 +164,7 @@ class MembersController extends BaseController
 	
 	public function GetPayments()
 	{
-	 return parent::GetList("members/payments");
+		return parent::GetList("members/payments");
 	}
 
 	public function GetScheduledPayments($data = array())
@@ -196,22 +196,22 @@ class MembersController extends BaseController
 	
 	public function GetCharges()
 	{
-	 return parent::GetList("members/charges");
+		return parent::GetList("members/charges");
 	}
 	
 	public function GetPurchases()
 	{
-	 return parent::GetList("members/purchases");
+		return parent::GetList("members/purchases");
 	}
 	
     public function GetGiftCards()
 	{
-	 return parent::GetList("members/gift-cards");
+		return parent::GetList("members/gift-cards");
 	}
     
 	public function GetWaivers()
 	{
-	 return parent::GetList("members/waivers");
+		return parent::GetList("members/waivers");
 	}
 
 	public function GetWaiver($id)

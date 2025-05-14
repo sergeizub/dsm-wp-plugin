@@ -4,9 +4,7 @@ namespace DanceStudioManager;
 class Template
 {
     public function __construct()
-    {
-		
-    }
+    { }
 	
 	public function Load($file)
 	{

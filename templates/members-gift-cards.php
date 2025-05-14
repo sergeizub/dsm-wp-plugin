@@ -24,31 +24,31 @@ $gift_card_data = $result->data;
 	</div>
 	<br/>
 	<div class="table-responsive">
-	<table class="table table-striped">
-		<thead>
-			<tr>
+		<table class="table table-striped">
+			<thead>
+				<tr>
 				<?php if (!empty($gift_card_data->table_header)) : ?>
 				<?php foreach ($gift_card_data->table_header as $h) : ?>
-				<th style="text-align:right;"><?php echo $h; ?></th>
+					<th style="text-align:right;"><?php echo $h; ?></th>
 				<?php endforeach; ?>
 				<?php endif; ?>
-			</tr>
-		</thead>
-		<tbody>
-		<?php if (!empty($gift_card_data->list)) : ?>
+				</tr>
+			</thead>
+			<tbody>
+			<?php if (!empty($gift_card_data->list)) : ?>
 			<?php foreach ($gift_card_data->list as $row) : ?>
-			<tr>
+				<tr>
 				<?php foreach ($row as $col): ?>
-				<td  style="white-space: nowrap;text-align:right;"><?php echo $col; ?></td>
+					<td  style="white-space: nowrap;text-align:right;"><?php echo $col; ?></td>
 				<?php endforeach; ?>
-			</tr>
+				</tr>
 			<?php endforeach; ?>
-		<?php else: ?>
-			<tr>
-				<td colspan="6">No records found</td>
-			</tr>
-		<?php endif; ?>
-		</tbody>
-	</table>
+			<?php else: ?>
+				<tr>
+					<td colspan="6">No records found</td>
+				</tr>
+			<?php endif; ?>
+			</tbody>
+		</table>
 	</div>
 </div>

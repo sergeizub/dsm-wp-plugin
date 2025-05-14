@@ -12,7 +12,6 @@ class Emailer
 	
 	public function ClientRegistrationNotification($family,$fields)
 	{
-		
 		$labels = array();
 		if (is_array($fields))
 			foreach ($fields as $field)

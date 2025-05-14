@@ -1,11 +1,9 @@
 <?php
 namespace DanceStudioManager;
-use \DateTime;
 
 $my_classes = json_decode(json_encode(App::GetClient()->GetController('members')->GetMyClasses()),true);
 $user_data = json_decode(json_encode(App::GetClient()->GetController('members')->GetUserData()),true);
 $related_students =  json_decode(json_encode(App::GetClient()->GetController('members')->GetChildList()),true);
-
 
 $students = array();
 foreach ($my_classes['classes'] as $student) {
@@ -25,19 +23,16 @@ foreach ($my_classes['classes'] as $student) {
 				}
 			}
 		}
-		
 		if (!array_key_exists('classes',$students[$student_name]))
 				$students[$student_name]['classes'] = array();
 		
 		$students[$student_name]['classes'][$class_id] = $class;	
 	}
 }
-
 ?>
 <div class="page-header">
 	<h3>Classes</h3>
 </div>
-
 <script>
 function SchedulesSection(section_id)
 {
@@ -50,7 +45,6 @@ function SchedulesSection(section_id)
 	}
 }	
 </script>
-
 <?php foreach ($students as $student) : ?>
 <div class="panel panel-primary">
 <div class="panel-heading">

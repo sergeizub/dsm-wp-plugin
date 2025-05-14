@@ -47,8 +47,8 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 				<input type="hidden" name="on1" value="Member ID">
 		        <input type="hidden" name="os1" value="<?php echo $cart['list']['0']['ID']; ?>">	
 				<?php if ($cart['discount_coupon'] != "" ) : ?>
-			        <input type="hidden" name="on2" value="Discount Coupon">
-					<input type="hidden" name="os2" value="<?php echo $cart['discount_coupon']; ?>">	
+			    <input type="hidden" name="on2" value="Discount Coupon">
+				<input type="hidden" name="os2" value="<?php echo $cart['discount_coupon']; ?>">	
 				<?php endif; ?>
 		        <input type="hidden" name="return" value="<?php echo "//".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" />
 		        <input type="hidden" name="cancel_return" value="<?php echo "//".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" />
@@ -64,7 +64,7 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 		</div>
 	</div>
 <?php else: ?>
-<div class="row">
+	<div class="row">
 		<div class="col-md-10">
 			<form action="" method="post" id="gateway-form-checkout" class="form-horizontal" role="form" data-valid="validateGatewayForm()">
 			<input type="hidden" name="action" value="dsmclient"/>

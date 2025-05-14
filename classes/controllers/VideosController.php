@@ -23,6 +23,6 @@ class VideosController extends BaseController
 
     public function GetCountNewVideos($params = "") 
     {
-        return  json_decode(json_encode(parent::GetList("videos/count_new".$params)),true);
+      return  json_decode(json_encode(parent::GetList("videos/count_new".$params)),true);
     } 
 }

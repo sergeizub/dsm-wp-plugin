@@ -47,13 +47,13 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 		</tbody>
 	</table>
 	<?php if (DSM_OC_ALLOW_CARD_PAYMENTS) : ?>
-		<div class="form-group">
-			<a href="#tab-gateway-finance" dsm_sub_tab="#tab-gateway-card" class="dsm_ajax_tab btn btn-primary dsm_ajax_tab" onclick="return false;">Add Card</a>
-		</div>
+	<div class="form-group">
+		<a href="#tab-gateway-finance" dsm_sub_tab="#tab-gateway-card" class="dsm_ajax_tab btn btn-primary dsm_ajax_tab" onclick="return false;">Add Card</a>
+	</div>
 	<?php endif; ?>
 	<?php if (DSM_OC_ALLOW_ACH_PAYMENTS) : ?>
-		<div class="form-group">
-			<a href="#tab-gateway-finance" dsm_sub_tab="#tab-gateway-account" class="dsm_ajax_tab btn btn-primary dsm_ajax_tab" onclick="return false;">Add ACH</a>
-		</div>
+	<div class="form-group">
+		<a href="#tab-gateway-finance" dsm_sub_tab="#tab-gateway-account" class="dsm_ajax_tab btn btn-primary dsm_ajax_tab" onclick="return false;">Add ACH</a>
+	</div>
 	<?php endif; ?>
 </div>

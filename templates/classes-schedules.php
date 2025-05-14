@@ -3,14 +3,13 @@ namespace DanceStudioManager;
 
 $class_id = App::GetApi()->GetIdParam();
 $schedules_list = App::GetClient()->GetController('classes')->GetClasses();	
-	?>
-	<button class="btn btn-default dsm_ajax_tab"  dsm_boot_tab="classes" >Classes</button>
-	<?php
+?>
+<button class="btn btn-default dsm_ajax_tab"  dsm_boot_tab="classes" >Classes</button>
+<?php
 foreach ($schedules_list->schedules as $k => $v) {
 	foreach ($v->data as $data)
 		if ($data->CLASS_ID == $class_id && $data->STATUS != '2') {
-			if ($class_header != 1) :
-			?>
+			if ($class_header != 1) : ?>
                 <div class="schedule" style="border-left: 30px solid silver;">
 					<h3>
 						<?php echo $data->CODE; ?>

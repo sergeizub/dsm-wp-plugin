@@ -36,7 +36,8 @@ class Client
 		return $this->tab;
 	}
 	
-	public function AjaxClient() {
+	public function AjaxClient() 
+	{
 		global $wpdb;
 		switch($_POST['boot_tab'])
 		{
@@ -100,7 +101,8 @@ class Client
 		}
 	}
 	
-	public function NavRedirect() {
+	public function NavRedirect() 
+	{
 		$params = "";
 		if (isset($_SESSION['dsm_redirect']) && !empty($_SESSION['dsm_redirect']['boot_tab'])) {
 			foreach ($_SESSION['dsm_redirect'] as $k=>$v) {

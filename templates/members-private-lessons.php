@@ -31,40 +31,39 @@ $my_classes = json_decode(json_encode(App::GetClient()->GetController('members')
 	</table>
 	<?php endif; ?>
 	<div class="table-responsive">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Student</th>
-				<th>Instructor</th>
-				<th>Lesson Start</th>
-				<th>Duration, hours</th>
-				<th>Status</th>
-			</tr>
-		</thead>
-		<tbody>
-		<?php if (!empty($my_classes['schedules'])) : ?>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Student</th>
+					<th>Instructor</th>
+					<th>Lesson Start</th>
+					<th>Duration, hours</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php if (!empty($my_classes['schedules'])) : ?>
 			<?php foreach ($my_classes['schedules'] as $schedule) : ?>
-			<tr>
-				<td>
-				<?php echo $schedule['data'][0]['STUDENT']; ?>
-				</td>
-				<td><?php echo $schedule['data'][0]['INSTRUCTOR']; ?></td>
-				<td><?php echo $schedule['data'][0]['DATEF']; ?> <?php echo $schedule['data'][0]['STARTF']; ?></td>
-				<td>
-				<?php
-					$start = strtotime($schedule['data'][0]['STARTF']);
-					$end = strtotime($schedule['data'][0]['ENDF']);
-					echo round(abs($end - $start) / 3600,2);
-				?>
-				</td>
-				<td>
-					<?php echo $schedule['data'][0]['STATUS']; ?>
-				</td>
-			</tr>
+				<tr>
+					<td>
+					<?php echo $schedule['data'][0]['STUDENT']; ?>
+					</td>
+					<td><?php echo $schedule['data'][0]['INSTRUCTOR']; ?></td>
+					<td><?php echo $schedule['data'][0]['DATEF']; ?> <?php echo $schedule['data'][0]['STARTF']; ?></td>
+					<td>
+					<?php
+						$start = strtotime($schedule['data'][0]['STARTF']);
+						$end = strtotime($schedule['data'][0]['ENDF']);
+						echo round(abs($end - $start) / 3600,2);
+					?>
+					</td>
+					<td>
+						<?php echo $schedule['data'][0]['STATUS']; ?>
+					</td>
+				</tr>
 			<?php endforeach; ?>
-
-		<?php endif; ?>
-		</tbody>
-	</table>
+			<?php endif; ?>
+			</tbody>
+		</table>
 	</div>
 </div>

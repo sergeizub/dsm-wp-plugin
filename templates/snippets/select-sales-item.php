@@ -12,8 +12,7 @@ namespace DanceStudioManager;
 			dsm_obj="checkout" dsm_method="SubmitSalesItem" dsm_student_id="<?php echo $student['ID']; ?>" dsm_sales_item_id="<?php echo $sales_item['ID']; ?>" dsm_quantity="1"
 	            	data-sales_item_id="<?php echo $sales_item['ID']; ?>"
 	            	data-student_id="<?php echo $student['ID']; ?>">
-	            	<i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
-                
+	        <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
 		</a>
 	</div>
 </div>

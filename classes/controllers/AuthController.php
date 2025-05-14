@@ -5,8 +5,8 @@ class AuthController extends BaseController
 {
     public function __construct()
     {
-	  $this->ParseAuthSettings();
-      parent::__construct();
+	  	$this->ParseAuthSettings();
+      	parent::__construct();
     }
 	
 	public function Submit($data)

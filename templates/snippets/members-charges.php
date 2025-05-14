@@ -2,8 +2,8 @@
 namespace DanceStudioManager;
 $result = App::GetClient()->GetController('members')->GetCharges();
 ?>
-	<h2 class="page-header">Charges</h2>
-	<div class="table-responsive">
+<h2 class="page-header">Charges</h2>
+<div class="table-responsive">
 	<table class="table table-striped">
 		<thead>
 			<tr>

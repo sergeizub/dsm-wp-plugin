@@ -2,7 +2,7 @@
 	<div class="dsm-header"><h2>Reset Password</h2></div>
 	<form method="post"  action="index.php" class="form-horizontal" role="form">
 		<div class="form-group">
-			<?php if (DSM_OC_PASSWORD_RECOVERY_BY_EMAIL == "1") : ?>
+			<?php if (DSM_OC_PASSWORD_RECOVERY_BY_EMAIL == "1"): ?>
 			<label for="lastname" class="col-sm-3 control-label"><span style="color: red;">*</span> Email</label>
 			<div class="col-sm-6">
 				<input type="text" class="form-control" name="EMAIL" value="" placeholder="Your Email">

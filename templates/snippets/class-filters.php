@@ -57,34 +57,34 @@ if (is_array($_SESSION['dsm_client_attrs']))
 		 <?php echo (($name->label == $_SESSION['dsm_client_attrs']['class_name']) ? '<input type="hidden" id="filter_class_name" name="filter[class_name]" value="'.$name->value.'"/>' : ''); ?>
 	<?php endforeach; ?>
 <?php elseif (DSM_OC_CLASS_FILTER_NAME == '1' &&  !$_SESSION['dsm_client_attrs']['class_code']) : ?>
-<div class="form-group">
-	<select name="filter[class_name]" id="filter_class_name" class="form-control">
+	<div class="form-group">
+		<select name="filter[class_name]" id="filter_class_name" class="form-control">
 		<?php foreach ($filters->name as $name) : ?>
 			<option value="<?php echo $name->value; ?>" <?php echo (($name->value == $_POST['filter']['class_name']) ? 'selected="selected"' : ''); ?>><?php echo $name->label; ?></option>
 		<?php endforeach; ?>
-	</select>
-</div>
+		</select>
+	</div>
 <?php endif; ?>
 <?php if ($_SESSION['dsm_client_attrs'] && $_SESSION['dsm_client_attrs']['class_level'] && $filters->level) : ?>
 	<?php foreach ($filters->level as $level) : ?>
 		 <?php echo (($level->label == $_SESSION['dsm_client_attrs']['class_level']) ? '<input type="hidden" id="filter_class_level" name="filter[class_level]" value="'.$level->value.'"/>' : ''); ?>
 	<?php endforeach; ?>
 <?php elseif ((DSM_OC_CLASS_FILTER_LEVEL == '1') &&  !$_SESSION['dsm_client_attrs']['class_code']) : ?>
-<div class="form-group">
-	<select name="filter[class_level]" id="filter_class_level" class="form-control">
+	<div class="form-group">
+		<select name="filter[class_level]" id="filter_class_level" class="form-control">
 		<?php foreach ($filters->level as $level) : ?>
 			<option value="<?php echo $level->value; ?>" <?php echo (($level->value == $_POST['filter']['class_level']) ? 'selected="selected"' : ''); ?>><?php echo $level->label; ?></option>
 		<?php endforeach; ?>
-	</select>
-</div>
+		</select>
+	</div>
 <?php endif; ?>
 <?php if ($_SESSION['dsm_client_attrs'] && $_SESSION['dsm_client_attrs']['class_location'] && $filters->location) : ?>
 	<?php foreach ($filters->location as $location) : ?>
 		 <?php echo (($location->label == $_SESSION['dsm_client_attrs']['class_location']) ? '<input type="hidden" id="filter_class_location" name="filter[class_location]" value="'.$location->value.'"/>' : ''); ?>
 	<?php endforeach; ?>
 <?php elseif ((DSM_OC_CLASS_FILTER_LOCATION == '1' || $_SESSION['dsm_client_attrs']['show_location_filter']) &&  !$_SESSION['dsm_client_attrs']['class_code']) : ?>
-<div class="form-group">
-	<select name="filter[class_location]" class="form-control" id="filter_class_location">
+	<div class="form-group">
+		<select name="filter[class_location]" class="form-control" id="filter_class_location">
 		<?php foreach ($filters->location as $location) : ?>
 			<option value="<?php echo $location->value; ?>" 
 			<?php 
@@ -94,21 +94,21 @@ if (is_array($_SESSION['dsm_client_attrs']))
 				}
 			?>><?php echo $location->label; ?></option>
 		<?php endforeach; ?>	
-	</select>
-</div>
+		</select>
+	</div>
 <?php endif; ?>
 <?php if ($_SESSION['dsm_client_attrs'] && $_SESSION['dsm_client_attrs']['class_program'] && $filters->program) : ?>
 	<?php foreach ($filters->program as $program) : ?>
 		 <?php echo (($program->label == $_SESSION['dsm_client_attrs']['class_program']) ? '<input type="hidden" id="filter_class_program" name="filter[class_program]" value="'.$program->label.'"/>' : ''); ?>
 	<?php endforeach; ?>
 <?php elseif (DSM_OC_CLASS_FILTER_PROGRAM == '1' && !$_SESSION['dsm_client_attrs']['class_code']) : ?>
-<div class="form-group">
-	<select name="filter[class_program]" class="form-control" id="filter_class_program">
+	<div class="form-group">
+		<select name="filter[class_program]" class="form-control" id="filter_class_program">
 		<?php foreach ($filters->program as $program) : ?>
 			<option value="<?php echo (($program->value) ? $program->label : ""); ?>" <?php echo (($program->label == $_POST['filter']['class_program']) ? 'selected="selected"' : ''); ?>><?php echo $program->label; ?></option>
 		<?php endforeach; ?>
-	</select>
-</div>
+		</select>
+	</div>
 <?php endif; ?>
 </form>
 <br/>

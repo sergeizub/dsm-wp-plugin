@@ -5,7 +5,7 @@ class ClassesController extends BaseController
 {
     public function __construct()
     {
-      parent::__construct();
+    	parent::__construct();
     }
 
 	public function GetClasses($filter = array())
@@ -125,7 +125,7 @@ class ClassesController extends BaseController
 				set_transient( 'dsm_class_'.$id, $dsm_class_info, 6 * HOUR_IN_SECONDS );
 		}
 
-	 return parent::GetList("classes/$id");
+		return parent::GetList("classes/$id");
 	}
 
 	public function GetScheduleInfo($class_id,$schedule_id)
@@ -138,7 +138,7 @@ class ClassesController extends BaseController
 
 	public function GetFilters()
 	{
-	 return parent::GetList("classes/filters");
+		return parent::GetList("classes/filters");
 	}
 
 	public function GetAvailableSchedules($data)

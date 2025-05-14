@@ -11,9 +11,7 @@ if(!empty($_REQUEST['start']))
 $filter = json_decode(str_replace('\"','"',$_REQUEST['filter']),true);
 if(empty($filter))
 	$filter = array();
-	
 	if ($_SESSION['dsm_client_attrs']['week'] == "true") {
-		
 		if ($_SESSION['dsm_client_attrs']["start_date"])
 			$date_now = date(DSM_PHPDATE, strtotime(sanitize_text_field($_SESSION['dsm_client_attrs']["start_date"])));
 		else

@@ -5,7 +5,7 @@ class GatewayController extends BaseController
 {
     public function __construct()
     {
-      parent::__construct();
+		parent::__construct();
     }
 
 	public function PaymentForm($data = array())

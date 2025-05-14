@@ -11,39 +11,38 @@ else
 ?>
 <?php if (!empty($sales_item_id) && !empty($sales_products)) : ?>
 <?php foreach ($sales_products as $category) : ?>
-
 <?php foreach ($category as $sales_item) : ?>
 <div>
-		<h5><?php echo $sales_item['NAME']; ?></h5>
-		<p><?php echo $sales_item['DESCRIPTION']; ?></p>
-		<?php if (empty($sales_item['PRICE']) && $sales_item['TYPE'] == "gift_card"): ?>
-			<div class="row">
-				<div class="col-sm-3 text-right">
-					Gift Card Amount, <?php echo DSM_CURRENCY_SIGN; ?>
-				</div>
-				<div class="col-sm-3">
-					<input type="text" id="gift_card_amount" name="gift_card_amount" class="form-control" 
+	<h5><?php echo $sales_item['NAME']; ?></h5>
+	<p><?php echo $sales_item['DESCRIPTION']; ?></p>
+	<?php if (empty($sales_item['PRICE']) && $sales_item['TYPE'] == "gift_card"): ?>
+	<div class="row">
+		<div class="col-sm-3 text-right">
+			Gift Card Amount, <?php echo DSM_CURRENCY_SIGN; ?>
+		</div>
+		<div class="col-sm-3">
+			<input type="text" id="gift_card_amount" name="gift_card_amount" class="form-control" 
 						onchange="jQuery('.select-product').attr('dsm_gift_card_amount', parseFloat(jQuery(this).val()).toFixed(2));" />
-				</div>
-			</div>
-		<?php else: ?>
-		<p>Price: <b><?php echo DSM_CURRENCY_SIGN; ?><?php echo $sales_item['PRICE']; ?></b></p>
-		<?php endif; ?>
-		<br>
-		<?php if ($sales_item['TYPE'] != 'gift_card'): ?>
-		<?php foreach ($sales_item_full_info['students'] as $student): ?>
-			<?php include plugin_dir_path( __FILE__ ) . 'select-sales-item.php'; ?>
-		<?php endforeach; ?>
-		<?php else: ?>
-        <button class="btn btn-success select-product dsm_ajax_tab" type="button"
-			id="quant-<?php echo $sales_item['ID']; ?>"
-			dsm_obj="checkout" dsm_method="SubmitSalesItem"
-			dsm_sales_item_id="<?php echo $sales_item['ID']; ?>" dsm_quantity="1"
-        	dsm_activation_date="<?php echo date("M j, Y"); ?>">
-        	<i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
-		</button>
-		<?php endif; ?>
-		<br>
+		</div>
+	</div>
+<?php else: ?>
+	<p>Price: <b><?php echo DSM_CURRENCY_SIGN; ?><?php echo $sales_item['PRICE']; ?></b></p>
+<?php endif; ?>
+	<br>
+	<?php if ($sales_item['TYPE'] != 'gift_card'): ?>
+	<?php foreach ($sales_item_full_info['students'] as $student): ?>
+	<?php include plugin_dir_path( __FILE__ ) . 'select-sales-item.php'; ?>
+	<?php endforeach; ?>
+	<?php else: ?>
+	<button class="btn btn-success select-product dsm_ajax_tab" type="button"
+		id="quant-<?php echo $sales_item['ID']; ?>"
+		dsm_obj="checkout" dsm_method="SubmitSalesItem"
+		dsm_sales_item_id="<?php echo $sales_item['ID']; ?>" dsm_quantity="1"
+    	dsm_activation_date="<?php echo date("M j, Y"); ?>">
+    	<i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+	</button>
+	<?php endif; ?>
+	<br>
 </div>
 <?php endforeach; ?>
 <?php endforeach; ?>

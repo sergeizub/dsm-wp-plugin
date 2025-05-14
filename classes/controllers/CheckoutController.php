@@ -26,12 +26,15 @@ class CheckoutController extends BaseController
 		}
 		unset($data['selected_account']);
 		$data['dsm_action'] = 'checkout/confirm';
-		return parent::Submit($data);
+		$res = parent::Submit($data);
+		if ($res->success == true)
+			App::GetError()->Success("Checkout and Registration was successful.");
+		return $res;
 	}
 	
 	public function GetCart()
 	{
-	 return  json_decode(json_encode(parent::GetList("checkout/cart")),true);
+		return  json_decode(json_encode(parent::GetList("checkout/cart")),true);
 	}
 	
 	public function SubmitCartItem($data)
@@ -74,7 +77,7 @@ class CheckoutController extends BaseController
     
     public function GetSalesItems()
 	{
-	 return  json_decode(json_encode(parent::GetList("checkout/sales-items")),true);
+		return  json_decode(json_encode(parent::GetList("checkout/sales-items")),true);
 	}
     
     public function GetSalesItemInfo($sales_item_id)
