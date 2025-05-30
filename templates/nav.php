@@ -9,7 +9,7 @@ jQuery(function() {
     });
 	dsm_ajax_click(jQuery('.default_tab'));
 });
-var show_login_alert = '<?php echo DSM_OC_SHOW_LOGIN_ALERT; ?>';
+var show_login_alert = '<?php if (defined('DSM_OC_SHOW_LOGIN_ALERT')) echo DSM_OC_SHOW_LOGIN_ALERT; else echo ''; ?>';
 </script>
 <ul class="nav nav-pills">
 	<?php if (isset($_SESSION['dsm_client_attrs']['default_tab']) && $_SESSION['dsm_client_attrs']['default_tab'] == 'sales-items') : ?>

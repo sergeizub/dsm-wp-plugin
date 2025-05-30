@@ -18,16 +18,20 @@ foreach ($classes_list->schedules as $schedules) {
     if (is_array($schedules->data)) {
         foreach ($schedules->data as $schedule) {
             $title = '';
-            $title .= $schedule->CODE . ', ';
-            $title .= $schedule->NAME. ', ';
-            $title .= $schedule->LEVEL. ', ';
-            $title .= $schedule->PROGRAM. ', ';
-            $title .= $schedule->LOCATION. ', ';
-            $title .= str_replace(' +0', '', $schedule->STUDENTS_QUANTITY. ' students, ');
-
-            $title = rtrim($title, ', ');
-           
+            if ($schedule->CLASS_ID) {
+                $title .= $schedule->CODE . ', ';
+                $title .= $schedule->NAME. ', ';
+                $title .= $schedule->LEVEL. ', ';
+                $title .= $schedule->PROGRAM. ', ';
+                $title .= $schedule->LOCATION. ', ';
+                $title .= str_replace(' +0', '', $schedule->STUDENTS_QUANTITY. ' students, ');
+                $title = rtrim($title, ', ');
+            } else if ($schedule->title) {
+                $title = $schedule->title;
+            }
             $color = $schedule->COLOR ? '#'.$schedule->COLOR : '';
+            $text_color = $schedule->M_STATUS_TEXT_COLOR ? '#'.$schedule->M_STATUS_TEXT_COLOR : '';
+
             $monthly_schedules[$i]['title'] = $title;
             $monthly_schedules[$i]['schedule_id'] = $schedule->ID;
             $monthly_schedules[$i]['class_id'] = $schedule->CLASS_ID;
@@ -40,6 +44,7 @@ foreach ($classes_list->schedules as $schedules) {
             $monthly_schedules[$i]['instructor_id'] = $schedule->INSTRUCTOR_ID;
             $monthly_schedules[$i]['instructor_name'] =  $schedule->INSTRUCTOR;
             $monthly_schedules[$i]['allDay'] = false;
+            $monthly_schedules[$i]['textColor'] = $text_color;
             $monthly_schedules[$i]['backgroundColor'] = $color;
             $monthly_schedules[$i]['borderColor'] = $color;
             $monthly_schedules[$i]['menu'] = 1;

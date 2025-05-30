@@ -67,12 +67,14 @@ jQuery(function() {
             }
 	    ],
 		eventRender: function(event, element, calEvent) {
-			element.attr('dsm_schedule_id',event.schedule_id);
-			element.attr('dsm_class_id',event.class_id);
-			element.attr('href','#tab-class-registration-' + event.class_id);
-			element.attr('dsm_obj','classes');
-			element.attr('dsm_method','GetInfo');
-			element.attr('dsm_classes_view','classes-calendar');
+			if (event.class_id) {
+				element.attr('href','#tab-class-registration-' + event.class_id);
+				element.attr('dsm_schedule_id',event.schedule_id);
+				element.attr('dsm_class_id',event.class_id);
+				element.attr('dsm_obj','classes');
+				element.attr('dsm_method','GetInfo');
+				element.attr('dsm_classes_view','classes-calendar');
+			}
 		},
         eventAfterAllRender: function () {
 	        var d = jQuery('#dsm_calendar').fullCalendar('getDate');
@@ -80,7 +82,7 @@ jQuery(function() {
         },
 		eventClick: function(calEv, jsEv) {
 			jsEv.preventDefault();
-			if (navigator.onLine) {
+			if (navigator.onLine && jQuery(this).attr('dsm_class_id') > 0) {
 				dsm_ajax_click(this);
 			}
 		}
