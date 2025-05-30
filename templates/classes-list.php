@@ -22,6 +22,8 @@ else
 	$classes_list = App::GetClient()->GetController('classes')->GetClassesData($filter);
 
 foreach ($classes_list->groupclasses as $class) {
+	if ($_SESSION['dsm_client_attrs']['hide_closed'] && !empty($class->OC_REGISTRATION) && $class->OC_REGISTRATION == "closed")
+		continue;
 	if ($programs_class_code) {
 		$classes_tabs['class_code'][] =  $class;
 		if (is_array($programs_class_code))
