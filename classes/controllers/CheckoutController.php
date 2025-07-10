@@ -27,8 +27,6 @@ class CheckoutController extends BaseController
 		unset($data['selected_account']);
 		$data['dsm_action'] = 'checkout/confirm';
 		$res = parent::Submit($data);
-		if ($res->success == true)
-			App::GetError()->Success("Checkout and Registration was successful.");
 		return $res;
 	}
 	
