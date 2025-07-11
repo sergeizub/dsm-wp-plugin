@@ -1,6 +1,5 @@
 <?php
 namespace DanceStudioManager;
-
 $classes_list = array();
 $add_data = $filter = array();
 $add_data_start = sanitize_text_field($_REQUEST['start']);
@@ -11,12 +10,13 @@ if(!empty($_REQUEST['start']))
 $filter = json_decode(str_replace('\"','"',$_REQUEST['filter']),true);
 
 $classes_list = App::GetClient()->GetController('classes')->GetClasses($filter + $add_data);
-
 $i = 0;
 $monthly_schedule = array();
 foreach ($classes_list->schedules as $schedules) {
     if (is_array($schedules->data)) {
         foreach ($schedules->data as $schedule) {
+            if (defined('DSM_OC_SHOW_CANCELED_CLASSES_ON_CALENDAR') && empty(DSM_OC_SHOW_CANCELED_CLASSES_ON_CALENDAR) && $schedule->STATUS == "2")
+                continue;
             $title = '';
             if ($schedule->CLASS_ID) {
                 $title .= $schedule->CODE . ', ';
