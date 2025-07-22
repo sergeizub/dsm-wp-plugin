@@ -7,7 +7,9 @@
 			<?php echo $cart['discount_coupon']['DISCOUNT_VALUE']; ?> (<?php echo (($cart['discount_coupon']['DISCOUNT_TYPE'] == 'percentage') ? '%' : DSM_CURRENCY_SIGN); ?>)</i>
 	</label>
 	<div class="col-sm-3">		            
-		<button type="submit" class="btn btn-warning" id="remove-discount"><i class="fa fa-minus-circle"></i> Remove</button>
+		<a href="#tab-checkout-cart" class="btn btn-warning dsm_ajax_tab" id="remove-discount" dsm_obj="checkout" dsm_method="RemoveDiscount"
+		onclick="this.setAttribute('dsm_discount_coupon', '');"
+		><i class="fa fa-minus-circle"></i> Remove</a>
 	</div>
 </div>
 <input type="hidden" name="method" value="RemoveDiscount"/>

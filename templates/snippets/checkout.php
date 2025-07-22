@@ -65,6 +65,11 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 	</div>
 <?php else: ?>
 	<div class="row">
+		<div class="col-md-10 form-horizontal">
+			<?php include plugin_dir_path( __FILE__ ) . 'discount-coupon.php'; ?>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-md-10">
 			<form action="" method="post" id="gateway-form-checkout" class="form-horizontal" role="form" data-valid="validateGatewayForm()">
 			<input type="hidden" name="action" value="dsmclient"/>
@@ -74,8 +79,6 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 			<?php if (!empty($selected_account)) :?>
 			<input type="hidden" name="selected_account" value="<?php echo $selected_account; ?>"/>
 			<?php endif; ?>
-			<?php //include plugin_dir_path( __FILE__ ) . 'discount-coupon.php'; ?>
-		        
 			    <div class="form-group">
 			        <label class="col-sm-5 control-label">Total Amount to Pay, <?php echo DSM_CURRENCY_SIGN; ?></label>
 			        <div class="col-sm-7" id="transaction_amount_field">
