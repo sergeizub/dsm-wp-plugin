@@ -58,7 +58,7 @@ class Settings
             <td>
                 <select name="dsm_api_version">
                 <?php
-                    foreach(App::GetApi()->GetApiVersionList() as $k=>$v):
+                    foreach(Api::GetApiVersionList() as $v):
                         echo '<option value="'.$v.'" '.((get_option('dsm_api_version') == $v) ? 'selected="selected"' : '').'>'.$v.'</option>';
                     endforeach;
                 ?>

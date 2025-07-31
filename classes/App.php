@@ -6,7 +6,6 @@ class App
     protected static $api;
     protected static $client;
     protected static $template;
-    protected static $settings;
     protected static $error;
     protected static $emailer;
 
@@ -16,7 +15,6 @@ class App
         self::$api = new Api();
         self::$client = new Client();
         self::$template = new Template();
-        self::$settings = new Settings();
         self::$emailer = new Emailer();
 
         add_action('admin_enqueue_scripts', function ($hook) {

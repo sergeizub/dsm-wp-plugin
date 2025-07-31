@@ -41,4 +41,7 @@ function dsm_body_class( $classes ) {
 }
 add_filter( 'body_class', 'dsm_body_class' );
 
-$dsm_app = new DanceStudioManager\App();
+if ( !is_admin() || wp_doing_ajax() )
+  $dsm_app = new DanceStudioManager\App();
+
+$dsm_settings = new DanceStudioManager\Settings();

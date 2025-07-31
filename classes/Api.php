@@ -7,7 +7,7 @@ class Api
     protected $url = null;
 	protected $api_key = null;
     protected $api_version = null;
-	protected $api_version_list = array('v1' => 'v1');
+	protected static $api_version_list = array('v1' => 'v1');
 	protected $id_param = null;
 	const SOURCE_ID = "4";
 
@@ -31,7 +31,7 @@ class Api
 
 	public function ValidateApiVersion()
 	{
-        if (in_array($this->api_version,$this->api_version_list))
+        if (in_array($this->api_version,self::$api_version_list))
 			return true;
 		else
 			App::GetError()->Show("Select Valid Api Version");
@@ -48,9 +48,9 @@ class Api
 		return true;
 	}
 
-	public function GetApiVersionList()
+	public static function GetApiVersionList()
 	{
-		return $this->api_version_list;
+		return self::$api_version_list;
 	}
 
 	public function SetIdParam($id_param)
