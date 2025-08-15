@@ -2,21 +2,7 @@ var dsm_ajax = false;
 
 jQuery(function () {
     jQuery(document).on('click', '.btn-login-alert', function() {
-        if (jQuery(this).attr('dsm_class_id')) 
-            jQuery("a[href$='#tab-auth-register']").attr('dsm_class_id', jQuery(this).attr('dsm_class_id'));  
-        else
-            jQuery("a[href$='#tab-auth-register']").removeAttr("dsm_class_id");
-            
-        if (jQuery(this).attr('dsm_schedule_id')) 
-            jQuery("a[href$='#tab-auth-register']").attr('dsm_schedule_id', jQuery(this).attr('dsm_schedule_id'));
-         else
-            jQuery("a[href$='#tab-auth-register']").removeAttr("dsm_schedule_id");
-            
-        if (jQuery(this).attr('dsm_sales-item_id')) 
-            jQuery("a[href$='#tab-auth-register']").attr('dsm_sales-item_id', jQuery(this).attr('dsm_sales-item_id'));  
-        else
-            jQuery("a[href$='#tab-auth-register']").removeAttr("dsm_sales-item_id");
-        jQuery("a[href$='#tab-auth-register']").trigger("click");
+        LoginAlertClick(this);
 		//alert("Please login to continue");
 	});
     
@@ -490,5 +476,23 @@ function validateGatewayForm() {
         alert(msg);
         return false;
     }
+}
+
+function LoginAlertClick(button) {
+    if (jQuery(button).attr('dsm_class_id')) 
+            jQuery("a[href$='#tab-auth-register']").attr('dsm_class_id', jQuery(button).attr('dsm_class_id'));  
+    else
+        jQuery("a[href$='#tab-auth-register']").removeAttr("dsm_class_id");
+            
+    if (jQuery(button).attr('dsm_schedule_id')) 
+            jQuery("a[href$='#tab-auth-register']").attr('dsm_schedule_id', jQuery(button).attr('dsm_schedule_id'));
+    else
+        jQuery("a[href$='#tab-auth-register']").removeAttr("dsm_schedule_id");
+            
+    if (jQuery(button).attr('dsm_sales-item_id')) 
+        jQuery("a[href$='#tab-auth-register']").attr('dsm_sales-item_id', jQuery(button).attr('dsm_sales-item_id'));  
+        
+        jQuery("a[href$='#tab-auth-register']").removeAttr("dsm_sales-item_id");
+    jQuery("a[href$='#tab-auth-register']").trigger("click");
 }
 
