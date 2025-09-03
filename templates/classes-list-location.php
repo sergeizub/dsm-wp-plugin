@@ -13,7 +13,7 @@ $end_date = new DateTime($filter['start']);
 
 if (isset($_SESSION['dsm_client_attrs']) && isset($_SESSION['dsm_client_attrs']['days_quantity']) && (int)$_SESSION['dsm_client_attrs']['days_quantity'] > 0) {
    $filter['days_quantity'] = $_SESSION['dsm_client_attrs']['days_quantity'];
-} elseif(!isset($_SESSION['dsm_client_attrs']['class_days_limit']))  {
+} elseif(!isset($_SESSION['dsm_client_attrs']['days_quantity']))  {
     $filter['days_quantity'] = '99999'; //Unlimited
 }
 

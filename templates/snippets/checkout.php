@@ -76,6 +76,11 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 			<input type="hidden" name="obj" value="checkout"/>
 			<input type="hidden" name="boot_tab" value="tab-checkout-cart"/>
 			<input type="hidden" name="method" value="Submit"/>
+			<input type="hidden" name="convenience_fee_percent" value="<?php echo DSM_CONVENIENCE_FEE_PERCENT; ?>">
+		    <input type="hidden" name="convenience_fee_amount" value="<?php echo DSM_CONVENIENCE_FEE_AMOUNT; ?>">   
+		    <input type="hidden" name="convenience_fee_for_check" value="<?php echo DSM_CONVENIENCE_FEE_FOR_CHECK; ?>">
+			<input type="hidden" name="convenience_fee" value="<?php echo $cart["convenience_fee"];?>" id="convenience_fee_value">
+			<input type="hidden" name="total_amount" value="<?php echo $cart["total"];?>" id="total_amount">   
 			<?php if (!empty($selected_account)) :?>
 			<input type="hidden" name="selected_account" value="<?php echo $selected_account; ?>"/>
 			<?php endif; ?>
@@ -102,13 +107,49 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 			        </div>
 			    </div>
 			    <?php endif; ?>
+				<script>
+				jQuery(function() {
+					var convenience_fee_for_check = parseFloat(jQuery("input[name='convenience_fee_for_check']").val()); 
+					var option = jQuery('#source_selector option:selected');
+		        	var tender_type = jQuery('input[name="tender_type"]');
+		        	var card_info = jQuery('#card_info');
+		        	var card_cvv_info = jQuery('#card_cvv_info');
+		        	if (option.val() == 0) {
+		            	tender_type.val('CARD');
+		            	card_info.show();
+		            	card_cvv_info.show();
+		        	} else {
+		            	tender_type.val(option.data('tender_type'));
+		            	card_info.hide();
+						if (window.payment_form_cvv) 
+							card_cvv_info.show();
+						else  
+							card_cvv_info.hide();
+		        	}
+		
+					var fee = jQuery('#convenience_fee_value').val(), total_amount = jQuery('#total_amount').val();
+		
+					if (option.val() == 0 ||  option.data('tender_type') == 'CARD' || (option.data('tender_type') == 'ACH' && convenience_fee_for_check==1)) { 
+						jQuery('#transaction_amount').val(parseFloat(total_amount).toFixed(2));
+						jQuery('#grand_total_place').html(parseFloat(total_amount).toFixed(2));
+						jQuery('#convenience_fee_amount_place').html(parseFloat(fee).toFixed(2));
+						jQuery('#convenience_fee_block').show();
+					}
+					else {
+						jQuery('#convenience_fee_block').hide();
+						jQuery('#transaction_amount').val(parseFloat(total_amount-fee).toFixed(2));
+						jQuery('#grand_total_place').html(parseFloat(total_amount-fee).toFixed(2));
+						jQuery('#convenience_fee_amount_place').html(parseFloat(0).toFixed(2));			
+					}
+				});	
+				</script>	    
 				<div class="form-group">
 					<label class="col-sm-5 control-label"></label>
 					<div class="col-sm-7">
 						<select class="form-control" name="token_id" id="source_selector">
 							<option value="0">Add New Card</option> 
 							<?php foreach ($payment_sources as $token) : ?> 
-							<option value="<?php echo $token['id']; ?>" <?php echo ((!empty($selected_account) && !empty($token['account_id']) && $selected_account != $token['account_id']) ? 'disabled="disabled"' : ''); ?>>
+							<option value="<?php echo $token['id']; ?>" data-tender_type="<?php echo $token['tender_type'];?>" <?php echo ((!empty($selected_account) && !empty($token['account_id']) && $selected_account != $token['account_id']) ? 'disabled="disabled"' : ''); ?>>
 								<?php echo ((DSM_DSM_DATE_FORMAT == 'AU' && DSM_PAYMENT_SYSTEM == 'quickpay' && $token['tender_type'] == 'ACH') ? 'DD' : $token['tender_type']); ?> **** **** **** <?php echo $token['last4']; ?> <?php echo (($token['account']) ? '('.$token['account'].')': ''); ?>
 		                    </option>
 							<?php endforeach; ?>

@@ -149,7 +149,7 @@ $selected_account = $cart['selected_account'];
 	</div>
 <?php endif; ?>
 <?php if ($cart['convenience_fee'] > 0) : ?>
-	<div class="row">
+	<div class="row" id="convenience_fee_block">
 		<div class="col-md-offset-7 col-md-6 pt10">		
 		    <div class="form-group">
 			    <label class="col-sm-5 control-label text-right"><?php echo $cart['convenience_fee_category']; ?>, <?php echo DSM_CURRENCY_SIGN; ?></label>
@@ -164,7 +164,7 @@ $selected_account = $cart['selected_account'];
 		<div class="col-md-offset-7 col-md-6 pt10">		
 		    <div class="form-group">
 			    <label class="col-sm-5 control-label text-right">Grand Total, <?php echo DSM_CURRENCY_SIGN; ?></label>
-			    <label class="col-sm-2 control-label text-right">
+			    <label class="col-sm-2 control-label text-right" id="grand_total_place">
  			        <?php echo number_format($cart['total'],2); ?>
 			    </label>
 		    </div>	
