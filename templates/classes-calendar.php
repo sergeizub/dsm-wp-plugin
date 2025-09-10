@@ -37,12 +37,14 @@ jQuery(function() {
 	jQuery('#dsm_calendar').fullCalendar({
 		header: {
 			left: 'prev next', 
-			center: 'title'
+			center: 'title',
+			right: 'month, agendaWeek, listWeek, agendaDay'
 		},
 		height: 'auto',
 		allDaySlot: false,
 		slotMinutes: 15,
 		timeFormat: '<?php echo DSM_CALENDARTIME; ?>',
+		views: { listWeek: { buttonText: 'list week' } },
         minTime: '<?php echo ((DSM_CALENDAR_START_TIME) ? DSM_CALENDAR_START_TIME  : '6:00'); ?>',
         maxTime: '<?php echo ((DSM_CALENDAR_END_TIME) ? DSM_CALENDAR_END_TIME  : '24:00'); ?>',
 		editable: false,
