@@ -112,9 +112,13 @@ class AuthController extends BaseController
     }
 	
 	public function GetAuthToken()
-	{
+	{	
 		if (!empty($_SESSION['dsm_auth_token']))
 			return $_SESSION['dsm_auth_token'];
+		elseif ($_COOKIE['dsm_auth_token']) {
+			$_SESSION['dsm_auth_token'] = $_COOKIE['dsm_auth_token'];
+			return $_SESSION['dsm_auth_token'];
+		}
         return false;
 	}
 	
@@ -122,10 +126,13 @@ class AuthController extends BaseController
 	{
 		if (!empty($token)) {
 			$_SESSION['dsm_auth_token'] = $token;
+			setcookie('dsm_auth_token', $token, strtotime("tomorrow"));
 			return $_SESSION['dsm_auth_token'];
 		}
 		else {
 			unset($_SESSION['dsm_auth_token']);
+			unset($_COOKIE['dsm_auth_token']);
+			setcookie("dsm_auth_token", "", time() - 3600);
 			return false;
 		}
 	}
