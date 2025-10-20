@@ -159,6 +159,11 @@ class App
             wp_enqueue_script('dsmfunctionjs');
             wp_enqueue_script('dsm_datetimepicker');
             wp_enqueue_script('dsm_fullcalendar');
+
+            //Redirect to the https page 
+            if (!is_ssl() && !empty($_SERVER['HTTP_HOST']) && !empty($_SERVER['REQUEST_URI'])) {
+                return '<script>window.location.href = "https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'].'";</script>';
+            }
             
             $_SESSION['dsm_client_attrs'] = array('view' => '', 'default_tab' => '');
             if (!empty($atts))
@@ -178,7 +183,7 @@ class App
             ob_start();
             self::$client->Output();
             $output = ob_get_clean();
-            return   $output;
+            return $output;
         });
     }
 

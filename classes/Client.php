@@ -76,6 +76,11 @@ class Client
 	
 	public function Output()
 	{
+		//Allow output client only at the secure page
+		if (!is_ssl()) {
+			echo '<div class="alert alert-danger">DSM plugin runs only at secure (https) page</div>';
+			return;
+        }
 		$this->tab = false;
 		App::GetTemplate()->Load(  'header.php' );
 		if (!empty($_POST['dsm_action'])) {
