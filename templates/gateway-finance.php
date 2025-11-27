@@ -31,7 +31,7 @@ namespace DanceStudioManager;
 			<li role="presentation">
 				<a href="#tab-members-cards-accounts" role="tab" data-toggle="tab" aria-controls="Stored Cards">
 					Stored <?php if (defined('DSM_OC_ALLOW_CARD_PAYMENTS') && DSM_OC_ALLOW_CARD_PAYMENTS == "1") echo 'Cards '; ?>
-					<?php if ((defined('DSM_OC_ALLOW_CARD_PAYMENTS') && DSM_OC_ALLOW_CARD_PAYMENTS == "1") || (defined('DSM_OC_ALLOW_ACH_PAYMENTS') && DSM_OC_ALLOW_ACH_PAYMENTS == "1")) echo '/ '; ?>
+					<?php if ((defined('DSM_OC_ALLOW_CARD_PAYMENTS') && DSM_OC_ALLOW_CARD_PAYMENTS == "1") && (defined('DSM_OC_ALLOW_ACH_PAYMENTS') && DSM_OC_ALLOW_ACH_PAYMENTS == "1")) echo '/ '; ?>
 					<?php if (defined('DSM_OC_ALLOW_ACH_PAYMENTS') && DSM_OC_ALLOW_ACH_PAYMENTS == "1") echo 'Bank (ACH)'; ?>
 				</a>
 			</li>
@@ -41,7 +41,7 @@ namespace DanceStudioManager;
 					<a href="#tab-scheduled-payments" aria-controls="Scheduled Payments" role="tab" data-toggle="tab">Scheduled Payments</a>
 				</li>
 			<?php endif; ?>
-			<?php if ((defined('DSM_OC_ALLOW_ACH_PAYMENTS') && DSM_OC_ALLOW_ACH_PAYMENTS == "1") || (defined('DSM_OC_ALLOW_ACH_PAYMENTS') && DSM_OC_ALLOW_ACH_PAYMENTS == "1")) : ?>
+			<?php if ((defined('DSM_OC_ALLOW_CARD_PAYMENTS') && DSM_OC_ALLOW_CARD_PAYMENTS == "1") || (defined('DSM_OC_ALLOW_ACH_PAYMENTS') && DSM_OC_ALLOW_ACH_PAYMENTS == "1")) : ?>
 				<li class="nav-item" role="presentation">
 					<a href="#tab-pay" aria-controls="Make Payment" role="tab" data-toggle="tab" class="nav-link">Make Payment</a>
 				</li>
@@ -77,7 +77,7 @@ namespace DanceStudioManager;
 			<?php include plugin_dir_path( __FILE__ ) . 'snippets/members-scheduled-payments.php'; ?>
 		</div>
 		<?php endif; ?>
-		<?php if ((defined('DSM_OC_ALLOW_ACH_PAYMENTS') && DSM_OC_ALLOW_ACH_PAYMENTS == "1") || (defined('DSM_OC_ALLOW_ACH_PAYMENTS') && DSM_OC_ALLOW_ACH_PAYMENTS == "1")) : ?>	
+		<?php if ((defined('DSM_OC_ALLOW_CARD_PAYMENTS') && DSM_OC_ALLOW_CARD_PAYMENTS == "1") || (defined('DSM_OC_ALLOW_ACH_PAYMENTS') && DSM_OC_ALLOW_ACH_PAYMENTS == "1")) : ?>	
 		<div role="tabpanel" class="tab-pane" id="tab-pay">
 			<br/><br/>		
 			<?php include plugin_dir_path( __FILE__ ) . 'snippets/gateway-pay.php'; ?>

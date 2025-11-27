@@ -69,7 +69,7 @@ foreach($classes_locations as $location_id => $schedules): ?>
     <table class="table table-borderless table_mobile_block" style="table-layout: auto;" id="table_location_<?php echo $location_id; ?>"> 
         <thead>
         <tr>
-        	<th style="border-bottom:"><h4><?php echo $schedules[0]->LOCATION; ?></h4></th>
+        	<th style="border-bottom:"><h3><?php echo $schedules[0]->LOCATION; ?></h3></th>
             <th></th>
             <th></th>
         </tr>
