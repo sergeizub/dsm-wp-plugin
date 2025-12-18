@@ -7,6 +7,7 @@ class Api
     protected $url = null;
 	protected $api_key = null;
     protected $api_version = null;
+	public $stop_plugin = false;
 	protected static $api_version_list = array('v1' => 'v1');
 	protected $id_param = null;
 	const SOURCE_ID = "4";
@@ -163,6 +164,8 @@ class Api
 					foreach ($response->errors as $k_error => $v_error) {
 						App::GetError()->Show($k_error.":".$v_error);
 						echo '<br/>';
+						if ($k_error == 'x-api-key')
+							$this->stop_plugin = true;
 						return false;
 					}
 				else {
@@ -221,8 +224,12 @@ class Api
 			if (!empty($response->message))
 				App::GetError()->Show($response->message);
 			elseif (!empty($response->errors))
-				foreach($response->errors as $k_error => $v_error)
+				foreach($response->errors as $k_error => $v_error) {
 					App::GetError()->Show($k_error.":".$v_error);
+					echo '<br/>';
+					if ($k_error == 'x-api-key')
+						$this->stop_plugin = true;
+				}
 			elseif (!empty($response->system))
 				App::GetError()->Show($response->system);
 			return false;
@@ -273,12 +280,24 @@ class Api
         $result = wp_remote_get( $this->url."api/".$this->api_version."/".$action.$params , array( 'headers' => $httpheader,  'timeout' => 120 ));
         
 		$response = json_decode(wp_remote_retrieve_body($result));
-        
+		
 		if (!empty($response->error)) {
 			App::GetError()->Show($response->error);
 			return false;
 		}
-		else if (isset($response->success) && $response->success == false) {
+		elseif (!empty($response->errors)) {
+			if (is_iterable($response->errors) || get_class($response->errors) === 'stdClass') {
+				foreach($response->errors as $k_error => $v_error) {
+					App::GetError()->Show($v_error);
+					if ($k_error == 'x-api-key')
+						$this->stop_plugin = true;
+				}
+			}
+			else
+				App::GetError()->Show($response->errors);
+			return false;
+		}
+		elseif (isset($response->success) && $response->success == false) {
 			App::GetError()->Show($response->message);
 			return false;
 		}

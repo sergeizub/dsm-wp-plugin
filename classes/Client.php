@@ -101,6 +101,8 @@ class Client
 		else
 		{
 			App::GetApi()->AuthorizationSettings();
+			if (App::GetApi()->stop_plugin)
+				return;
 			App::GetTemplate()->Load(  'nav.php' );
 			App::GetTemplate()->Load(  'footer.php' );
 		}
