@@ -162,7 +162,10 @@ class Api
 			elseif (!empty($response->errors))
 				if (is_array($response->errors) || is_object($response->errors))
 					foreach ($response->errors as $k_error => $v_error) {
-						App::GetError()->Show($k_error.":".$v_error);
+						if(isset($k_error) && !is_numeric($k_error))
+							App::GetError()->Show($k_error.":".$v_error);
+						else
+							App::GetError()->Show($v_error);
 						echo '<br/>';
 						if ($k_error == 'x-api-key')
 							$this->stop_plugin = true;

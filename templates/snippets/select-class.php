@@ -69,8 +69,8 @@ namespace DanceStudioManager;
 									  ($sales_item['SELL_INDIVIDUALLY'] == '1' || $sales_item['TYPE'] == 'package')) : ?>
 			<li>
 				<div class="row">
+					<?php if ($student['STUDENT_ID'] > 0 && (!$sales_item['PAYMENT_PLANS'] || ($sales_item['PAYMENT_PLANS'] && $sales_item['SALES_ITEM_PAY_IN_FULL']))) :  ?>
 					<div class="col-xs-3 col-sm-3 col-md-2">
-								<?php if ($student['STUDENT_ID'] > 0) :  ?>
 									<?php if (DSM_OC_SHOPPING_CART_ENABLED == '1') : ?>
 										<?php if ($class['REGISTRATION'] == 'invitation' && $class['ELIGIBLE']) :  ?>
 						<div class="label label-warning">Invitation Only</div>
@@ -101,8 +101,8 @@ namespace DanceStudioManager;
 											<?php endif; ?>
 										<?php endif; ?>
 									<?php endif; ?>
-								<?php endif; ?>
 					</div>
+					<?php endif; ?>
 					<div class="col-xs-9 col-sm-9 col-md-10 ctitle">
 								<?php echo DSM_CURRENCY_SIGN; ?><?php echo $sales_item['PRICE']; ?> <strong><?php echo $sales_item['NAME']; ?></strong>
 								<?php echo (($sales_item['PRICE_DESCRIPTION']) ? '<br><span class="label label-warning">'.$sales_item['PRICE_DESCRIPTION'].'</span>' : ''); ?>
