@@ -5,17 +5,21 @@ html {
 	text-align: center;
 	width: 60px !important;
 }
-.dsm_body {
+.dsm_body #dsm_content {
 	background: #faf9fb !important;
-    
 }
 
-.dsm_body a, .dsm_body a:link, .dsm_body a:visited {
+.dsm_body #dsm_content a, .dsm_body #dsm_content a:link, .dsm_body #dsm_content a:visited {
 	color: #333;
 }
 
 .dsm_body a:hover {
+	text-decoration: none;
+}
+
+.dsm_body #dsm_content a:hover {
 	color: #660087 !important;
+    text-decoration: underline;
 }
 
 .dsm_body .page-content h1, .dsm_body .page-content h2, .dsm_body .page-content h3, .dsm_body .page-content h4, .dsm_body .page-content h5, .dsm_body .page-content h6,

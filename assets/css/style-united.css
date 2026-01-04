@@ -4,20 +4,18 @@
 
 */
 
-
-.dsm_body a, .dsm_body a:link, .dsm_body a:visited {
+.dsm_body #dsm_content a, .dsm_body #dsm_content a:link, .dsm_body #dsm_content a:visited {
 	color: #333;
 }
 
-.dsm_body a.btn-success, a.btn-success:link, a.btn-success:visited
+.dsm_body #dsm_content a.btn-success, .dsm_body #dsm_content a.btn-success:link, .dsm_body #dsm_content a.btn-success:visited
 {
 	color: #fff;
 }
 
-.dsm_body a:hover {
+.dsm_body .dsm_body #dsm_content a:hover {
 	color: #660087 !important;
 }
-
 
 /*.sidebar {
     background-color: #660087 !important;
