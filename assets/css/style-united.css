@@ -13,10 +13,11 @@
 	color: #fff;
 }
 
-.dsm_body .dsm_body #dsm_content a:hover {
-	color: #660087 !important;
-}
 
+.dsm_body #dsm_content .nav .dropdown-menu a:hover{
+	color: #fff !important;
+    text-decoration: none;
+}
 /*.sidebar {
     background-color: #660087 !important;
 }*/	
