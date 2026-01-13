@@ -30,7 +30,7 @@ namespace DanceStudioManager;
 			</td>
             <?php if (DSM_OC_CLASS_LIST_CLASS_AGE == '1') { ?><td class="text-center"><?php echo $class->MIN_AGE; ?> - <?php echo $class->MAX_AGE; ?></td><?php } ?>
             <?php if (DSM_OC_CLASS_LIST_CLASS_LEVEL == '1') { ?><td class="text-center"><?php echo $class->LEVEL; ?></td><?php } ?>
-            <?php if (DSM_OC_CLASS_LIST_CLASS_LOCATION == '1') { ?><td class="text-center"><h4><?php echo $class->LOCATION; ?></td><?php } ?></h4>  
+            <?php if (DSM_OC_CLASS_LIST_CLASS_LOCATION == '1') { ?><td class="text-center"><h4><?php echo $class->LOCATION; ?></h4></td><?php } ?></h4>  
 			<?php if (DSM_OC_CLASS_LIST_CLASS_DAY_TIME == '1') { ?>
 			<td class="text-right">
 				<?php echo $class->DAY_OF_WEEK;

@@ -232,7 +232,7 @@ html {
         border:none !important;
     }
     
-    .dsm_body .table_mobile_block > thead > tr > th{
+    .dsm_body .table_mobile_block > thead > tr > th, .hidden-sm{
         display:none;
         border:none !important;
     }

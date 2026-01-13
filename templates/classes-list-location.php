@@ -66,14 +66,9 @@ foreach ($classes_list->schedules as $day)
 
 <?php
 foreach($classes_locations as $location_id => $schedules): ?>
+    <h3 class="hidden-sm"><?php echo $schedules[0]->LOCATION; ?></h3>
+    <br/>
     <table class="table table-borderless table_mobile_block" style="table-layout: auto;" id="table_location_<?php echo $location_id; ?>"> 
-        <thead>
-        <tr>
-        	<th style="border-bottom:"><h3><?php echo $schedules[0]->LOCATION; ?></h3></th>
-            <th></th>
-            <th></th>
-        </tr>
-        </thead>
         <tbody>
         <?php 
         foreach ($schedules as $schedule): ?>
@@ -83,6 +78,7 @@ foreach($classes_locations as $location_id => $schedules): ?>
             	<?php echo (DSM_OC_CLASS_LIST_CLASS_CODE == '1') ? $schedule->CODE.' ' : ''; ?>
             	<?php echo (DSM_OC_CLASS_LIST_CLASS_NAME == '1') ? $schedule->NAME.' ' : ''; ?>
             </td>
+            <?php if (DSM_OC_CLASS_LIST_CLASS_LOCATION == '1') { ?><td class="text-center"><?php echo $schedule->LOCATION; ?></td><?php } ?></h4> 
             <td><span style="white-space: nowrap;"><?php echo $schedule->DAY; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $schedule->START_TIME; ?></span> - <span style="white-space: nowrap;"><?php echo $schedule->END_TIME; ?></span></td>
             <td>
                 <?php if ($schedule->M_STATUS != 'Book Now'): ?>
