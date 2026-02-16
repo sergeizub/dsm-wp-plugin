@@ -2,6 +2,8 @@
 namespace DanceStudioManager;
 use \DateTime;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 include plugin_dir_path( __FILE__ ) . 'auth-login.php';
 
 $register_fields = App::GetClient()->GetController('auth')->GetRegisterForm();

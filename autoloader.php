@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 spl_autoload_register( 'dsm_namespace_autoload' );
 

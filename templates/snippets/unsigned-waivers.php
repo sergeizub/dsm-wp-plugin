@@ -1,6 +1,8 @@
 <?php
 namespace DanceStudioManager;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if (App::GetClient()->GetController('auth')->isLogged()) :
 $unsigned_waivers = array();
 $waivers =  App::GetClient()->GetController('members')->GetWaivers();

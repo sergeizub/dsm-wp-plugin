@@ -1,5 +1,8 @@
 <?php
 namespace DanceStudioManager;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $user_data = App::GetClient()->GetController('members')->GetUserData();
 
 if (!empty($_POST['first_name']))

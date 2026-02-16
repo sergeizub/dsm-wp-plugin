@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <div id="tab-auth-login" class="tab-pane">
 	<div class="dsm-header"><h2>Reset Password</h2></div>
 	<form method="post"  action="index.php" class="form-horizontal" role="form">

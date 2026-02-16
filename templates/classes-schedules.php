@@ -1,6 +1,8 @@
 <?php
 namespace DanceStudioManager;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $class_id = App::GetApi()->GetIdParam();
 $schedules_list = App::GetClient()->GetController('classes')->GetClasses();	
 ?>

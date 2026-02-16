@@ -1,5 +1,8 @@
 <?php
 namespace DanceStudioManager;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $result = App::GetClient()->GetController('members')->GetCharges();
 ?>
 <h2 class="page-header">Charges</h2>

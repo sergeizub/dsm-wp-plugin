@@ -1,5 +1,8 @@
 <?php
 namespace DanceStudioManager;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $private_lessons_totals =  json_decode(json_encode(App::GetClient()->GetController('members')->GetPrivateLessonsTotals()),true);
 $my_classes = json_decode(json_encode(App::GetClient()->GetController('members')->GetMyClasses()),true);
 

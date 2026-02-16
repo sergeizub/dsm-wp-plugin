@@ -1,5 +1,8 @@
 <?php
 namespace DanceStudioManager;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $scheduled_payments =  App::GetClient()->GetController('members')->GetScheduledPayments();
 ?>
 <h2 class="page-header">Scheduled Payments</h2>

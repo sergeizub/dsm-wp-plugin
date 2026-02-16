@@ -1,6 +1,8 @@
 <?php
 namespace DanceStudioManager;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 class App
 {
     protected static $api;
@@ -30,7 +32,6 @@ class App
                 wp_register_style( 'dsm_fullcalendar', plugins_url('../assets/fullcalendar-3.9.0/fullcalendar.min.css',__FILE__) );
                
                 wp_register_script( 'dsm_js_bootstrap', plugins_url('../assets/bootstrap-3.3.7/js/bootstrap.min.js',__FILE__) , array('jquery'));
-                wp_register_script( 'dsm_momentjs', plugins_url('../assets/js/moment.js/2.20.1/moment.min.js',__FILE__) , array('jquery'));
                 wp_register_script( 'dsm_signature_pad', plugins_url('../assets/js/signature_pad/index.js',__FILE__ ) , array('jquery'), time());
                 wp_register_script( 'dsmfunctionjs', plugins_url('../assets/js/functions.js',__FILE__ ) , array('jquery') , time());
 
@@ -61,7 +62,7 @@ class App
             wp_dequeue_script( 'bootstrap' );
             
             wp_enqueue_script('dsm_js_bootstrap');
-            wp_enqueue_script('dsm_momentjs');
+            wp_enqueue_script('dsm_momentjs','https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js', array(), '2.20.1', true );
             wp_enqueue_script('dsm_signature_pad');
             wp_enqueue_script('dsmfunctionjs');
             wp_enqueue_script('dsm_datetimepicker');
@@ -92,7 +93,7 @@ class App
             wp_dequeue_script( 'bootstrap' );
 
             wp_enqueue_script('dsm_js_bootstrap');
-            wp_enqueue_script('dsm_momentjs');
+            wp_enqueue_script( 'dsm_momentjs', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js', array(), '2.20.1', true );
             wp_enqueue_script('dsm_signature_pad');
             wp_enqueue_script('dsmfunctionjs');
             wp_enqueue_script('dsm_datetimepicker');
@@ -123,7 +124,7 @@ class App
             wp_dequeue_script( 'bootstrap' );
 
             wp_enqueue_script('dsm_js_bootstrap');
-            wp_enqueue_script('dsm_momentjs');
+            wp_enqueue_script( 'dsm_momentjs', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js', array(), '2.20.1', true );
             wp_enqueue_script('dsm_signature_pad');
             wp_enqueue_script('dsmfunctionjs');
             wp_enqueue_script('dsm_datetimepicker');
@@ -154,7 +155,7 @@ class App
             wp_dequeue_script( 'bootstrap' );
 
             wp_enqueue_script('dsm_js_bootstrap');
-            wp_enqueue_script('dsm_momentjs');
+            wp_enqueue_script( 'dsm_momentjs', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js', array(), '2.20.1', true );
             wp_enqueue_script('dsm_signature_pad');
             wp_enqueue_script('dsmfunctionjs');
             wp_enqueue_script('dsm_datetimepicker');

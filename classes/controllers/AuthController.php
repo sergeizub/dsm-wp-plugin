@@ -1,6 +1,8 @@
 <?php
 namespace DanceStudioManager;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 class AuthController extends BaseController
 {
     public function __construct()

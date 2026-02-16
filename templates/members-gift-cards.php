@@ -1,5 +1,8 @@
 <?php
 namespace DanceStudioManager;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $result = App::GetClient()->GetController('members')->GetGiftCards();
 $gift_card_data = $result->data;
 ?>

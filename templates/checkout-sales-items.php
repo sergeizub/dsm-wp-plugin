@@ -1,6 +1,8 @@
 <?php
 namespace DanceStudioManager;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $items = App::GetClient()->GetController('checkout')->GetSalesItems();
 $sales_item_id = App::GetApi()->GetIdParam();
 if (defined('DSM_OC_BUY_ITEM_PAGE_VIEW_TYPE') && DSM_OC_BUY_ITEM_PAGE_VIEW_TYPE == '1')

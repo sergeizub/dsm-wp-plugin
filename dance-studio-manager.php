@@ -3,7 +3,7 @@
 Plugin Name: Dance Studio Manager
 Description: Plugin for Dance Studio Manager.
 Version: 1.0
-Requires at least: 5
+Requires at least: 5.0
 Requires PHP: 5.6
 Author: DSM
 Author URI: https://www.dancestudiomanager.com/

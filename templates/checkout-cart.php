@@ -1,5 +1,8 @@
 <?php
 namespace DanceStudioManager;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $cart = App::GetClient()->GetController('checkout')->GetCart();
 $selected_account = $cart['selected_account'];
 ?>

@@ -1,5 +1,8 @@
 <?php
 namespace DanceStudioManager;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $result = App::GetClient()->GetController('members')->GetPurchases();
 ?>
 <div id="tab-members-purchases" class="tab-pane">

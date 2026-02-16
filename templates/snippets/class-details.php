@@ -1,5 +1,8 @@
 <?php
 namespace DanceStudioManager;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $groupclasses = array();
 $class_id = App::GetApi()->GetIdParam();
 $schedule_id = sanitize_key($_POST['schedule_id']);

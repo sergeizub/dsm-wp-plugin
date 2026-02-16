@@ -2,6 +2,8 @@
 namespace DanceStudioManager;
 use \DateTime;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $student = array();
 $student_id = App::GetApi()->GetIdParam();
 

@@ -1,5 +1,8 @@
 <?php
 namespace DanceStudioManager;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $result = App::GetClient()->GetController('gateway')->PaymentForm();
 if (!empty($result->form))
 	$form = $result->form;

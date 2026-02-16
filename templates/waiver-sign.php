@@ -1,6 +1,8 @@
 <?php
 namespace DanceStudioManager;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $waiver_id = $_POST['waiver_id'];
 
 if (empty($waiver_id))

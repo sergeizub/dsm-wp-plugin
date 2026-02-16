@@ -1,6 +1,9 @@
 <?php
 namespace DanceStudioManager;
 use \DateTime, \DateInterval;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $filter = array();
 
 if (!empty($_REQUEST['start']))

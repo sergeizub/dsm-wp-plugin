@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php if (DSM_ENABLE_DISCOUNT_COUPONS == "1") : ?>
 <?php if ($cart['discount_coupon']) : ?>
 <div class="form-group">

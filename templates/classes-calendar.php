@@ -1,6 +1,7 @@
 <?php
 	namespace DanceStudioManager;
 	$class_id = App::GetApi()->GetIdParam();
+	if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div id="tab-classes-calendar" class="tab-pane">
 <?php

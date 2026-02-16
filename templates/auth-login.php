@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <div id="tab-auth-login" class="tab-pane">
 <div class="dsm-header"><h2>Sign In</h2></div>
 <div class="form-signin">

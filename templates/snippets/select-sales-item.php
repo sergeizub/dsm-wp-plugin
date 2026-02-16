@@ -1,5 +1,6 @@
 <?php
 namespace DanceStudioManager;
+if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div class="row mt10">
 	<div class="col-xs-4 col-md-3 text-right" style="padding-top: 5px !important;font-weight:bold;"><?php echo $student['FIRSTNAME']; ?> <?php echo $student['LASTNAME']; ?></div>

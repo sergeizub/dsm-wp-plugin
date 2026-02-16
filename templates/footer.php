@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 </div>
 	<div class="modal fade" id="dialog-confirm">
 	  <div class="modal-dialog">

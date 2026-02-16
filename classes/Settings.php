@@ -1,6 +1,8 @@
 <?php
 namespace DanceStudioManager;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 class Settings
 {
     public function __construct()
@@ -59,7 +61,7 @@ class Settings
                 <select name="dsm_api_version">
                 <?php
                     foreach(Api::GetApiVersionList() as $v):
-                        echo '<option value="'.$v.'" '.((get_option('dsm_api_version') == $v) ? 'selected="selected"' : '').'>'.$v.'</option>';
+                        echo '<option value="'.esc_html($v).'" '.((get_option('dsm_api_version') == $v) ? 'selected="selected"' : '').'>'.esc_html($v).'</option>';
                     endforeach;
                 ?>
                 </select>

@@ -1,6 +1,8 @@
 <?php
 namespace DanceStudioManager;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $sales_item_id = App::GetApi()->GetIdParam();
 $sales_item_full_info = App::GetClient()->GetController('checkout')->GetSalesItemInfo($sales_item_id);
 

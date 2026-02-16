@@ -1,5 +1,8 @@
 <?php 
 namespace DanceStudioManager;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $waivers =  App::GetClient()->GetController('members')->GetWaivers();
 ?>
 <div class="page-header">

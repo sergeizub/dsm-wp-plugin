@@ -1,6 +1,8 @@
 <?php
 namespace DanceStudioManager;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $last_check_videos = "";
 $videos = App::GetClient()->GetController('videos')->GetVideos($_REQUEST['filter']);
 

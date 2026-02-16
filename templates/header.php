@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <div id="dsm_content">
 <script>
 	var dtp_date = 'MMM D, YYYY';

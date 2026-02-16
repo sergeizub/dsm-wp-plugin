@@ -1,5 +1,8 @@
 <?php
 namespace DanceStudioManager;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 ?>
 <div id="tab-gateway-finance" class="tab-pane">
 	<script>

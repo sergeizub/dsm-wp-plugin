@@ -1,6 +1,8 @@
 <?php
 namespace DanceStudioManager;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 class Client
 {
 	protected $controllers = array();
@@ -42,7 +44,7 @@ class Client
 		switch($_POST['boot_tab'])
 		{
 			case 'logout' :
-				echo App::GetClient()->GetController('auth')->Logout();
+				echo esc_html(App::GetClient()->GetController('auth')->Logout());
 				break;
 			default :
 

@@ -1,5 +1,8 @@
 <?php
 namespace DanceStudioManager;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts();
 ?>
 <h2 class="page-header">Stored Cards</h2>

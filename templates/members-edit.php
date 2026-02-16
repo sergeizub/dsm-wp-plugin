@@ -2,6 +2,8 @@
 namespace DanceStudioManager;
 use \DateTime;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $member_id = App::GetApi()->GetIdParam();
 
 if(!empty($member_id) && $member_id > 0) {

@@ -1,6 +1,9 @@
 <?php
 namespace DanceStudioManager;
 use \DateTime, \DateInterval;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $filter = $classes_locations = array();
 
 if (!empty($_REQUEST['start']))

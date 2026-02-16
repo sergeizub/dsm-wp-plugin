@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <script>
     jQuery(function () {
 	    jQuery(document).on('click', '.open-signature-pad_<?php echo $w_data->ID; ?>', function() {

@@ -1,6 +1,8 @@
 <?php
 namespace DanceStudioManager;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if (!$filters)
 	$filters = App::GetClient()->GetController('classes')->GetFilters();
 

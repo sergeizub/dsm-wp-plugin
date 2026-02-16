@@ -1,5 +1,8 @@
 <?php
 namespace DanceStudioManager;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 ?>
 <table class="table table-borderless table_mobile_block" style="table-layout: auto;">
     <thead>

@@ -1,6 +1,8 @@
 <?php
 namespace DanceStudioManager;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $last_check_announcements = "";
 $news = App::GetClient()->GetController('news')->GetNews();
 

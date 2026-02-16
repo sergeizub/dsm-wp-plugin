@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit;?>
 <div class="input-group quantity">
 	<span class="input-group-btn">
 		<button type="button" class="btn btn-secondary btn-number" data-type="minus"

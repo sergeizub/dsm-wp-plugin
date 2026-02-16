@@ -1,6 +1,8 @@
 <?php
 namespace DanceStudioManager;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $filter = array();
 ?>
 <div id="tab-classes-list" class="tab-pane">

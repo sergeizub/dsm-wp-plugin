@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <div id="tab-classes-list" class="tab-pane">
 	<div class="dsm-header">
 		<h2>Change Password</h2>
