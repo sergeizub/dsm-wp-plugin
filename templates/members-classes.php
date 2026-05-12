@@ -54,7 +54,7 @@ function SchedulesSection(section_id)
 	<?php echo ( (!empty($student['item']['BIRTHDAY_MONTH']) && $student['item']['CURRENT_MONTH'] == $student['item']['BIRTHDAY_MONTH']) ? '<i class="fa fa-birthday-cake"></i>&nbsp;' : '' ); ?> <?php echo $student['item']['FIRSTNAME'].' '.$student['item']['LASTNAME']; ?>  
 </div>
 <div class="panel-body">
-    <?php if (count($student['classes']) > 0) : ?>
+    <?php if (is_countable($student['classes']) && count($student['classes']) > 0) : ?>
 	<table class="table table-striped">
 	<thead>
     <tr>
@@ -73,15 +73,15 @@ function SchedulesSection(section_id)
     	<td>
 			<?php echo $class['CLASS_NAME'];?>
     	<td>
-			<?php echo ( (count($class['CLASS_SCHEDULES']) && $class['PAYMENT_METHOD'] === 'billing_schedule' > 0 && $class['STATUS_IN_CLASS'] == '1' &&  (DSM_MAIN_DISCOUNT === 'MULTI_CLASS' || DSM_MAIN_DISCOUNT === 'HOURLY_DISCOUNTS')) ? $class['tuition_description'] : ''); ?>
+			<?php echo ( (is_countable($class['CLASS_SCHEDULES']) && count($class['CLASS_SCHEDULES']) && $class['PAYMENT_METHOD'] === 'billing_schedule' && $class['STATUS_IN_CLASS'] == '1' &&  (DSM_MAIN_DISCOUNT === 'MULTI_CLASS' || DSM_MAIN_DISCOUNT === 'HOURLY_DISCOUNTS')) ? $class['tuition_description'] : ''); ?>
         	<?php echo ( ($class['CLASS_TYPE'] === 'private') ? 'Completed '.$class['LESSONS_COMPLETED'].' of '.$class['LESSONS_PURCHASED'].' hours. Remaining hours: '.$class['LESSONS_REMAINING'] : '' ); ?>
         </td>
     	<?php if (DSM_MAIN_DISCOUNT === 'MULTI_CLASS' || DSM_MAIN_DISCOUNT === 'HOURLY_DISCOUNTS') : ?>
     	<td>
-			<?php echo ( (count($class['CLASS_SCHEDULES']) && $class['PAYMENT_METHOD'] === 'billing_schedule' > 0 && $class['STATUS_IN_CLASS'] == '1') ? $class['discount_description'] : '' ); ?>
+			<?php echo ( (is_countable($class['CLASS_SCHEDULES']) && count($class['CLASS_SCHEDULES']) && $class['PAYMENT_METHOD'] === 'billing_schedule' && $class['STATUS_IN_CLASS'] == '1') ? $class['discount_description'] : '' ); ?>
     	</td>
     	<td class="text-right">
-			<?php echo ( (count($class['CLASS_SCHEDULES']) && $class['PAYMENT_METHOD'] === 'billing_schedule' > 0 && $class['STATUS_IN_CLASS'] == '1') ? $class['tuition_amount'] : '' ); ?>
+			<?php echo ( (is_countable($class['CLASS_SCHEDULES']) && count($class['CLASS_SCHEDULES']) && $class['PAYMENT_METHOD'] === 'billing_schedule' && $class['STATUS_IN_CLASS'] == '1') ? $class['tuition_amount'] : '' ); ?>
     	</td>
     	<?php endif; ?>
     	<td class="text-right">

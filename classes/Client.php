@@ -30,7 +30,9 @@ class Client
 	
 	public function GetController($controller)
 	{
-		return $this->controllers[$controller];
+		if (isset($this->controllers[$controller]))
+			return $this->controllers[$controller];
+		else throw new \Exception("Controller ".$controller." not found");
 	}
 	
 	public function GetTab()
@@ -41,22 +43,26 @@ class Client
 	public function AjaxClient() 
 	{
 		global $wpdb;
-		switch($_POST['boot_tab'])
+		$boot_tab = isset($_POST['boot_tab']) ? sanitize_text_field($_POST['boot_tab']) : '';
+		switch($boot_tab)
 		{
 			case 'logout' :
 				echo esc_html(App::GetClient()->GetController('auth')->Logout());
 				break;
 			default :
-
 				if (!empty($_POST['obj']) && !empty($_POST['method'])) {
 					$obj = sanitize_text_field($_POST['obj']);
 					$method =  sanitize_text_field($_POST['method']);
-					$this->GetController($obj)->$method($_POST);
+					$controller = $this->GetController($obj);
+					if (is_callable([$controller, $method]))
+						$controller->$method($_POST);
+					else throw new \Exception("Method ".$method." not found in controller ".$obj);
+					die;
 				}
 				
-				if ($_REQUEST['boot_tab']) {
-					$this->tab = sanitize_text_field($_REQUEST['boot_tab']);
-					$tab = str_replace("#",'',sanitize_text_field($_REQUEST['boot_tab']));
+				if ($boot_tab) {
+					$this->tab = $boot_tab;
+					$tab = str_replace("#",'',$boot_tab);
 					$tab = str_replace("tab-",'',$tab);
 					$tab_path = explode("-",$tab);
 					if (is_numeric($tab_path[count($tab_path)-1]))
@@ -65,7 +71,7 @@ class Client
 						unset($tab_path[count($tab_path)-1]);
 						$tab = implode("-",$tab_path);
 					}
-					if($_REQUEST['type'] == "json"){
+					if (isset($_REQUEST['type']) && $_REQUEST['type'] == "json"){
 						App::GetTemplate()->Load($tab.'_json.php');
 					}
 					else
