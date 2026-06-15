@@ -30,7 +30,6 @@ class AuthController extends BaseController
 		if (DSM_MEMBERS_PRIMARY_LOCATION_ENABLED == '1') {
 			if (empty($data['PRIMARY_LOCATION'])) {
 				App::GetError()->Show("Please Select Primary Location.");
-				return false;
 			}
 		}
 		

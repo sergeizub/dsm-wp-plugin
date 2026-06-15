@@ -1,6 +1,5 @@
 <?php
 namespace DanceStudioManager;
-$tab = App::GetClient()->GetTab();
 ?>
 <script>
 jQuery(function() {

@@ -32,7 +32,7 @@ class Client
 	{
 		if (isset($this->controllers[$controller]))
 			return $this->controllers[$controller];
-		else throw new \Exception("Controller ".$controller." not found");
+		else throw new \Exception("Controller ".esc_html($controller)." not found");
 	}
 	
 	public function GetTab()
@@ -42,7 +42,6 @@ class Client
 	
 	public function AjaxClient() 
 	{
-		global $wpdb;
 		$boot_tab = isset($_POST['boot_tab']) ? sanitize_text_field($_POST['boot_tab']) : '';
 		switch($boot_tab)
 		{
@@ -56,14 +55,12 @@ class Client
 					$controller = $this->GetController($obj);
 					if (is_callable([$controller, $method]))
 						$controller->$method($_POST);
-					else throw new \Exception("Method ".$method." not found in controller ".$obj);
-					die;
+					else throw new \Exception("Method ".esc_html($method)." not found in controller ".esc_html($obj));
 				}
-				
 				if ($boot_tab) {
-					$this->tab = $boot_tab;
 					$tab = str_replace("#",'',$boot_tab);
 					$tab = str_replace("tab-",'',$tab);
+					$this->tab = $tab;
 					$tab_path = explode("-",$tab);
 					if (is_numeric($tab_path[count($tab_path)-1]))
 					{
