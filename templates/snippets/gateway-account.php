@@ -15,6 +15,8 @@ if (!empty($_POST['last_name']))
 else if (!empty($user_data) && isset($user_data->LASTNAME))
 	$last_name = $user_data->LASTNAME;
 
+$payment_method = 'ach';
+$label_class = 'col-sm-5'; 
 ?>
 <div class="row">
 	<h2 class="page-header">Add ACH</h2>
@@ -32,6 +34,12 @@ else if (!empty($user_data) && isset($user_data->LASTNAME))
 					<input class="form-control" type="text" name="last_name" maxlength="50" value="<?php echo $last_name; ?>">
 				</div>
 			</div>
+			<?php if (defined('DSM_PAYMENT_SYSTEM') && DSM_PAYMENT_SYSTEM == 'bluefin'): ?>
+			<script>
+				var gw_form_id = 'gateway-form-ach';
+			</script>
+			<?php include plugin_dir_path( __FILE__ ) . 'hosted_forms/bluefin.php'; ?>
+			<?php else: ?>
 			<div class="form-group">
 				<label class="col-sm-5 control-label"><span class="text-warning">*</span> Bank Account Number</label>
 				<div class="col-sm-7">
@@ -44,6 +52,7 @@ else if (!empty($user_data) && isset($user_data->LASTNAME))
 					<input class="form-control" type="text" name="bank_routing_number" value="<?php echo sanitize_text_field($_POST['bank_routing_number']); ?>">
 				</div>
 			</div>
+			<?php endif; ?>
 			<br>
 			<?php if (!defined('DSM_OC_HIDE_AUTO_PAYMENT') || empty(DSM_OC_HIDE_AUTO_PAYMENT)): ?>
 			<div class="form-group">

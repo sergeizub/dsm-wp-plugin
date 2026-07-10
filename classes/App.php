@@ -42,6 +42,7 @@ class App
                 );
                 wp_register_script( 'dsm_datetimepicker', plugins_url('../assets/bootstrap-3.3.7/js/bootstrap-datetimepicker.min.js',__FILE__) , array('jquery'));
                 wp_register_script( 'dsm_fullcalendar', plugins_url('../assets/fullcalendar-3.9.0/fullcalendar.min.js',__FILE__) , array('jquery'));
+                wp_register_script( 'payconex-iframe-lib', 'https://secure.payconex.net/iframe/iframe-lib-1.0.0.js', array(), null, false );
             }, 20);
 
         add_action( 'widgets_init', function () {
@@ -98,6 +99,7 @@ class App
             wp_enqueue_script('dsmfunctionjs');
             wp_enqueue_script('dsm_datetimepicker');
             wp_enqueue_script('dsm_fullcalendar');
+            wp_enqueue_script( 'payconex-iframe-lib' );
 
             $args = array(
                 'before_widget' => '<div class="box widget">',
@@ -129,6 +131,7 @@ class App
             wp_enqueue_script('dsmfunctionjs');
             wp_enqueue_script('dsm_datetimepicker');
             wp_enqueue_script('dsm_fullcalendar');
+            wp_enqueue_script( 'payconex-iframe-lib' );
 
             $args = array(
                 'before_widget' => '<div class="box widget">',
@@ -160,6 +163,7 @@ class App
             wp_enqueue_script('dsmfunctionjs');
             wp_enqueue_script('dsm_datetimepicker');
             wp_enqueue_script('dsm_fullcalendar');
+            wp_enqueue_script( 'payconex-iframe-lib' );
 
             //Redirect to the https page 
             if (!is_ssl() && !empty($_SERVER['HTTP_HOST']) && !empty($_SERVER['REQUEST_URI'])) {

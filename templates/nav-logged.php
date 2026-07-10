@@ -1,5 +1,6 @@
 <?php
 namespace DanceStudioManager;
+if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <script>
 jQuery(function() {

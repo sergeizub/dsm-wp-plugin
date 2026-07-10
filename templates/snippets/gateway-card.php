@@ -14,6 +14,9 @@ if (!empty($_POST['last_name']))
 	$last_name = isset($_POST['last_name']) ? sanitize_text_field($_POST['last_name']) : '';
 else if (!empty($user_data) && isset($user_data->LASTNAME))
 	$last_name = $user_data->LASTNAME;
+
+$payment_method = 'card';
+$label_class = 'col-sm-5'; 
 ?>
 <div class="row">
 	<h2 class="page-header">Add Card</h2>
@@ -30,7 +33,13 @@ else if (!empty($user_data) && isset($user_data->LASTNAME))
 				<div class="col-sm-7">
 					<input class="form-control" type="text" name="last_name" maxlength="50" value="<?php echo $last_name; ?>">
 				</div>
-			</div>		
+			</div>
+			<?php if (defined('DSM_PAYMENT_SYSTEM') && DSM_PAYMENT_SYSTEM == 'bluefin'): ?>
+			<script>
+				var gw_form_id = 'gateway-form-card';
+			</script>
+			<?php include plugin_dir_path( __FILE__ ) . 'hosted_forms/bluefin.php'; ?>
+			<?php else: ?>
 			<div class="form-group">
 				<label class="col-sm-5 control-label"><span class="text-warning">*</span> Card Number</label>
 				<div class="col-sm-7">
@@ -49,6 +58,7 @@ else if (!empty($user_data) && isset($user_data->LASTNAME))
 					<input class="form-control" type="text" name="card_verification" maxlength="4" value="<?php echo isset($_POST['card_verification']) ? sanitize_text_field($_POST['card_verification']) : ''; ?>">
 				</div>
 			</div>
+			<?php endif; ?>
 			<br>
 			<?php if (!defined('DSM_OC_HIDE_AUTO_PAYMENT') || empty(DSM_OC_HIDE_AUTO_PAYMENT)): ?>
 			<div class="form-group">
@@ -71,7 +81,11 @@ else if (!empty($user_data) && isset($user_data->LASTNAME))
 			<input type="hidden" name="sub_tab" value="#tab-gateway-card"/>
 			<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-6">
+					<?php if (defined('DSM_PAYMENT_SYSTEM') && DSM_PAYMENT_SYSTEM == 'bluefin'): ?>
+					<button type="submit" onclick="return SavePaymentMethod();" class="btn btn-primary">Save Card</button>
+					<?php else: ?>
 					<button type="submit" id="gateway-form-card-submit" class="btn btn-primary">Save Card</button>
+					<?php endif; ?>
 				</div>
 			</div>
 		</form>
