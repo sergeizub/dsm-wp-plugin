@@ -16,6 +16,8 @@ else if (!empty($user_data) && isset($user_data->LASTNAME))
 	$last_name = $user_data->LASTNAME;
 
 $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts();
+$payment_method = 'card';
+$label_class = 'col-sm-5'; 
 ?>
 <script>
 	window.account_credit =  '<?php echo ($cart['balance'] * -1);?>';
@@ -171,7 +173,13 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 			    <div class="col-sm-7">
 					<input class="form-control" type="text" name="last_name" maxlength="50" value="<?php echo $last_name; ?>">
 				</div>
-			</div>		
+			</div>
+			<?php if (defined('DSM_PAYMENT_SYSTEM') && DSM_PAYMENT_SYSTEM == 'bluefin'): ?>
+			<script>
+				var gw_form_id_card = 'gateway-form-checkout';
+			</script>
+			<?php include plugin_dir_path( __FILE__ ) . 'hosted_forms/bluefin-card.php'; ?>
+			<?php else: ?>	
 			<div class="form-group">
 			    <label class="col-sm-5 control-label"><span class="text-warning">*</span> Card Number</label>
 			    <div class="col-sm-7">
@@ -184,14 +192,17 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 					<input class="form-control" type="text" name="card_expiration" maxlength="4" value="<?php echo sanitize_text_field($_POST['card_expiration']); ?>">
 				</div>
 			</div>
+			<?php endif; ?>
 			</div>
 		    <div id="card_cvv_info">
+				<?php if (!defined('DSM_PAYMENT_SYSTEM') || DSM_PAYMENT_SYSTEM != 'bluefin'): ?>
 				<div class="form-group">
 			        <label class="col-sm-5 control-label">Card Verification (CVV2)</label>
 			        <div class="col-xs-3">
 						 <input class="form-control" type="text" name="card_verification" maxlength="4" value="<?php echo sanitize_text_field($_POST['card_verification']); ?>">
 					</div>
 			    </div>
+				<?php endif; ?>
 				<?php if (!empty(trim(get_option('dsm_payment_notice')))) :?>
 				<div class="form-group">
 					<label class="col-sm-5 control-label">&nbsp;</label>
@@ -216,7 +227,11 @@ $payment_sources = App::GetClient()->GetController('members')->GetCardsAccounts(
 			<div class="form-group">
 				<label class="col-sm-5 control-label"></label>
 				<div class="col-sm-7">
+					<?php if (defined('DSM_PAYMENT_SYSTEM') && DSM_PAYMENT_SYSTEM == 'bluefin'): ?>
+					<button type="submit" onclick="return SavePaymentMethodCard();" class="btn btn-primary" >Checkout</button>
+					<?php else: ?>
 					<button type="submit" class="btn btn-primary" id="gateway-form-checkout-submit">Checkout</button>
+					<?php endif; ?>
 				</div>
 			</div>
 			</form>

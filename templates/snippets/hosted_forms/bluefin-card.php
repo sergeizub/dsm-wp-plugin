@@ -77,24 +77,28 @@ function InitBluefinCard()
 
 function SavePaymentMethodCard()
 {
-	paymentiFrame.encrypt().failure(function(err) {
-		jQuery('#dsm_loading').hide();
-		alert("Error: " + err.message);
-		jQuery('#gateway-form-submit, #gateway-form-checkout-submit').removeAttr('disabled');			
-	}).invalidInput(function(data) {
-		jQuery('#dsm_loading').hide();
-		var err = 'Following errors occurred:<br>';
-		for (var i = 0; i < data.invalidInputs.length; i++ ) {
-			err += ' ' + data.invalidInputs[i].message + ' ' + data.invalidInputs[i].field + '.<br>';
-		}
-		jQuery('#gateway-form-submit, #gateway-form-checkout-submit').removeAttr('disabled');
-		alert(err);
-	}).success(function(res) {
-		jQuery('#gateway-form-submit, #gateway-form-checkout-submit').attr('disabled', 'disabled');
-    	jQuery('#dsm_loading').show();	
-		jQuery('#' + gw_form_id_card + ' input[name=etoken]').val(res.eToken);
-        dsm_ajax_click("#", jQuery('#' + gw_form_id_card));
-	});
+	if (jQuery('#source_selector').length == 0 || jQuery('#source_selector').val() == '0') {
+		paymentiFrame.encrypt().failure(function(err) {
+			jQuery('#dsm_loading').hide();
+			alert("Error: " + err.message);
+			jQuery('#gateway-form-submit, #gateway-form-checkout-submit').removeAttr('disabled');			
+		}).invalidInput(function(data) {
+			jQuery('#dsm_loading').hide();
+			var err = 'Following errors occurred:<br>';
+			for (var i = 0; i < data.invalidInputs.length; i++ ) {
+				err += ' ' + data.invalidInputs[i].message + ' ' + data.invalidInputs[i].field + '.<br>';
+			}
+			jQuery('#gateway-form-submit, #gateway-form-checkout-submit').removeAttr('disabled');
+			alert(err);
+		}).success(function(res) {
+			jQuery('#gateway-form-submit, #gateway-form-checkout-submit').attr('disabled', 'disabled');
+    		jQuery('#dsm_loading').show();	
+			jQuery('#' + gw_form_id_card + ' input[name=etoken]').val(res.eToken);
+        	dsm_ajax_click("#", jQuery('#' + gw_form_id_card));
+		});
+	} else { 
+		dsm_ajax_click("#", jQuery('#' + gw_form_id_card));
+	}
 	return false;
 }
 </script>
