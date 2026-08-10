@@ -27,10 +27,10 @@ if (!empty($class_full_info->items)) {
 include plugin_dir_path( __FILE__ ) . 'unsigned-waivers.php';
 ?>
 <?php foreach($groupclasses as $groupclass): ?>
-	Code: <?php echo $groupclass['CODE']; ?><br>
-	Genre: <?php echo $groupclass['NAME']; ?><br>
-	Level: <?php echo $groupclass['LEVEL']; ?><br>
-	Location: <?php echo $groupclass['LOCATION']; ?><br>
+	Code: <?php echo esc_html($groupclass['CODE']); ?><br>
+	Genre: <?php echo esc_html($groupclass['NAME']); ?><br>
+	Level: <?php echo esc_html($groupclass['LEVEL']); ?><br>
+	Location: <?php echo esc_html($groupclass['LOCATION']); ?><br>
 	<?php
 	if ($schedule_id)
 		$label_schedule = $schedule_id;
@@ -42,27 +42,27 @@ include plugin_dir_path( __FILE__ ) . 'unsigned-waivers.php';
 			$info = App::GetClient()->GetController('classes')->GetScheduleInfo($class_id,$label_schedule);
 			$schedule =  json_decode(json_encode($info->schedule),true);
 			if ($schedule)
-				echo 'Date and time: <span id="selected_schedule_date">'.$schedule['START_DATE'].' '.$schedule['START_TIME'].' - '.$schedule['END_TIME'].'</span><br>';
+				echo 'Date and time: <span id="selected_schedule_date">'.esc_html($schedule['START_DATE']).' '.esc_html($schedule['START_TIME']).' - '.esc_html($schedule['END_TIME']).'</span><br>';
 		?>
 	<?php endif; ?>
 	<?php if (DSM_OC_CLASS_SHOW_INSTRUCTOR == 1): ?>
-		Instructor: <?php echo $groupclass['INSTRUCTOR']; ?><br />
-		<?php echo (($groupclass['INSTRUCTOR2'] > 0 ) ? $groupclass['INSTRUCTOR2'].'<br />' : ''); ?>
-		<?php echo (($groupclass['INSTRUCTOR3'] > 0 ) ? $groupclass['INSTRUCTOR3'].'<br />' : ''); ?>
+		Instructor: <?php echo esc_html($groupclass['INSTRUCTOR']); ?><br />
+		<?php echo (($groupclass['INSTRUCTOR2'] > 0 ) ? esc_html($groupclass['INSTRUCTOR2']).'<br />' : ''); ?>
+		<?php echo (($groupclass['INSTRUCTOR3'] > 0 ) ? esc_html($groupclass['INSTRUCTOR3']).'<br />' : ''); ?>
 		<br />
 	<?php else: ?>
 		<br />
 	<?php endif; ?>
 
-	<?php echo ((DSM_OC_CLASS_SHOW_MAX_STUDENTS == 1 ) ? 'Max. Students: '.$groupclass['MAX_STUDENTS'].'<br />' : ''); ?>
+	<?php echo ((DSM_OC_CLASS_SHOW_MAX_STUDENTS == 1 ) ? 'Max. Students: '.esc_html($groupclass['MAX_STUDENTS']).'<br />' : ''); ?>
 	<?php if (DSM_OC_CLASS_DETAILS_AGE == 1) : ?>
-	<?php echo (($groupclass['MIN_AGE'] > 0 &&  $groupclass['MAX_AGE'] < 100) ? 'Age: '.$groupclass['MIN_AGE'].'-'.$groupclass['MAX_AGE'].'<br />' : ''); ?>
+	<?php echo (($groupclass['MIN_AGE'] > 0 &&  $groupclass['MAX_AGE'] < 100) ? 'Age: '.esc_html($groupclass['MIN_AGE']).'-'.esc_html($groupclass['MAX_AGE']).'<br />' : ''); ?>
 	<?php endif; ?>
 	<br />
-	<?php echo (($groupclass['DESCRIPTION_HTML']) ? '<br /><p>'.$groupclass['DESCRIPTION_HTML'].'</p>' : ''); ?>
-	<?php echo (($groupclass['PAGES']) ? '<div>'.str_replace('[:pg:]','<br /><br />',$groupclass['PAGES']).'</div>' : ''); ?>
-	<?php echo (($schedule_id) ? '<input type="hidden" id="selected_schedule_id" value="'.$schedule_id.'">' : ''); ?>
-	<?php echo (($groupclass['SCHEDULE_ID'] && empty($schedule_id)) ? '<input type="hidden" id="selected_schedule_id" value="'.$class['SCHEDULE_ID'].'">' : ''); ?>
+	<?php echo (($groupclass['DESCRIPTION_HTML']) ? '<br /><p>'. wp_kses($groupclass['DESCRIPTION_HTML'], 'post').'</p>' : ''); ?>
+	<?php echo (($groupclass['PAGES']) ? '<div>'.esc_html(str_replace('[:pg:]','<br /><br />',$groupclass['PAGES'])).'</div>' : ''); ?>
+	<?php echo (($schedule_id) ? '<input type="hidden" id="selected_schedule_id" value="'.esc_attr($schedule_id).'">' : ''); ?>
+	<?php echo (($groupclass['SCHEDULE_ID'] && empty($schedule_id)) ? '<input type="hidden" id="selected_schedule_id" value="'.esc_attr($class['SCHEDULE_ID']).'">' : ''); ?>
 	
 	<?php foreach ($items as $student): ?>
 	<?php include plugin_dir_path( __FILE__ ) . 'select-class.php'; ?>

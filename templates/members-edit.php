@@ -24,13 +24,13 @@ else {
   	<div class="col-sm-6">
      	<ul class="list-group">
 			<?php foreach ($related_students->family as $student): ?>
-			<li class="list-group-item"><i class="fa fa-user"></i> <?php echo $student->FIRSTNAME; ?> <?php echo $student->LASTNAME; ?>
+			<li class="list-group-item"><i class="fa fa-user"></i> <?php echo esc_html($student->FIRSTNAME); ?> <?php echo esc_html($student->LASTNAME); ?>
 				<div class="pull-right">
 				<?php if ($student->PARENT_ID > 0 && DSM_OC_RELATED_STUDENTS_ALLOW_EDIT_ARCHIVE == '1') : ?>
-					<a href="#tab-members-edit-<?php echo $student->ID; ?>" class="dsm_ajax_tab btn btn-primary btn-xs geturl">
+					<a href="#tab-members-edit-<?php echo esc_attr($student->ID); ?>" class="dsm_ajax_tab btn btn-primary btn-xs geturl">
 				  		<i class="fa fa-pencil"></i> Edit
 					</a>
-					<button type="button" dsm_obj="members" dsm_method="DeleteStudent" dsm_student_id="<?php echo $student->ID; ?>"
+					<button type="button" dsm_obj="members" dsm_method="DeleteStudent" dsm_student_id="<?php echo esc_attr($student->ID); ?>"
 				    	href="#tab-members-edit"
 						onclick="if (confirm('Are you sure you want to archive student?')) { dsm_ajax_click(this) };return false;"
 						class="btn btn-danger btn-xs">
@@ -54,39 +54,39 @@ if (is_array($user_form)) : ?>
 			echo '<div class="form-group">
 					<label class="col-sm-3 control-label">
 					'.((isset($field->required) && $field->required == true) ? '<span style="color: red;">*</span>' : '').' 
-					'.$field->label.'</label>
+					'.esc_html($field->label).'</label>
 						<div class="col-sm-6">';
 		
 			switch ($field->type) {
 				case "select":
 					if($field->name == 'I_AM' && DSM_MODE != 'COMBINED')
 						continue;
-					echo '<select name="'.$field->name.'" class="form-control">';
+					echo '<select name="'.esc_attr($field->name).'" class="form-control">';
 					if (is_array($field->values))
 						foreach ($field->values as $v) {
 							
-							echo '<option value="'.$v->value.'"
+							echo '<option value="'.esc_attr($v->value).'"
 										class="form-control option"
 										'.(($field->name == 'I_AM' &&  $v->value == 'adult-student' && $user_data['IS_STUDENT'] == '1' && $user_data['IS_GUARDIAN'] == '0') ? 'selected="selected"' : '').'
 										'.(($field->name == 'I_AM' &&  $v->value == 'guardian' && $user_data['IS_STUDENT'] == '0' && $user_data['IS_GUARDIAN'] == '1') ? 'selected="selected"' : '').'
 										'.(($field->name == 'I_AM' &&  $v->value == 'guardian-student' && $user_data['IS_STUDENT'] == '1' && $user_data['IS_GUARDIAN'] == '1') ? 'selected="selected"' : '').'
 										
 										'.((isset($user_data[$field->name]) && $user_data[$field->name] == $v->value) ? 'selected="selected"' : '').'
-										>'.$v->option.'</option>';
+										>'.esc_html($v->option).'</option>';
 						}
 					echo '</select>';
 				break;
 				case "text-area";
-					echo '<textarea class="form-control" rows="4" name="'.$field->name.'">'.(isset($user_data[$field->name]) ? $user_data[$field->name] : '').'</textarea>';
+					echo '<textarea class="form-control" rows="4" name="'.esc_attr($field->name).'">'.(isset($user_data[$field->name]) ? esc_textarea($user_data[$field->name]) : '').'</textarea>';
 				break;
 				case "date";
 					$dsm_day = new DateTime($user_data[$field->name]);
 					echo
 						'<div class="input-group date">
-							<input type="text" class="form-control" name="'.$field->name.'"
-								value="'.((isset($user_data[$field->name]) && $user_data[$field->name] != '0000-00-00') ?  $dsm_day->format(DSM_PHPDATE) : '').'"
+							<input type="text" class="form-control" name="'.esc_attr($field->name).'"
+								value="'.((isset($user_data[$field->name]) && $user_data[$field->name] != '0000-00-00') ?  esc_attr($dsm_day->format(DSM_PHPDATE)) : '').'"
 								'.((isset($field->required) && $field->required == true) ? 'required' : '').'
-								placeholder="'.$field->label.'" readonly="readonly">
+								placeholder="'.esc_attr($field->label).'" readonly="readonly">
 								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 						</div>';
 						unset($dsm_day);
@@ -101,10 +101,10 @@ if (is_array($user_form)) : ?>
 						echo '<input type="text" ';
 							
 					echo 'class="form-control" maxlength="32"
-										name="'.$field->name.'"
-										value="'.(isset($user_data[$field->name]) ? $user_data[$field->name] : '').'"
+										name="'.esc_attr($field->name).'"
+										value="'.(isset($user_data[$field->name]) ? esc_attr($user_data[$field->name]) : '').'"
 										'.((isset($field->required) && $field->required == true) ? 'required' : '').'
-										placeholder="'.$field->label.'">';
+										placeholder="'.esc_attr($field->label).'">';
 			}
 			echo '</div></div>';
 		}

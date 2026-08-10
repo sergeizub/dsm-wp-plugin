@@ -21,9 +21,9 @@ if (!empty($result->form))
 		<input type="hidden" name="source" value="oc_make_payment">
     	<input type="hidden" name="apply_to_charges" value="true">
 		<input type="hidden" name="charge_discount_coupon" value="">
-    	<input type="hidden" name="convenience_fee_percent" value="<?php if (defined('DSM_CONVENIENCE_FEE_PERCENT')) echo DSM_CONVENIENCE_FEE_PERCENT;?>">
-   		<input type="hidden" name="convenience_fee_amount" value="<?php  if (defined('DSM_CONVENIENCE_FEE_AMOUNT')) echo DSM_CONVENIENCE_FEE_AMOUNT;?>">   
-    	<input type="hidden" name="convenience_fee_for_check" value="<?php  if (defined('DSM_CONVENIENCE_FEE_FOR_CHECK')) echo DSM_CONVENIENCE_FEE_FOR_CHECK;?>">       
+    	<input type="hidden" name="convenience_fee_percent" value="<?php if (defined('DSM_CONVENIENCE_FEE_PERCENT')) echo esc_attr(DSM_CONVENIENCE_FEE_PERCENT);?>">
+   		<input type="hidden" name="convenience_fee_amount" value="<?php  if (defined('DSM_CONVENIENCE_FEE_AMOUNT')) echo esc_attr(DSM_CONVENIENCE_FEE_AMOUNT);?>">   
+    	<input type="hidden" name="convenience_fee_for_check" value="<?php  if (defined('DSM_CONVENIENCE_FEE_FOR_CHECK')) echo esc_attr(DSM_CONVENIENCE_FEE_FOR_CHECK);?>">       
 
     	<div class="form-group row">
         	<label class="col-sm-3 control-label"><span class="text-warning">*</span> Pay for</label>
@@ -31,10 +31,10 @@ if (!empty($result->form))
 			<?php if ($form->charges_list): ?>
 			<?php foreach ($form->charges_list as $item): ?>
 			<?php if ($item->id == 'convenience_fee'): ?>
-				<input type="checkbox" value="convenience_fee" data-amount="0" id="convenience_fee_checkbox" onclick="return false;" checked="checked" /> <?php echo $item->value; ?> - <?php echo DSM_CURRENCY_SIGN;?><span id="convenience_fee_amount"></span><br />
-				<input type="hidden" name="charges[]" value="<?php echo $item->id; ?>" data-amount="<?php echo $item->amount; ?>">
+				<input type="checkbox" value="convenience_fee" data-amount="0" id="convenience_fee_checkbox" onclick="return false;" checked="checked" /> <?php echo esc_html($item->value); ?> - <?php echo esc_html(DSM_CURRENCY_SIGN);?><span id="convenience_fee_amount"></span><br />
+				<input type="hidden" name="charges[]" value="<?php echo esc_attr($item->id); ?>" data-amount="<?php echo esc_attr($item->amount); ?>">
 			<?php else: ?>
-				<input type="checkbox" name="charges[]" value="<?php echo $item->id; ?>" data-amount="<?php echo $item->amount; ?>" data-charge_category_id="<?php echo $item->charge_category_id; ?>" /> <?php echo $item->value; ?> <span id="charge_discount_<?php echo $item->id; ?>" class="text-muted"></span><br />
+				<input type="checkbox" name="charges[]" value="<?php echo esc_attr($item->id); ?>" data-amount="<?php echo esc_attr($item->amount); ?>" data-charge_category_id="<?php echo esc_attr($item->charge_category_id); ?>" /> <?php echo esc_html($item->value); ?> <span id="charge_discount_<?php echo esc_attr($item->id); ?>" class="text-muted"></span><br />
 			<?php endif; ?> 
 			<?php endforeach; ?>
 			<?php else: ?>
@@ -54,10 +54,10 @@ if (!empty($result->form))
 				<select name="token_id" class="form-control">
 					<option value="0">Please select...</option>
 					<?php foreach ($form->payment_sources as $item): ?>
-					<option value="<?php echo $item->token;?>" <?php if ($item->default == "1") echo 'selected="selected"'?> data-tender_type="<?php echo $item->tender_type; ?>">
-						<?php if (!empty($item->card_type)) echo $item->card_type; else echo $item->tender_type; ?>
-						**** **** <?php echo $item->last4; ?>
-						<?php if (!empty($item->card_expire)) echo '[Exp:]'.$item->card_expire; ?>
+					<option value="<?php echo esc_attr($item->token);?>" <?php if ($item->default == "1") echo 'selected="selected"'?> data-tender_type="<?php echo esc_attr($item->tender_type); ?>">
+						<?php if (!empty($item->card_type)) echo esc_html($item->card_type); else echo esc_html($item->tender_type); ?>
+						**** **** <?php echo esc_html($item->last4); ?>
+						<?php if (!empty($item->card_expire)) echo '[Exp:]'.esc_html($item->card_expire); ?>
 					</option>
 					<?php endforeach; ?>
 				</select>
@@ -79,13 +79,13 @@ if (!empty($result->form))
 		<div class="form-group row">
         	<label class="col-sm-3 control-label"><span class="text-warning">*</span> Billing First Name</label>
         	<div class="col-sm-7">
-				<input class="form-control" type="text" name="first_name" maxlength="50" value="<?php echo $form->first_name; ?>">
+				<input class="form-control" type="text" name="first_name" maxlength="50" value="<?php echo esc_attr($form->first_name); ?>">
 			</div>
     	</div>
 		<div class="form-group row">
         	<label class="col-sm-3 control-label"><span class="text-warning">*</span> Billing Last Name</label>
         	<div class="col-sm-7">
-				<input class="form-control" type="text" name="last_name" maxlength="50" value="<?php echo $form->last_name; ?>">
+				<input class="form-control" type="text" name="last_name" maxlength="50" value="<?php echo esc_attr($form->last_name); ?>">
 			</div>
     	</div>
 		<div class="col-sm-3"></div>		            

@@ -16,19 +16,19 @@ $result = App::GetClient()->GetController('members')->GetPurchases();
 					<th class="text-center">Total Lessons</th>
 					<th class="text-center">Used Lessons</th>            
 					<th class="text-center">Expiration Date</th>
-					<th class="text-right">Charged, <?php echo DSM_CURRENCY_SIGN; ?></th>
+					<th class="text-right">Charged, <?php echo esc_html(DSM_CURRENCY_SIGN); ?></th>
 				</tr>
 			</thead>
 			<tbody>
 			<?php if (!empty($result->data)) : ?>
 			<?php foreach ($result->data as $p) : ?>
 				<tr>
-					<td><?php echo $p->DATE_ADDEDF; ?></td>
-					<td><?php echo $p->NAME; ?></td>
-					<td class="text-center"><?php if($p->TYPE == 'item') { if($p->CLASS_TYPE == 'private') { echo $p->HOURS.' (hours)'; } else { if($p->LESSONS !== DSM_UNLIMITED_LESSONS) { echo $p->LESSONS; } else { echo 'unlimited';} } } ?></td>
-					<td class="text-center"><?php if($p->TYPE == 'item') { if($p->CLASS_TYPE == 'private') { echo $p->USED_HOURS.' (hours)'; } else { echo $p->USED_LESSONS; } }?></td>
-					<td class="text-center"><?php if($p->TYPE == 'item') { if($p->DATE_EXPIRE != DSM_NEVER_EXPIRE_DATE) { echo $p->DATE_EXPIREF; } else { echo 'never expire'; } }?></td>
-					<td class="text-right"><?php echo $p->AMOUNT_CHARGED; ?></td>
+					<td><?php echo esc_html($p->DATE_ADDEDF); ?></td>
+					<td><?php echo esc_html($p->NAME); ?></td>
+					<td class="text-center"><?php if($p->TYPE == 'item') { if($p->CLASS_TYPE == 'private') { echo esc_html($p->HOURS).' (hours)'; } else { if($p->LESSONS !== DSM_UNLIMITED_LESSONS) { echo esc_html($p->LESSONS); } else { echo 'unlimited';} } } ?></td>
+					<td class="text-center"><?php if($p->TYPE == 'item') { if($p->CLASS_TYPE == 'private') { echo esc_html($p->USED_HOURS).' (hours)'; } else { echo esc_html($p->USED_LESSONS); } }?></td>
+					<td class="text-center"><?php if($p->TYPE == 'item') { if($p->DATE_EXPIRE != DSM_NEVER_EXPIRE_DATE) { echo esc_html($p->DATE_EXPIREF); } else { echo 'never expire'; } }?></td>
+					<td class="text-right"><?php echo esc_html($p->AMOUNT_CHARGED); ?></td>
 				</tr>
 			<?php endforeach; ?>
 			<?php else: ?>

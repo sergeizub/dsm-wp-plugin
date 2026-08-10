@@ -10,7 +10,29 @@ jQuery(function() {
 	<?php if (!empty($_SESSION['dsm_client_attrs']['default_tab']) && empty($_SESSION['dsm_redirect']['boot_tab'])) :?>
 	dsm_ajax_click(jQuery('.default_tab'));
 	<?php endif; ?>
-	<?php echo App::GetClient()->NavRedirect(); ?>
+	<?php 
+	$nav_redirect = App::GetClient()->NavRedirect();
+
+    echo wp_kses($nav_redirect, array(
+        'script' => array(
+            'type' => array(),
+        ),
+        'var' => array(),
+        'jQuery' => array(),
+        'form' => array(
+            'action' => array(),
+            'method' => array(),
+        ),
+        'input' => array(
+            'type' => array(),
+            'name' => array(),
+            'value' => array(),
+        ),
+        'a' => array(
+            'href' => array(),
+        ),
+    ));
+	?>
 });
 </script>
 <div>
@@ -35,9 +57,9 @@ jQuery(function() {
 	?>
 	<li>
 		<a href="#tab-news" data-toggle="tab" class="dsm_ajax_tab" >
-			<i class="fa fa-newspaper-o"></i> <?php echo DSM_OC_ANNOUNCEMENTS_SECTION_TITLE; ?>
+			<i class="fa fa-newspaper-o"></i> <?php echo esc_html(DSM_OC_ANNOUNCEMENTS_SECTION_TITLE); ?>
 			<?php if (!empty($count_new_announcements["data"]) && $count_new_announcements["data"] > 0): ?>
-			<sup><span class="badge badge-pill badge-danger js_news_count"><?php echo $count_new_announcements["data"]; ?></span></sup>
+			<sup><span class="badge badge-pill badge-danger js_news_count"><?php echo esc_html($count_new_announcements["data"]); ?></span></sup>
 			<?php endif; ?>
 		</a>
 	</li>
@@ -49,21 +71,21 @@ jQuery(function() {
 	?>
 	<li>
 		<a href="#tab-videos" data-toggle="tab" class="dsm_ajax_tab" >
-			<i class="fa fa-video-camera"></i> <?php echo DSM_OC_VIDEOS_SECTION_TITLE; ?>
+			<i class="fa fa-video-camera"></i> <?php echo esc_html(DSM_OC_VIDEOS_SECTION_TITLE); ?>
 			<?php if (!empty($count_new_videos["data"]) && $count_new_videos["data"] > 0): ?>
-			<sup><span class="badge badge-pill badge-danger js_videos_count"><?php echo $count_new_videos["data"]; ?></span></sup>
+			<sup><span class="badge badge-pill badge-danger js_videos_count"><?php echo esc_html($count_new_videos["data"]); ?></span></sup>
 			<?php endif; ?>
 		</a>
 	</li>
 	<?php endif; ?>
 	<?php if (DSM_OC_SHOW_SALES_ITEMS == "1" || $_SESSION['dsm_client_attrs']['default_tab'] == 'sales-items'): ?>
-	<li><a href="#tab-checkout-sales-items" class="dsm_ajax_tab <?php if (($_SESSION['dsm_client_attrs']['default_tab']) == 'sales-items') echo 'default_tab'; ?>"><i class="fa fa-cube"></i> <?php echo DSM_OC_SALES_ITEMS_SECTION_TITLE; ?></a></li>
+	<li><a href="#tab-checkout-sales-items" class="dsm_ajax_tab <?php if (($_SESSION['dsm_client_attrs']['default_tab']) == 'sales-items') echo 'default_tab'; ?>"><i class="fa fa-cube"></i> <?php echo esc_html(DSM_OC_SALES_ITEMS_SECTION_TITLE); ?></a></li>
 	<?php endif; ?>
 	<?php if (DSM_OC_SHOPPING_CART_ENABLED  == '1') : ?>
 	<li><a href="#tab-checkout-cart" data-toggle="tab" class="dsm_ajax_tab cart-checkout-tab" ><i class="fa fa-shopping-cart"></i> Cart</a></li>
 	<?php endif; ?>
 	<li class="dropdown" id="m-dd">
-		<a href="#" data-toggle="dropdown"><i class="fa fa-users"></i> <?php echo App::GetClient()->GetController('members')->GetName(); ?><span class="caret"></span></a>
+		<a href="#" data-toggle="dropdown"><i class="fa fa-users"></i> <?php echo esc_html(App::GetClient()->GetController('members')->GetName()); ?><span class="caret"></span></a>
 		<ul class="dropdown-menu">
 			<?php if (DSM_OC_MEMBERS_REGISTRATION  == '1') : ?>
 			<li><a href="#tab-members-edit" class="dsm_ajax_tab" title="Edit Main Account"><i class="fa fa-users"></i> Edit Account</a></li>

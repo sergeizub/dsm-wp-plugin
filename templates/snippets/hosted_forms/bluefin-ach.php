@@ -7,8 +7,8 @@ $base_url = isset($payment_form->form->base_url) ? $payment_form->form->base_url
 
 ?>
 <script>
-	var account = "<?php echo $account_id; ?>",
-		devServer = "https://<?php echo $base_url; ?>",
+	var account = "<?php echo esc_html($account_id); ?>",
+		devServer = "<?php echo esc_url($base_url); ?>",
 		paymentiFrame = '';
 
 	if (!gw_form_id_ach || gw_form_id_ach == undefined)
@@ -18,11 +18,11 @@ $base_url = isset($payment_form->form->base_url) ? $payment_form->form->base_url
 
 <div class="ach-fields">
 	<div class="form-group row">
-		<div class="<?php echo $label_class; ?> hidden ">
+		<div class="<?php echo esc_attr($label_class); ?> hidden ">
 	        <div class="control-label text-right" style="margin-top: 8px !important;font-weight:bold;"><span class="text-warning">*</span> Bank Account Number</div>
 			<div class="control-label text-right" style="margin-top: 8px !important;font-weight:bold;"><span class="text-warning">*</span> Bank Routing Number</div>
 		</div>
-		<div class="<?php echo $label_class; ?> d-block d-sm-none">
+		<div class="<?php echo esc_attr($label_class); ?> d-block d-sm-none">
 			<div class="control-label text-left" style="margin-top: 8px !important;font-weight:bold;"><span class="text-warning">*</span> Bank Account Number, Bank Routing Number</div>
 		</div>
         <div class="col-sm-7 pl-3">
@@ -30,7 +30,7 @@ $base_url = isset($payment_form->form->base_url) ? $payment_form->form->base_url
         </div>
 	</div>
 	<div class="form-group row">
-		<label class="<?php echo $label_class; ?> control-label"><span class="text-warning">*</span> Bank Account Type</label>
+		<label class="<?php echo esc_attr($label_class); ?> control-label"><span class="text-warning">*</span> Bank Account Type</label>
 		<div class="col-sm-3">
 			<select name="ach_account_type" class="form-control">
 				<option value="CHECKING">Checking</option>

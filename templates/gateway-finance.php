@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	<script>
 		jQuery(function() {
 			<?php if (!empty($_REQUEST['sub_tab'])):?>
-			jQuery('#pgw-tabs a[href="<?php echo $_REQUEST['sub_tab']; ?>"]').tab('show');
+			jQuery('#pgw-tabs a[href="<?php echo esc_js($_REQUEST['sub_tab']); ?>"]').tab('show');
 			<?php endif; ?>
 		});
 	</script>

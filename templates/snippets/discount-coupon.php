@@ -4,8 +4,8 @@
 <div class="form-group">
 	<label class="col-sm-5 control-label">Applied Discount Coupon</label>
 	<label class="col-sm-4 control-label">
-		<i><?php echo $cart['discount_coupon']['COUPON_CODE']; ?>
-			<?php echo $cart['discount_coupon']['DISCOUNT_VALUE']; ?> (<?php echo (($cart['discount_coupon']['DISCOUNT_TYPE'] == 'percentage') ? '%' : DSM_CURRENCY_SIGN); ?>)</i>
+		<i><?php echo esc_html($cart['discount_coupon']['COUPON_CODE']); ?>
+			<?php echo esc_html($cart['discount_coupon']['DISCOUNT_VALUE']); ?> (<?php echo (($cart['discount_coupon']['DISCOUNT_TYPE'] == 'percentage') ? '%' : esc_html(DSM_CURRENCY_SIGN)); ?>)</i>
 	</label>
 	<div class="col-sm-3">		            
 		<a href="#tab-checkout-cart" class="btn btn-warning dsm_ajax_tab" id="remove-discount" dsm_obj="checkout" dsm_method="RemoveDiscount"

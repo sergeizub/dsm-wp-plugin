@@ -7,8 +7,8 @@ $base_url = isset($payment_form->form->base_url) ? $payment_form->form->base_url
 
 ?>
 <script>
-	var account = "<?php echo $account_id; ?>",
-		devServer = "https://<?php echo $base_url; ?>",
+	var account = "<?php echo esc_html($account_id); ?>",
+		devServer = "<?php echo esc_url($base_url); ?>",
 		paymentiFrame = '';
 
 	if (!gw_form_id_card || gw_form_id_card == undefined)
@@ -18,7 +18,7 @@ $base_url = isset($payment_form->form->base_url) ? $payment_form->form->base_url
 
 <div class="card-fields">
 	<div class="form-group">
-		<div class="<?php echo $label_class; ?> ">
+		<div class="<?php echo esc_attr($label_class); ?> ">
 	        <div class="control-label text-right" style="margin-top: 8px !important;font-weight:bold;"><span class="text-warning">*</span> Card Number</div>
 			<div class="control-label text-right" style="margin-top: 8px !important;font-weight:bold;"><span class="text-warning">*</span> Card Expiration</div>
 			<div class="control-label text-right" style="margin-top: 8px !important;font-weight:bold;"><span class="text-warning">*</span> Card Verification</div>

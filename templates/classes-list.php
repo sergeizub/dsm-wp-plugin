@@ -45,15 +45,15 @@ foreach ($classes_tabs as $k => $v_array) {
 }
 ?>
 <?php include plugin_dir_path( __FILE__ ) . 'snippets/unsigned-waivers.php';?>
-<div class="class-container" data-unsigned-waivers-allow="<?php echo DSM_OC_UNSIGNED_WAIVERS_CLASS_REG; ?>"	>
+<div class="class-container" data-unsigned-waivers-allow="<?php echo esc_html(DSM_OC_UNSIGNED_WAIVERS_CLASS_REG); ?>"	>
 <?php if (!empty($classes_tabs)): ?>
 	<div id="tabs">
 		<ul class="nav nav-tabs" role="tablist">
         	<?php foreach ($classes_tabs as $key => $item): ?>
 			<?php reset($classes_tabs);?>
 			<li role="presentation" class="<?php echo ($key === key($classes_tabs) ? 'active' : ''); ?>">
-				<a href="#tab<?php echo $key; ?>" aria-controls="<?php echo $programs[$key]; ?>"
-				role="tab" data-toggle="tab" data-program_id="<?php echo $key; ?>"><?php echo $programs[$key]; ?></a>
+				<a href="#tab<?php echo esc_attr($key); ?>" aria-controls="<?php echo esc_attr($programs[$key]); ?>"
+				role="tab" data-toggle="tab" data-program_id="<?php echo esc_attr($key); ?>"><?php echo esc_attr($programs[$key]); ?></a>
 			</li>
 			<?php endforeach; ?>
 		</ul>
@@ -61,9 +61,9 @@ foreach ($classes_tabs as $k => $v_array) {
 	<div class="tab-content classes-list">
 	<?php foreach ($classes_tabs as $key => $item): ?>
 	<?php reset($classes_tabs);?>
-		<div role="tabpanel" class="tab-pane <?php echo ($key === key($classes_tabs) ? 'active' : ''); ?>" id="tab<?php echo $key; ?>">
+		<div role="tabpanel" class="tab-pane <?php echo ($key === key($classes_tabs) ? 'active' : ''); ?>" id="tab<?php echo esc_attr($key); ?>">
 			<div class="tab-content">
-				<div class="get-page" data-relation="categories" data-relation_id="<?php echo $key; ?>"></div>
+				<div class="get-page" data-relation="categories" data-relation_id="<?php echo esc_attr($key); ?>"></div>
 				<?php include plugin_dir_path( __FILE__ ) . 'snippets/select-class-table.php'; ?>
 			</div>
 		</div>

@@ -69,38 +69,38 @@ foreach ($classes_list->schedules as $day)
 
 <?php
 foreach($classes_locations as $location_id => $schedules): ?>
-    <h3 class="hidden-sm"><?php echo $schedules[0]->LOCATION; ?></h3>
+    <h3 class="hidden-sm"><?php echo esc_html($schedules[0]->LOCATION); ?></h3>
     <br/>
-    <table class="table table-borderless table_mobile_block" style="table-layout: auto;" id="table_location_<?php echo $location_id; ?>"> 
+    <table class="table table-borderless table_mobile_block" style="table-layout: auto;" id="table_location_<?php echo esc_attr($location_id); ?>"> 
         <tbody>
         <?php 
         foreach ($schedules as $schedule): ?>
         <tr>
             <td>
-            	<?php if (DSM_OC_CLASS_LIST_CLASS_ID == '1') { ?><div class="label label-default"><?php echo $schedule->CLASS_ID; ?></div><?php } ?>
-            	<?php echo (DSM_OC_CLASS_LIST_CLASS_CODE == '1') ? $schedule->CODE.' ' : ''; ?>
-            	<?php echo (DSM_OC_CLASS_LIST_CLASS_NAME == '1') ? $schedule->NAME.' ' : ''; ?>
+            	<?php if (DSM_OC_CLASS_LIST_CLASS_ID == '1') { ?><div class="label label-default"><?php echo esc_html($schedule->CLASS_ID); ?></div><?php } ?>
+            	<?php echo (DSM_OC_CLASS_LIST_CLASS_CODE == '1') ? esc_html($schedule->CODE).' ' : ''; ?>
+            	<?php echo (DSM_OC_CLASS_LIST_CLASS_NAME == '1') ? esc_html($schedule->NAME).' ' : ''; ?>
             </td>
-            <?php if (DSM_OC_CLASS_LIST_CLASS_LOCATION == '1') { ?><td class="text-center"><?php echo $schedule->LOCATION; ?></td><?php } ?></h4> 
-            <td><span style="white-space: nowrap;"><?php echo $schedule->DAY; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $schedule->START_TIME; ?></span> - <span style="white-space: nowrap;"><?php echo $schedule->END_TIME; ?></span></td>
+            <?php if (DSM_OC_CLASS_LIST_CLASS_LOCATION == '1') { ?><td class="text-center"><?php echo esc_html($schedule->LOCATION); ?></td><?php } ?></h4> 
+            <td><span style="white-space: nowrap;"><?php echo esc_html($schedule->DAY); ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo esc_html($schedule->START_TIME); ?></span> - <span style="white-space: nowrap;"><?php echo esc_html($schedule->END_TIME); ?></span></td>
             <td>
                 <?php if ($schedule->M_STATUS != 'Book Now'): ?>
-				<button class="btn btn-warning " type="button" style="<?php echo ((!empty($schedule->M_STATUS_COLOR)) ? 'background-color:'.$schedule->M_STATUS_COLOR.';' : ''); ?><?php echo ((!empty($schedule->M_STATUS_TEXT_COLOR)) ? 'color:'.$schedule->M_STATUS_TEXT_COLOR.';': ''); ?><?php echo ((!empty($schedule->M_STATUS_BORDER_COLOR)) ? 'border-color:'.$schedule->M_STATUS_BORDER_COLOR.';' : ''); ?>">
-					<span><?php echo $schedule->START_DATE; ?> <?php echo $schedule->M_STATUS; ?></span>
+				<button class="btn btn-warning " type="button" style="<?php echo ((!empty($schedule->M_STATUS_COLOR)) ? 'background-color:'.esc_attr($schedule->M_STATUS_COLOR).';' : ''); ?><?php echo ((!empty($schedule->M_STATUS_TEXT_COLOR)) ? 'color:'.esc_attr($schedule->M_STATUS_TEXT_COLOR).';': ''); ?><?php echo ((!empty($schedule->M_STATUS_BORDER_COLOR)) ? 'border-color:'.esc_attr($schedule->M_STATUS_BORDER_COLOR).';' : ''); ?>">
+					<span><?php echo esc_html($schedule->START_DATE); ?> <?php echo esc_html($schedule->M_STATUS); ?></span>
 				</button>
                 <?php elseif (App::GetClient()->GetController('auth')->isLogged()): ?>
 				<?php if ($schedule->MAX_STUDENTS <= ($schedule->NUM_STUDENTS) && DSM_OC_ALLOW_WAIT_LIST == "1"): ?>
-				<a href="#tab-class-registration-<?php echo $schedule->CLASS_ID; ?>" dsm_class_id="<?php echo $schedule->CLASS_ID; ?>" dsm_schedule_id="<?php echo $schedule->ID; ?>" title="Add to Wait List" class="btn btn-success dsm_ajax_tab">
-					<i class="fa fa-plus-circle"></i> <?php echo $schedule->START_DATE;?> Add to Wait List
+				<a href="#tab-class-registration-<?php echo esc_attr($schedule->CLASS_ID); ?>" dsm_class_id="<?php echo esc_attr($schedule->CLASS_ID); ?>" dsm_schedule_id="<?php echo esc_attr($schedule->ID); ?>" title="Add to Wait List" class="btn btn-success dsm_ajax_tab">
+					<i class="fa fa-plus-circle"></i> <?php echo esc_html($schedule->START_DATE);?> Add to Wait List
 				</a>
 				<?php else: ?>
-					<a href="#tab-class-registration-<?php echo $schedule->CLASS_ID; ?>" dsm_class_id="<?php echo $schedule->CLASS_ID; ?>" dsm_schedule_id="<?php echo $schedule->ID;?>" title="Register" class="btn btn-success dsm_ajax_tab">
-						<i class="fa fa-plus-circle"></i> <?php echo $schedule->START_DATE; ?> Register
+					<a href="#tab-class-registration-<?php echo esc_attr($schedule->CLASS_ID); ?>" dsm_class_id="<?php echo esc_attr($schedule->CLASS_ID); ?>" dsm_schedule_id="<?php echo esc_attr($schedule->ID);?>" title="Register" class="btn btn-success dsm_ajax_tab">
+						<i class="fa fa-plus-circle"></i> <?php echo esc_html($schedule->START_DATE); ?> Register
 				    </a>
 					<?php endif; ?>
 					<?php else: ?>
-						<button class="btn btn-success btn-login-alert" type="button" dsm_class_id="<?php echo $schedule->CLASS_ID; ?>" dsm_schedule_id="<?php echo $schedule->ID; ?>">
-							<span><i class="fa fa-plus-circle"></i> <?php echo $schedule->START_DATE?> Register</span>
+						<button class="btn btn-success btn-login-alert" type="button" dsm_class_id="<?php echo esc_attr($schedule->CLASS_ID); ?>" dsm_schedule_id="<?php echo esc_attr($schedule->ID); ?>">
+							<span><i class="fa fa-plus-circle"></i> <?php echo esc_html($schedule->START_DATE); ?> Register</span>
 						</button>		
 					<?php endif; ?>
             </td>
@@ -111,7 +111,7 @@ foreach($classes_locations as $location_id => $schedules): ?>
             <tr>
                 <td colspan="3" style="text-align: center;">
                     <?php if ($filter['days_quantity'] != '99999'): ?>
-                    <button class="btn btn-info" type="button" onclick="LocationLoadMoreSchedules(this);" dsm_class_location="<?php echo $location_id; ?>" dsm_start_date ="<?php echo $end_date->format(DSM_PHPDATE);  ?>">
+                    <button class="btn btn-info" type="button" onclick="LocationLoadMoreSchedules(this);" dsm_class_location="<?php echo esc_attr($location_id); ?>" dsm_start_date ="<?php echo esc_attr($end_date->format(DSM_PHPDATE));  ?>">
 						Load More
 					</button>
                     <?php endif; ?>

@@ -25,13 +25,13 @@ $label_class = 'col-sm-5';
 			<div class="form-group">
 				<label class="col-sm-5 control-label"><span class="text-warning">*</span> First Name</label>
 				<div class="col-sm-7">
-					<input class="form-control" type="text" name="first_name" maxlength="50" value="<?php echo $first_name; ?>">
+					<input class="form-control" type="text" name="first_name" maxlength="50" value="<?php echo esc_attr($first_name); ?>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-5 control-label"><span class="text-warning">*</span> Last Name</label>
 				<div class="col-sm-7">
-					<input class="form-control" type="text" name="last_name" maxlength="50" value="<?php echo $last_name; ?>">
+					<input class="form-control" type="text" name="last_name" maxlength="50" value="<?php echo esc_attr($last_name); ?>">
 				</div>
 			</div>
 			<?php if (defined('DSM_PAYMENT_SYSTEM') && DSM_PAYMENT_SYSTEM == 'bluefin'): ?>
@@ -43,19 +43,19 @@ $label_class = 'col-sm-5';
 			<div class="form-group">
 				<label class="col-sm-5 control-label"><span class="text-warning">*</span> Card Number</label>
 				<div class="col-sm-7">
-					<input class="form-control" type="text" name="card_number" value="<?php echo isset($_POST['card_number']) ? sanitize_text_field($_POST['card_number']) : ''; ?>">
+					<input class="form-control" type="text" name="card_number" value="<?php echo isset($_POST['card_number']) ? esc_attr(sanitize_text_field($_POST['card_number'])) : ''; ?>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-5 control-label"><span class="text-warning">*</span> Card Expiration (MMYY)</label>
 				<div class="col-xs-3">
-					<input class="form-control" type="text" name="card_expiration" maxlength="4" value="<?php echo isset($_POST['card_expiration']) ? sanitize_text_field($_POST['card_expiration']) : ''; ?>">
+					<input class="form-control" type="text" name="card_expiration" maxlength="4" value="<?php echo isset($_POST['card_expiration']) ? esc_attr(sanitize_text_field($_POST['card_expiration'])) : ''; ?>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-5 control-label"><span class="text-warning">*</span> Card Verification (CVV2)</label>
 				<div class="col-xs-3">
-					<input class="form-control" type="text" name="card_verification" maxlength="4" value="<?php echo isset($_POST['card_verification']) ? sanitize_text_field($_POST['card_verification']) : ''; ?>">
+					<input class="form-control" type="text" name="card_verification" maxlength="4" value="<?php echo isset($_POST['card_verification']) ? esc_attr(sanitize_text_field($_POST['card_verification'])) : ''; ?>">
 				</div>
 			</div>
 			<?php endif; ?>
@@ -71,7 +71,7 @@ $label_class = 'col-sm-5';
 			<div class="form-group">
 				<label class="col-sm-5 control-label">Description</label>
 				<div class="col-sm-7">
-					<input class="form-control" type="text" name="description" maxlength="255" value="<?php echo isset($_POST['description']) ? sanitize_textarea_field($_POST['description']) : ''; ?>" />
+					<input class="form-control" type="text" name="description" maxlength="255" value="<?php echo isset($_POST['description']) ? esc_attr(sanitize_textarea_field($_POST['description'])) : ''; ?>" />
 				</div>      
 			</div>
 			<input type="hidden" name="action" value="dsmclient"/>

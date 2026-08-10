@@ -11,7 +11,7 @@ else :
 	include plugin_dir_path( __FILE__ ) . 'snippets/unsigned-waivers.php';
 	include plugin_dir_path( __FILE__ ) . 'snippets/class-filters.php'; 
 ?>
-<div class="class-container" data-unsigned-waivers-allow="<?php echo DSM_OC_UNSIGNED_WAIVERS_CLASS_REG; ?>">
+<div class="class-container" data-unsigned-waivers-allow="<?php echo esc_html(DSM_OC_UNSIGNED_WAIVERS_CLASS_REG); ?>">
 <script>
 jQuery(function() {
 	var class_filter = new Object();
@@ -44,10 +44,10 @@ jQuery(function() {
 		height: 'auto',
 		allDaySlot: false,
 		slotMinutes: 15,
-		timeFormat: '<?php echo DSM_CALENDARTIME; ?>',
+		timeFormat: '<?php echo esc_html(DSM_CALENDARTIME); ?>',
 		views: { listWeek: { buttonText: 'list week' } },
-        minTime: '<?php echo ((DSM_CALENDAR_START_TIME) ? DSM_CALENDAR_START_TIME  : '6:00'); ?>',
-        maxTime: '<?php echo ((DSM_CALENDAR_END_TIME) ? DSM_CALENDAR_END_TIME  : '24:00'); ?>',
+        minTime: '<?php echo ((DSM_CALENDAR_START_TIME) ? esc_html(DSM_CALENDAR_START_TIME)  : '6:00'); ?>',
+        maxTime: '<?php echo ((DSM_CALENDAR_END_TIME) ? esc_html(DSM_CALENDAR_END_TIME)  : '24:00'); ?>',
 		editable: false,
 		defaultDate: localStorage.getItem('cal_offset'),					
 		loading: function(bool) {

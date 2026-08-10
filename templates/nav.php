@@ -9,11 +9,11 @@ jQuery(function() {
     });
 	dsm_ajax_click(jQuery('.default_tab'));
 });
-var show_login_alert = '<?php if (defined('DSM_OC_SHOW_LOGIN_ALERT')) echo DSM_OC_SHOW_LOGIN_ALERT; else echo ''; ?>';
+var show_login_alert = '<?php if (defined('DSM_OC_SHOW_LOGIN_ALERT')) echo esc_html(DSM_OC_SHOW_LOGIN_ALERT); else echo ''; ?>';
 </script>
 <ul class="nav nav-pills">
 	<?php if (isset($_SESSION['dsm_client_attrs']['default_tab']) && $_SESSION['dsm_client_attrs']['default_tab'] == 'sales-items') : ?>
-	<li><a href="#tab-checkout-sales-items" data-toggle="tab"  class="dsm_ajax_tab default_tab"><i class="fa fa-cube"></i> <?php echo DSM_OC_SALES_ITEMS_SECTION_TITLE; ?></a></li>
+	<li><a href="#tab-checkout-sales-items" data-toggle="tab"  class="dsm_ajax_tab default_tab"><i class="fa fa-cube"></i> <?php echo esc_html(DSM_OC_SALES_ITEMS_SECTION_TITLE); ?></a></li>
 	<?php elseif (isset($_SESSION['dsm_client_attrs']['view']) && $_SESSION['dsm_client_attrs']['view'] == "Calendar") : ?>
 	<li><a href="#tab-classes-calendar" data-toggle="tab"  class="dsm_ajax_tab default_tab"><i class="fa fa-users"></i> Classes</a></li>
 	<?php elseif ((isset($_SESSION['dsm_client_attrs']['view']) && $_SESSION['dsm_client_attrs']['view'] == "Location Class List")) : ?>

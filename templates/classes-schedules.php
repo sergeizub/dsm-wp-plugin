@@ -14,14 +14,14 @@ foreach ($schedules_list->schedules as $k => $v) {
 			if ($class_header != 1) : ?>
                 <div class="schedule" style="border-left: 30px solid silver;">
 					<h3>
-						<?php echo $data->CODE; ?>
-						<?php echo $data->NAME; ?>
-						<?php echo $data->LEVEL; ?>
+						<?php echo esc_html($data->CODE); ?>
+						<?php echo esc_html($data->NAME); ?>
+						<?php echo esc_html($data->LEVEL); ?>
 					</h3>
 					<?php if (DSM_OC_CLASS_DETAILS_AGE == 1) : ?>
-					<p>Age: <?php echo $data->MIN_AGE; ?> - <?php echo $data->MAX_AGE; ?></p>
+					<p>Age: <?php echo esc_html($data->MIN_AGE); ?> - <?php echo esc_html($data->MAX_AGE); ?></p>
 					<?php endif; ?>
-					<h4><?php echo $data->LOCATION; ?></h4>
+					<h4><?php echo esc_html($data->LOCATION); ?></h4>
 				</div>
 			<?php
 				$class_header = '1';
@@ -34,8 +34,8 @@ foreach ($schedules_list->schedules as $k => $v) {
 			$end_time = date("g:i A",strtotime($data->START));
 		?>
 		<div class="schedule" style="border-left: 30px solid silver;">
-			<h4><?php echo $start_date; ?> <?php echo ((!empty($end_date) && $start_date != $end_date) ? '- '.$end_date : ''); ?>
-				<small><?php echo ($start_time.' - '.$end_time); ?></small>
+			<h4><?php echo esc_html($start_date); ?> <?php echo ((!empty($end_date) && $start_date != $end_date) ? '- '.esc_html($end_date) : ''); ?>
+				<small><?php echo esc_html(($start_time.' - '.$end_time)); ?></small>
 			</h4>
 		</div>
 		<?php
