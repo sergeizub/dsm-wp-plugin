@@ -19,6 +19,7 @@ jQuery(function() {
 <br/><br/>
 <?php if (App::GetClient()->GetController('auth')->isLogged()): ?>
 <a type="button" class="btn btn-primary geturl checkout dsm_ajax_tab" onclick="jQuery('.cart-checkout-tab').tab('show');" href="#tab-checkout-cart"><i class="fa fa-shopping-cart"></i> Checkout</a>
+<?php if (strpos($_SESSION['dsm_redirect']['boot_tab'],'class-registration-') !== false) unset($_SESSION['dsm_redirect']['boot_tab']); ?>
 <?php else: ?>
     <a type="button" class="btn btn-primary geturl dsm_ajax_tab" onclick="jQuery(this).attr('href', jQuery('.default_tab').attr('href')); jQuery('.default_tab').tab('show');" href="#"><i class="fa fa-users"></i> Classes</a>
 <?php endif; ?>
