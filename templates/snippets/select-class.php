@@ -62,7 +62,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		</span>
 		<ul class="gc list-unstyled">
 			<?php if ($student['prerequisites_complete']) : ?>
-				<?php if (DSM_OC_ALLOW_CLASS_REG_PURCH_ITEMS == "1" && $student['STUDENT_ID'] > 0 && $class['ID'] > 0 && ($class['PAYMENT_METHOD'] == 'sales_packages' || DSM_OC_ALLOW_DROP_IN_REGULAR == "1") && $student['classes'][$class['ID']]['sales_items'] && !empty($active_purchases)) : ?>
+				
+				<?php if (DSM_OC_ALLOW_CLASS_REG_PURCH_ITEMS == "1" && $student['STUDENT_ID'] > 0 && $class['ID'] > 0 && ($class['PAYMENT_METHOD'] == 'sales_packages' || DSM_OC_ALLOW_DROP_IN_REGULAR == "1") && !empty($active_purchases)) : ?>
 			<li><span class="active_purchases" id="ap_<?php echo $student['STUDENT_ID']; ?>_<?php echo $class['ID']; ?>" data-student_id="<?php echo $student['STUDENT_ID']; ?>" data-season_status="<?php echo $class['SCHEDULE']['SEASON_STATUS'];?>" data-class_id="<?php echo $class['ID'];?>" data-schedule_id="<?php echo (($schedule_id) ? $schedule_id : $class['SCHEDULE_ID']); ?>"></span></li>
 				<?php endif; ?>
 				<?php if (($class['PAYMENT_METHOD'] == 'sales_packages' || DSM_OC_ALLOW_DROP_IN_REGULAR == "1") && $student['classes'][$class['ID']]['sales_items']) : ?>
