@@ -11,6 +11,8 @@ class Api
 	protected static $api_version_list = array('v1' => 'v1');
 	protected $id_param = null;
 	const SOURCE_ID = "4";
+	const CLASSES_DATA_CACHE_VERSION_OPTION = 'dsm_classes_data_cache_version';
+	const CLASSES_DATA_CACHE_TTL = 60;
 
     public function __construct()
     {
@@ -81,6 +83,27 @@ class Api
         if (!empty($this->api_key))
             App::GetClient()->GetController('auth')->SetAuthSettings($this->GetList(array('dsm_action' => 'settings/')));
     }
+
+	protected function GetClassesDataCacheVersion()
+	{
+		return (int) get_option(self::CLASSES_DATA_CACHE_VERSION_OPTION, 1);
+	}
+
+	protected function InvalidateClassesDataCache()
+	{
+		update_option(
+			self::CLASSES_DATA_CACHE_VERSION_OPTION,
+			$this->GetClassesDataCacheVersion() + 1,
+			false
+		);
+	}
+
+	protected function GetClassesDataCacheKey($request_url)
+	{
+		return 'dsm_classes_data_' . md5(
+			$request_url . '|' . $this->api_key . '|' . $this->GetClassesDataCacheVersion()
+		);
+	}
 
 	public function ClassInfo($class_id)
 	{
@@ -187,6 +210,7 @@ class Api
 			}
 			if (!empty($response->token))
 				$this->token = $response->token;
+			$this->InvalidateClassesDataCache();
 			return $response;
 		}
 	}
@@ -239,6 +263,7 @@ class Api
 		}
 		elseif (isset($response->success) && $response->success == true) {
 			$this->SetIdParam(NULL);
+			$this->InvalidateClassesDataCache();
 			return $response;
 		}
 		else {
@@ -280,9 +305,37 @@ class Api
 		if (!empty($authorization_token))
                 $httpheader += ['Authorization' => $authorization_token];
 		
-        $result = wp_remote_get( $this->url."api/".$this->api_version."/".$action.$params , array( 'headers' => $httpheader,  'timeout' => 120 ));
-        
-		$response = json_decode(wp_remote_retrieve_body($result));
+        //$result = wp_remote_get( $this->url."api/".$this->api_version."/".$action.$params , array( 'headers' => $httpheader,  'timeout' => 120 )); 
+		//$response = json_decode(wp_remote_retrieve_body($result));
+
+		$request_url = $this->url."api/".$this->api_version."/".$action.$params;
+		$cache_key = false;
+		$cache_ttl = 0;
+
+		if (rtrim($action, '/') == 'classes/data') {
+			$cache_ttl = (int) apply_filters(
+				'dsm_classes_data_cache_ttl',
+				self::CLASSES_DATA_CACHE_TTL,
+				$request_url
+			);
+
+			if ($cache_ttl > 0) {
+				$cache_key = $this->GetClassesDataCacheKey($request_url);
+				$cached_body = get_transient($cache_key);
+
+				if (is_string($cached_body) && $cached_body !== '') {
+					$cached_response = json_decode($cached_body);
+
+					if (is_object($cached_response) && json_last_error() === JSON_ERROR_NONE)
+						return $cached_response;
+				}
+			}
+		}
+
+		$result = wp_remote_get( $request_url, array( 'headers' => $httpheader,  'timeout' => 120 ));
+         
+		$response_body = wp_remote_retrieve_body($result);
+		$response = json_decode($response_body);
 		
 		if (!empty($response->error)) {
 			App::GetError()->Show($response->error);
@@ -305,6 +358,8 @@ class Api
 			return false;
 		}
 		else {
+			if ($cache_key && $cache_ttl > 0 && is_object($response) && empty($response->error) && json_last_error() === JSON_ERROR_NONE)
+				set_transient($cache_key, $response_body, $cache_ttl);
 			return $response;
 		}
 	}
